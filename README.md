@@ -4,8 +4,10 @@
 
 ![Depression Center Logo](images/EFDCLogo_375w.png "depressioncenter.org")
 
-# Looking for Depression Center open source projects?
-
+# Redirecting to github.com/DepressionCenter
+__You are being redirected to our [GitHub site](github.com/DepressionCenter)...__
+  
+  
 
 ## Why am I seen this page?
 This site is a placeholder page that is required for repository-specific Code Pages.  
@@ -13,7 +15,7 @@ It also hosts static web assets such as images and scripts that are shared acros
 
 
 ## Where are the EFDC repos located?
-Please see our GitHub page at:  [https://github.com/DepressionCenter](https://github.com/DepressionCenter)
+Please see our GitHub site at:  [https://github.com/DepressionCenter](https://github.com/DepressionCenter)
 
 
 
