@@ -1,40 +1,33 @@
+<script type="text/javascript">
+        window.setTimeout(()=>{ window.location.href="https://michmed.org/efdc-kb"; }, 3500);
+    </script>
+
 ![Depression Center Logo](images/EFDCLogo_375w.png "depressioncenter.org")
 
-# <Repository Title>
-
-## Description
-<Program/Library name> is a < program/library/collection of scripts > for < description of what it does and what problem it solves >.
+# Looking for [Depression Center open source projects](https://github.com/DepressionCenter)?
 
 
+## Why am I seen this page?
+This site is a placeholder page that is required for repository-specific Code Pages.  
+It also hosts static web assets such as images and scripts that are shared across all our projects.
 
-## Quick Start Guide
-+ < Short compile/run instructions, without too much detail >
+
+## Where are the EFDC repos located?
+Please see our GitHub page at:  https://github.com/DepressionCenter
 
 
 
 ## Documentation
-+ The full documentation is available at: < Link to manual, wiki, full documentation, etc. >
-+ __OR__ Detailed setup and use instructions are available in the companion knowledge base article, [ article_title ]( link ).
+Please see our Knowledge Base at:  https://michmed.org/efdc-kb
 
 
 
 
 ## Additional Resources
-+ < Links to study website, related projects, etc. >
++ Eisenberg Family Depression Center - https://depressioncenter.org
++ Michigan Medicine - https://michiganmedicine.org
++ University of Michigan - https://umich.edu
 
-
-
-## About the Team
-< 1-2 paragraphs about your department, core, lab, study team, class or project. This is your marketing space! >
-
-Learn more at: < link to dept/lab/project website >
-
-
-
-## Contact
-To get in touch, contact the individual developers in the check-in history.
-
-If you need assistance identifying a contact person, email the project maintainers at: < dept/lab/mcommunity group email address >.
 
 
 
@@ -42,14 +35,6 @@ If you need assistance identifying a contact person, email the project maintaine
 #### Contributors:
 + Eisenberg Family Depression Center [(@DepressionCenter)](https://github.com/DepressionCenter/)
 + Gabriel Mongefranco [(@gabrielmongefranco)](https://github.com/gabrielmongefranco)
-+ Name [ @githubusername ]( link to github profile or website )
-
-
-
-#### This work is based in part on the following projects, libraries and/or studies:
-+ None
-+ __OR__ < Library or project name > - < link >
-
 
 
 ## License
