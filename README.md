@@ -1,10 +1,10 @@
 <script type="text/javascript">
-        window.setTimeout(()=>{ window.location.href="https://michmed.org/efdc-kb"; }, 3500);
+        window.setTimeout(()=>{ window.location.href="https://github.com/DepressionCenter"; }, 5500);
     </script>
 
 ![Depression Center Logo](images/EFDCLogo_375w.png "depressioncenter.org")
 
-# Looking for [Depression Center open source projects](https://github.com/DepressionCenter)?
+# Looking for Depression Center open source projects?
 
 
 ## Why am I seen this page?
