@@ -13,20 +13,20 @@ It also hosts static web assets such as images and scripts that are shared acros
 
 
 ## Where are the EFDC repos located?
-Please see our GitHub page at:  https://github.com/DepressionCenter
+Please see our GitHub page at:  [https://github.com/DepressionCenter](https://github.com/DepressionCenter)
 
 
 
 ## Documentation
-Please see our Knowledge Base at:  https://michmed.org/efdc-kb
+Please see our Knowledge Base at:  [https://michmed.org/efdc-kb](https://michmed.org/efdc-kb)
 
 
 
 
 ## Additional Resources
-+ Eisenberg Family Depression Center - https://depressioncenter.org
-+ Michigan Medicine - https://michiganmedicine.org
-+ University of Michigan - https://umich.edu
++ [Eisenberg Family Depression Center](https://depressioncenter.org)
++ [Michigan Medicine](https://michiganmedicine.org)
++ [University of Michigan](https://umich.edu)
 
 
 
