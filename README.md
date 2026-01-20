@@ -5,7 +5,7 @@
 ![Depression Center Logo](images/EFDCLogo_375w.png "depressioncenter.org")
 
 # Redirecting to github.com/DepressionCenter
-__You are being redirected to our [GitHub site](github.com/DepressionCenter)...__
+__You are being redirected to our [GitHub site](https://github.com/DepressionCenter)...__
   
   
 
