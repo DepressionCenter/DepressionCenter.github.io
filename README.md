@@ -1,5 +1,5 @@
-<script type="text/javascript">
-    window.setTimeout(()=>{ window.location.href="https://github.com/DepressionCenter"; }, 5500);
+<script type="text/javascript"> 
+    window.setTimeout(()=>{ window.location.href="https://github.com/DepressionCenter"; }, 5500); 
 </script>
 
 ![Depression Center Logo](images/EFDCLogo_375w.png "depressioncenter.org")
