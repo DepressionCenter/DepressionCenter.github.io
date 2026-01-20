@@ -1,6 +1,17 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q455XWS5F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Q455XWS5F');
+</script>
+
+<!-- Redirect to github.com/DepressionCenter -->
 <script type="text/javascript">
-        window.setTimeout(()=>{ window.location.href="https://github.com/DepressionCenter"; }, 5500);
-    </script>
+    window.setTimeout(()=>{ window.location.href="https://github.com/DepressionCenter"; }, 5500);
+</script>
 
 ![Depression Center Logo](images/EFDCLogo_375w.png "depressioncenter.org")
 
