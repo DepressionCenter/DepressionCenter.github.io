@@ -664,18 +664,18 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         </div>
       </a>
       <nav class="header-nav" aria-label="External links">
-        <a href="https://github.com/DepressionCenter" target="_blank" rel="noopener noreferrer" aria-label="GitHub organization">
+        <a href="https://github.com/DepressionCenter" target="_blank" rel="noopener" title="GitHub" alt="GitHub" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
           </svg>
         </a>
-        <a href="https://michmed.org/efdc-kb" target="_blank" rel="noopener noreferrer" aria-label="Knowledge base">
+        <a href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" title="Knowledge Base" alt="Knowledge Base" aria-label="Knowledge Base">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
           </svg>
         </a>
-        <a href="https://depressioncenter.org" target="_blank" rel="noopener noreferrer" aria-label="Depression Center website">
+        <a href="https://depressioncenter.org" target="_blank" rel="noopener" title="Website" alt="Website" aria-label="Depression Center Website">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
@@ -790,8 +790,6 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         <a href="https://github.com/DepressionCenter" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://michmed.org/efdc-kb" target="_blank" rel="noopener noreferrer">Knowledge Base</a>
         <a href="https://www.youtube.com/@DepressionCenter" target="_blank" rel="noopener noreferrer">Video Library</a>
-        <a href="mailto:efdc-mobiletech@umich.edu">Technical Contact</a>
-        <a href="mailto:depressioncenter@umich.edu">General Contact</a>
       </nav>
       <div class="copyright-info">
         <strong>&copy;</strong> <span id="copy-year">2026</span> The Regents of the University of Michigan &nbsp;|&nbsp;
@@ -942,6 +940,20 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       // update stat
       document.getElementById('stat-repos').textContent = repos.length;
     }
+	
+	function repoLangTagsHtml(langString) {
+	  if (!langString) return '';
+	  return langString
+		.split(',')
+		.map(lang => lang.trim())
+		.filter(Boolean)
+		.map(lang => `
+		  <span class="lang-tag" aria-label="Language: ${lang}">
+			${lang}
+		  </span>
+		`)
+		.join('');
+	}
 
     // ── RENDER ALL REPOS ──────────────────────────────────────────────
     let allRepos = [];
@@ -960,8 +972,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           <h3><a href="${repo.repoUrl || ORG_GITHUB}" target="_blank" rel="noopener noreferrer">${repo.name}</a></h3>
           <p>${repo.description || 'No description available.'}</p>
           <div class="repo-meta">
-            ${repo.lang ? `<span class="lang-tag" aria-label="Primary language: ${repo.lang}">${repo.lang}</span>` : ''}
-          </div>
+      ${repoLangTagsHtml(repo.lang)}
+    </div>
           <div class="repo-links">${repoLinksHtml(repo)}</div>
         </article>
       `).join('');
@@ -1037,7 +1049,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         { slug:'MTC-SharePoint-Site',  name:'MTC-SharePoint-Site',              repoUrl:'https://github.com/DepressionCenter/MTC-SharePoint-Site',   description:"Code used by the Mobile Technologies Core team's SharePoint site, including JSON/CSS for View Formatting.", featured:false, website:'', demo:'', docs:'', lang:'', image:'' },
         { slug:'Sitenalyzer',          name:'Sitenalyzer',                      repoUrl:'https://github.com/DepressionCenter/Sitenalyzer',            description:'Data dictionary and security information extraction for SharePoint sites.', featured:false, website:'', demo:'', docs:'', lang:'HTML', image:'' },
         { slug:'SleepDataAutomation',  name:'Sleep Data Automation™ for Fitbit', repoUrl:'https://github.com/DepressionCenter/SleepDataAutomation',  description:'Automated sleep data cleanup and processing to harmonize Fitbit data obtained via Fitabase with self-reported sleep diary entries sent via SMS messages.', featured:true,  website:'', demo:'', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=11822', lang:'', image:'' },
-        { slug:'TrackMaster',          name:'TrackMaster™',                     repoUrl:'https://github.com/DepressionCenter/TrackMaster',            description:'Code and documentation for TrackMaster membership tracking tool™ and related infrastructure, developed by the 2023 ITS intern cohort at the University of Michigan.', featured:false, website:'', demo:'', docs:'', lang:'HTML', image:'' },
+        { slug:'TrackMaster',          name:'TrackMaster™',                     repoUrl:'https://github.com/DepressionCenter/TrackMaster',            description:'Code and documentation for TrackMaster membership tracking tool™ and related infrastructure, developed by the 2023 ITS intern cohort at the University of Michigan.', featured:false, website:'', demo:'', docs:'', lang:'HTML, JavaScript, Power Automate', image:'' },
         { slug:'Useful-SQL-Queries-for-UMich-Research-Centers', name:'Useful SQL Queries for UMich Research Centers', repoUrl:'https://github.com/DepressionCenter/Useful-SQL-Queries-for-UMich-Research-Centers', description:'Useful SQL queries for University of Michigan research cores, centers, institutes and labs, including queries to report on publications and grants.', featured:false, website:'', demo:'', docs:'', lang:'', image:'' },
         { slug:'Yawnalyzer',           name:'Yawnalyzer™',                      repoUrl:'https://github.com/DepressionCenter/Yawnalyzer',            description:'Automated data cleaning and sleep/gait metrics for Apple Watch data collected via SensorKit and ResearchKit.', featured:false, website:'', demo:'', docs:'', lang:'Python', image:'' },
       ];
