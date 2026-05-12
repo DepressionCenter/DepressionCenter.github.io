@@ -1,20 +1,12 @@
-<script type="text/javascript"> 
-    window.setTimeout(()=>{ window.location.href="https://github.com/DepressionCenter"; }, 5500); 
-</script>
-
 ![Depression Center Logo](images/EFDCLogo_375w.png "depressioncenter.org")
 
-# Redirecting to github.com/DepressionCenter
-__You are being redirected to our [GitHub site](https://github.com/DepressionCenter)...__
-  
-  
+# Eisenberg Family Depression Center: Open Source Projects
 
-## Why am I seen this page?
-This site is a placeholder page that is required for repository-specific Code Pages.  
-It also hosts static web assets such as images and scripts that are shared across all our projects.
+## About
+This repository contains the code for the landing webpage for the code repository: https://code.depressioncenter.org
 
 
-## Where are the EFDC repos located?
+## Where are the repos located?
 Please see our GitHub site at:  [https://github.com/DepressionCenter](https://github.com/DepressionCenter)
 
 
@@ -41,7 +33,7 @@ Please see our Knowledge Base at:  [https://michmed.org/efdc-kb](https://michmed
 
 ## License
 ### Copyright Notice
-Copyright © 2024 The Regents of the University of Michigan
+Copyright © 2024-2026 The Regents of the University of Michigan
 
 
 ### Software and Library License Notice
@@ -67,4 +59,4 @@ If you find this repository, code or paper useful for your research, please cite
 
 ----
 
-Copyright © 2024 The Regents of the University of Michigan
+Copyright © 2024-2026 The Regents of the University of Michigan
