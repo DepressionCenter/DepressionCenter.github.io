@@ -1024,7 +1024,6 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     //  CONFIG
     const GITHUB_API_URL = 'https://api.github.com/orgs/DepressionCenter/repos?per_page=100&sort=pushed';
     const IMG_BASE       = 'images/repo-previews/';
-    const FEATURED       = ['SleepDataAutomation', 'datalavista'];
     const IGNORE_TOPICS  = new Set(['umich', '#umich', 'u-m', 'um', 'efdc', 'depressioncenter']);
     const RAW_README     = slug =>
       `https://raw.githubusercontent.com/DepressionCenter/${slug}/refs/heads/main/README.md`;
@@ -1064,7 +1063,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           topics:      Array.isArray(api.topics) ? api.topics : [],
           lang:        fb.lang         || '',
           image:       fb.image        || '',
-          featured:    isFeatured
+          featured:    isFeatured,
         };
       });
     }
@@ -1153,17 +1152,9 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     function renderFeatured(repos) {
       const el = document.getElementById('featured-grid');
       
-      // 1. Check for API-driven featured repos first
-      let featured = repos.filter(repo => repo.featured === true);
+      // Look exclusively at the boolean property
+      const featured = repos.filter(repo => repo.featured === true);
       
-      // 2. If none are found (e.g., API failed and raw fallback data is used), 
-      // fallback to the hardcoded FEATURED array
-      if (!featured.length) {
-        featured = FEATURED
-          .map(slug => repos.find(r => r.slug === slug))
-          .filter(Boolean);
-      }
-
       if (!featured.length) {
         el.innerHTML = '<p class="error-state">No featured repositories found.</p>';
         return;
@@ -1189,7 +1180,6 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       
       document.getElementById('stat-repos').textContent = repos.length;
     }
-
     //  RENDER ALL REPOS 
     let allRepos = [];
 
@@ -1419,7 +1409,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         { slug:'DontDeleteMyEmail',    name:'DontDeleteMyEmail',                      repoUrl:'https://github.com/DepressionCenter/DontDeleteMyEmail',      description:'Collection of solutions to the “IT is going to delete my old emails” problem, using Power Automate or other tools.', featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
         { slug:'EFDC-Repo-Template',   name:'EFDC-Repo-Template',                    repoUrl:'https://github.com/DepressionCenter/EFDC-Repo-Template',    description:'Standard code repo template that provides common features, README sections, and U-M copyright notices to help new repositories comply with U-M guidelines.', featured:false, website:'', demo:'', docs:'', lang:'CSS', language:'CSS', topics:[], image:'' },
         { slug:'EFDC-TDX-KB',          name:'EFDC-TDX-KB',                           repoUrl:'https://github.com/DepressionCenter/EFDC-TDX-KB',           description:'Custom HTML and CSS for the Depression Center KB (TDX Client Portal), with templates for Bootstrap components that work inside knowledge base articles.', featured:false, website:'', demo:'', docs:'', lang:'HTML', language:'HTML', topics:[], image:'' },
-        { slug:'EMA-CleanR',           name:'EMA-CleanR',                             repoUrl:'https://github.com/DepressionCenter/EMA-CleanR',            description:'Efficient pre-processing, cleaning, and visualization of Ecological Momentary Assessment (EMA) survey data in R to enable high-quality, real-time behavioral insights.', featured:true,  website:'', demo:'https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14610', lang:'HTML', language:'HTML', topics:[], image:'' },
+        { slug:'EMA-CleanR',           name:'EMA-CleanR',                             repoUrl:'https://github.com/DepressionCenter/EMA-CleanR',            description:'Efficient pre-processing, cleaning, and visualization of Ecological Momentary Assessment (EMA) survey data in R to enable high-quality, real-time behavioral insights.', featured:false,  website:'', demo:'https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14610', lang:'HTML', language:'HTML', topics:[], image:'' },
         { slug:'GitHub-Usage-Stats',   name:'GitHub Usage Stats',                     repoUrl:'https://github.com/DepressionCenter/GitHub-Usage-Stats',    description:'Scripts to capture GitHub repository and usage statistics daily.', featured:false, website:'', demo:'', docs:'', lang:'PowerShell', language:'PowerShell', topics:[], image:'' },
         { slug:'device-integration-diagrams', name:'Glucose Monitor and Insulin Delivery Device Integrations', repoUrl:'https://github.com/DepressionCenter/mobile-tech-illustrations/tree/main/device-integration-diagrams', description:'Interactive diagram of integration and compatibility between CGMs, BGMs, and insulin delivery devices (pumps, pens, etc.).', featured:false, website:'', demo:'https://code.depressioncenter.org/mobile-tech-illustrations/device-integration-diagrams/GlucoseMonitor-InsulinDeliveryDevice-Integration.html', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=12933', lang:'HTML', language:'HTML', topics:[], image:'GlucoseMonitor-DeviceIntegration.png' },
         { slug:'MDEN',                 name:'MDEN',                                   repoUrl:'https://github.com/DepressionCenter/MDEN',                  description:"Mobile technologies code from the University of Michigan's Mobile Data Experts Network (MDEN), featuring data cleaning automations, REDCap project templates, and more.", featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
