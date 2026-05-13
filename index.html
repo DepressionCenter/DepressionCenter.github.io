@@ -1324,6 +1324,12 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         let md = await res.text();
 
+        // Remove specific logo images (both Markdown and HTML formats)
+        // Strips: ![...](...EFDCLogo_375w.png...)
+        md = md.replace(/!\[.*?\]\([^\)]*EFDCLogo_375w\.png[^\)]*\)/gi, '');
+        // Strips: <img ... EFDCLogo_375w.png ... >
+        md = md.replace(/<img[^>]*EFDCLogo_375w\.png[^>]*>/gi, '');
+
         // Resolve relative image paths → raw GitHub URLs
         const imgBase = `https://raw.githubusercontent.com/DepressionCenter/${repo.slug}/main/`;
         md = md.replace(
