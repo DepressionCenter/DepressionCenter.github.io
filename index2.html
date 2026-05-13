@@ -1,0 +1,1389 @@
+<!--
+Eisenberg Family Depression Center Open Source Code
+index.html - Landing page for our open source repositories.
+Author(s): Gabriel Mongefranco.
+Created: 2026-05-12
+Last Modified: 2026-05-13
+Summary: Code for the landing page at code.depressioncenter.org.
+         The list of repositories comes from the organization's profile README.md file (.github/profile/README.md)
+Notes: See README file for documentation and full license information.
+Website: https://code.depressioncenter.org/
+
+Copyright (c) 2026 The Regents of the University of Michigan
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Eisenberg Family Depression Center open source code repositories — accelerating mental health discoveries through code." />
+  
+  <title>Open Source Code | Eisenberg Family Depression Center</title>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q455XWS5F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3Q455XWS5F');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --navy:       #00274C;
+      --navy-deep:  #001830;
+      --navy-mid:   #003366;
+      --maize:      #FFCB05;
+      --maize-dark: #E6B800;
+      --maize-glow: rgba(255,203,5,0.18);
+      --white:      #FFFFFF;
+      --off-white:  #F0F4F8;
+      --slate:      #8BA3BC;
+      --slate-light:#C5D3DF;
+      --card-bg:    #0A1E35;
+      --card-border:rgba(255,203,5,0.15);
+      --tag-bg:     rgba(255,203,5,0.10);
+      --radius:     4px;
+      --radius-lg:  8px;
+      --shadow:     0 4px 24px rgba(0,0,0,0.45);
+      --mono:       'Space Mono', monospace;
+      --serif:      'DM Serif Display', serif;
+      --sans:       'IBM Plex Sans', sans-serif;
+      --transition: 0.22s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--navy-deep);
+      color: var(--off-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: var(--maize); text-decoration: none; }
+    a:hover, a:focus-visible { text-decoration: underline; outline: 2px solid var(--maize); outline-offset: 2px; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul, ol { list-style: none; }
+
+    /* ─── SKIP NAV (ADA) ─────────────────────────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      background: var(--maize);
+      color: var(--navy-deep);
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* ─── HEADER ─────────────────────────────────────────────────── */
+    .site-header {
+      background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      text-decoration: none;
+    }
+    .header-logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+    .header-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .header-logo-text .org {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--slate);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .header-logo-text .title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--maize);
+      line-height: 1.2;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-nav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      color: var(--slate-light);
+      transition: var(--transition);
+    }
+    .header-nav a:hover,
+    .header-nav a:focus-visible {
+      border-color: var(--card-border);
+      color: var(--maize);
+      background: var(--maize-glow);
+      text-decoration: none;
+      outline: 2px solid var(--maize);
+    }
+    .header-nav svg { width: 20px; height: 20px; }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 72px 24px 60px;
+      overflow: hidden;
+      background: var(--navy-deep);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,203,5,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,51,102,0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,203,5,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,203,5,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--maize);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--maize);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      color: var(--white);
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      color: var(--maize);
+      font-style: italic;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--slate-light);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--maize);
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── SECTION ────────────────────────────────────────────────── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--maize);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .section-heading {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--card-border);
+      margin: 0;
+    }
+
+    /* ─── FEATURED CAROUSEL ──────────────────────────────────────── */
+    #featured { background: var(--navy); }
+    .featured-wrapper { padding: 48px 24px 56px; }
+    .featured-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .featured-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,203,5,0.25);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--maize), var(--maize-dark));
+    }
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(255,203,5,0.12);
+      border-color: rgba(255,203,5,0.45);
+    }
+    .featured-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-deep) 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    .featured-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .featured-thumb .thumb-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .thumb-monogram {
+      font-family: var(--mono);
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(255,203,5,0.15);
+      letter-spacing: -0.05em;
+      user-select: none;
+    }
+    .featured-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--maize);
+      color: var(--navy-deep);
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .featured-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .featured-body h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .featured-body h3 a {
+      color: inherit;
+    }
+    .featured-body h3 a:hover { color: var(--maize); }
+    .featured-body p {
+      font-size: 0.85rem;
+      color: var(--slate-light);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .repo-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      color: var(--slate-light);
+      transition: var(--transition);
+    }
+    .repo-link:hover, .repo-link:focus-visible {
+      border-color: var(--maize);
+      color: var(--maize);
+      background: var(--maize-glow);
+      text-decoration: none;
+    }
+    .repo-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* ─── REPO GRID ──────────────────────────────────────────────── */
+    #all-repos { background: var(--navy-deep); }
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .repo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .repo-card:hover {
+      border-color: rgba(255,203,5,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .repo-card h3 {
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: var(--maize);
+      line-height: 1.3;
+    }
+    .repo-card h3 a { color: inherit; }
+    .repo-card h3 a:hover { color: var(--white); }
+    .repo-card p {
+      font-size: 0.82rem;
+      color: var(--slate-light);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .repo-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .lang-tag {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      padding: 1px 5px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(255,203,5,0.2);
+      border-radius: 2px;
+      color: var(--maize);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── SEARCH / FILTER ────────────────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+      max-width: 380px;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--slate);
+      pointer-events: none;
+    }
+    #repo-search {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      color: var(--off-white);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      padding: 9px 12px 9px 36px;
+      outline: none;
+      transition: var(--transition);
+    }
+    #repo-search:focus {
+      border-color: var(--maize);
+      box-shadow: 0 0 0 2px var(--maize-glow);
+    }
+    #repo-search::placeholder { color: var(--slate); }
+    .count-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--slate);
+    }
+
+    /* ─── NO-JS FALLBACK ─────────────────────────────────────────── */
+    .noscript-fallback {
+      max-width: 600px;
+      margin: 48px auto;
+      padding: 32px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    .noscript-fallback h2 {
+      font-family: var(--serif);
+      color: var(--maize);
+      margin-bottom: 12px;
+    }
+    .noscript-fallback p { color: var(--slate-light); margin-bottom: 20px; font-size: 0.9rem; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--maize);
+      color: var(--navy-deep);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .btn-primary:hover, .btn-primary:focus-visible {
+      background: var(--white);
+      transform: translateY(-1px);
+      text-decoration: none;
+      outline: 2px solid var(--maize);
+      outline-offset: 2px;
+    }
+
+    /* ─── LOADING ────────────────────────────────────────────────── */
+    .loading-state {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px;
+      gap: 14px;
+      color: var(--slate);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,203,5,0.2);
+      border-top-color: var(--maize);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── ERROR ──────────────────────────────────────────────────── */
+    .error-state {
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--slate);
+      font-size: 0.9rem;
+    }
+    .error-state a { color: var(--maize); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--card-border);
+      background: var(--navy-deep);
+      padding: 32px 24px;
+      margin-top: 24px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--slate);
+    }
+    .footer-links a:hover { color: var(--maize); }
+    .copyright-info {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--slate);
+    }
+    .copyright-info strong { color: var(--slate-light); }
+    .copyright-info a { color: var(--slate); }
+    .copyright-info a:hover { color: var(--maize); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .header-logo-text .title { font-size: 0.9rem; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    /* ─── PRINT / REDUCED MOTION ─────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ─── HIGH CONTRAST ──────────────────────────────────────────── */
+    @media (prefers-contrast: high) {
+      :root {
+        --card-border: rgba(255,255,255,0.4);
+        --slate-light: #FFFFFF;
+        --slate: #CCCCCC;
+      }
+    }
+
+    /* ─── CARD TITLE BUTTON ──────────────────────────────────────── */
+    .card-title-btn {
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      width: 100%;
+      display: block;
+    }
+    .card-title-btn:focus-visible {
+      outline: 2px solid var(--maize);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    .repo-card h3 .card-title-btn { color: var(--maize); }
+    .repo-card h3 .card-title-btn:hover { color: var(--white); }
+    .featured-body h3 .card-title-btn { color: var(--white); }
+    .featured-body h3 .card-title-btn:hover { color: var(--maize); }
+
+    /* ─── FEATURED THUMB AS BUTTON ───────────────────────────────── */
+    button.featured-thumb {
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: block;
+      text-align: left;
+    }
+    button.featured-thumb:focus-visible {
+      outline: 2px solid var(--maize);
+      outline-offset: -2px;
+    }
+
+    /* ─── SLIDE PANEL ────────────────────────────────────────────── */
+    .panel-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 199;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .panel-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .repo-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(520px, 100vw);
+      background: var(--card-bg);
+      border-left: 1px solid var(--card-border);
+      z-index: 200;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .repo-panel.is-open { transform: translateX(0); }
+    .panel-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--navy);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .panel-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--white);
+      flex: 1;
+      line-height: 1.3;
+    }
+    .panel-close {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid transparent;
+      color: var(--slate-light);
+      cursor: pointer;
+      border-radius: var(--radius);
+      padding: 6px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .panel-close:hover, .panel-close:focus-visible {
+      color: var(--maize);
+      border-color: var(--card-border);
+      background: var(--maize-glow);
+      outline: 2px solid var(--maize);
+      outline-offset: 2px;
+    }
+    .panel-close svg { width: 18px; height: 18px; }
+    .panel-body { padding: 20px; flex: 1; }
+    .panel-thumb-lg {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep));
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .panel-thumb-lg img { width: 100%; height: 100%; object-fit: cover; }
+    .panel-thumb-lg .thumb-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .panel-thumb-lg .thumb-monogram { font-size: 4.5rem; color: rgba(255,203,5,0.12); }
+
+    /* ─── PANEL README MARKDOWN ──────────────────────────────────── */
+    .panel-readme {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--slate-light);
+      line-height: 1.7;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .panel-readme h1, .panel-readme h2, .panel-readme h3,
+    .panel-readme h4, .panel-readme h5, .panel-readme h6 {
+      font-family: var(--serif);
+      color: var(--white);
+      margin: 1.2em 0 0.4em;
+      line-height: 1.3;
+    }
+    .panel-readme h1 { font-size: 1.3rem; }
+    .panel-readme h2 { font-size: 1.1rem; }
+    .panel-readme h3 { font-size: 0.97rem; }
+    .panel-readme h4, .panel-readme h5, .panel-readme h6 { font-size: 0.88rem; }
+    .panel-readme p { margin-bottom: 0.75em; }
+    .panel-readme a { color: var(--maize); }
+    .panel-readme a:hover { text-decoration: underline; }
+    .panel-readme code {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      background: rgba(255,203,5,0.08);
+      border-radius: 2px;
+      padding: 1px 4px;
+    }
+    .panel-readme pre {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 12px;
+      overflow-x: auto;
+      margin-bottom: 0.75em;
+    }
+    .panel-readme pre code { background: none; padding: 0; }
+    .panel-readme img { max-width: 100%; border-radius: var(--radius); margin: 8px 0; height: auto; }
+    .panel-readme ul, .panel-readme ol { padding-left: 1.4em; margin-bottom: 0.75em; }
+    .panel-readme ul { list-style: disc; }
+    .panel-readme ol { list-style: decimal; }
+    .panel-readme li { margin-bottom: 0.25em; }
+    .panel-readme blockquote {
+      border-left: 3px solid var(--maize);
+      padding-left: 12px;
+      color: var(--slate);
+      margin-bottom: 0.75em;
+    }
+    .panel-readme table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 0.75em;
+      font-size: 0.8rem;
+      display: block;
+      overflow-x: auto;
+    }
+    .panel-readme th, .panel-readme td {
+      border: 1px solid var(--card-border);
+      padding: 6px 10px;
+      text-align: left;
+    }
+    .panel-readme th { background: rgba(255,203,5,0.07); color: var(--off-white); font-weight: 600; }
+    .panel-readme hr { border: none; border-top: 1px solid var(--card-border); margin: 1em 0; }
+    .panel-links-bottom {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+    }
+    .panel-loading {
+      color: var(--slate);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip navigation for screen readers -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ─── HEADER ──────────────────────────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="header-logo" href="https://depressioncenter.org" aria-label="Eisenberg Family Depression Center home">
+        <img
+          src="images/EFDCLogo-Stacked320x320.png"
+          alt="EFDC logo"
+          width="44"
+          height="44"
+          onerror="this.style.display='none'"
+        />
+        <div class="header-logo-text">
+          <span class="org">Eisenberg Family Depression Center</span>
+          <span class="title">Code Repositories</span>
+        </div>
+      </a>
+      <nav class="header-nav" aria-label="External links">
+        <a href="https://github.com/DepressionCenter" target="_blank" rel="noopener" title="GitHub" alt="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <a href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" title="Knowledge Base" alt="Knowledge Base" aria-label="Knowledge Base">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </a>
+        <a href="https://depressioncenter.org" target="_blank" rel="noopener" title="Website" alt="Website" aria-label="Depression Center Website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── HERO ────────────────────────────────────────────────────── -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow" aria-hidden="true">Open Source — University of Michigan</p>
+      <h1 id="hero-heading">
+        Code that <em>accelerates</em><br />mental health discoveries.
+      </h1>
+      <p class="hero-desc">
+        The Eisenberg Family Depression Center publishes open source tools, automations, and research frameworks — reducing barriers, promoting collaboration, and helping researchers solve common technology problems without starting from zero.
+      </p>
+      <div class="hero-stats" role="list" aria-label="Repository statistics">
+        <div class="stat" role="listitem">
+          <span class="stat-num" id="stat-repos">24</span>
+          <span class="stat-label">Repositories</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-num">6K+</span>
+          <span class="stat-label">Downloads</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-num">GPL v3.0+</span>
+          <span class="stat-label">Open Source License</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MAIN CONTENT ────────────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- NOSCRIPT FALLBACK -->
+    <noscript>
+      <div class="noscript-fallback" role="region" aria-label="JavaScript required">
+        <h2>Browse Our Repositories</h2>
+        <p>
+          This page uses JavaScript to load and display our full project list.
+          You can browse all of our open source repositories directly on GitHub.
+        </p>
+        <a class="btn-primary" href="https://github.com/orgs/DepressionCenter/repositories" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View All Repos on GitHub
+        </a>
+      </div>
+    </noscript>
+
+    <!-- FEATURED SECTION -->
+    <section id="featured" aria-labelledby="featured-heading">
+      <div class="featured-wrapper">
+        <div style="max-width:1200px;margin:0 auto;">
+          <p class="section-label" aria-hidden="true">// highlighted projects</p>
+          <h2 class="section-heading" id="featured-heading">Featured Repositories</h2>
+        </div>
+        <div id="featured-grid" class="featured-grid" role="list" aria-label="Featured repositories">
+          <div class="loading-state" aria-live="polite" aria-label="Loading featured repositories">
+            <div class="spinner" aria-hidden="true"></div>
+            Loading featured repositories…
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ALL REPOS SECTION -->
+    <section id="all-repos" class="section" aria-labelledby="all-repos-heading">
+      <p class="section-label" aria-hidden="true">// complete catalog</p>
+      <h2 class="section-heading" id="all-repos-heading">All Repositories</h2>
+
+      <div class="filter-bar" role="search">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <label for="repo-search" class="sr-only">Search repositories</label>
+          <input
+            type="search"
+            id="repo-search"
+            placeholder="Search repositories…"
+            autocomplete="off"
+            aria-controls="repo-grid"
+            aria-label="Filter repositories by name or description"
+          />
+        </div>
+        <span class="count-label" id="repo-count" aria-live="polite" aria-atomic="true"></span>
+      </div>
+
+      <div id="repo-grid" class="repo-grid" role="list" aria-label="All repositories" aria-live="polite">
+        <div class="loading-state" aria-label="Loading all repositories">
+          <div class="spinner" aria-hidden="true"></div>
+          Loading repositories…
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ──────────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://depressioncenter.org" target="_blank" rel="noopener noreferrer">Depression Center</a>
+        <a href="https://github.com/DepressionCenter" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://michmed.org/efdc-kb" target="_blank" rel="noopener noreferrer">Knowledge Base</a>
+        <a href="https://www.youtube.com/@DepressionCenter" target="_blank" rel="noopener noreferrer">Video Library</a>
+      </nav>
+      <div class="copyright-info">
+        <strong>&copy;</strong> <span id="copy-year">2026</span> The Regents of the University of Michigan &nbsp;|&nbsp;
+        <a href="https://depressioncenter.org/" target="_blank">Eisenberg Family Depression Center</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── DETAIL PANEL ───────────────────────────────────────────── -->
+  <div id="panel-overlay" class="panel-overlay" aria-hidden="true"></div>
+  <aside id="repo-panel" class="repo-panel" role="dialog" aria-modal="true"
+         aria-labelledby="panel-title" aria-hidden="true">
+    <div class="panel-header">
+      <h2 class="panel-title" id="panel-title">Repository Details</h2>
+      <button class="panel-close" id="panel-close" aria-label="Close repository details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+             stroke-linecap="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body" id="panel-body" aria-live="polite"></div>
+  </aside>
+
+  <!-- ─── VISUALLY HIDDEN UTILITY ─────────────────────────────────── -->
+  <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}</style>
+
+  <!-- ─── JAVASCRIPT ──────────────────────────────────────────────── -->
+  <script>
+  (function () {
+    'use strict';
+
+    // ── CONFIG ───────────────────────────────────────────────────────
+    const GITHUB_API_URL = 'https://api.github.com/orgs/DepressionCenter/repos?per_page=100&sort=pushed';
+    const IMG_BASE       = 'images/repo-previews/';
+    const FEATURED       = ['SleepDataAutomation', 'EMA-CleanR', 'datalavista'];
+    const IGNORE_TOPICS  = new Set(['umich', '#umich', 'u-m', 'efdc', 'depressioncenter']);
+    const RAW_README     = slug =>
+      `https://raw.githubusercontent.com/DepressionCenter/${slug}/refs/heads/main/README.md`;
+
+    // ── SVG ICONS ────────────────────────────────────────────────────
+    const icons = {
+      github: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`,
+      web:    `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+      demo:   `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+      docs:   `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+    };
+
+    // ── MERGE API REPOS WITH FALLBACK ─────────────────────────────────
+    function mergeWithFallback(apiRepos, fallbackRepos) {
+      const fbMap = {};
+      fallbackRepos.forEach(r => { fbMap[r.slug] = r; });
+      return apiRepos.map(api => {
+        const fb = fbMap[api.name] || {};
+        return {
+          slug:        api.name,
+          name:        api.name        || fb.name        || api.name,
+          repoUrl:     api.html_url    || fb.repoUrl     || '',
+          description: api.description || fb.description || '',
+          website:     api.homepage    || fb.website     || '',
+          demo:        fb.demo         || '',
+          docs:        fb.docs         || '',
+          language:    api.language    || '',
+          topics:      Array.isArray(api.topics) ? api.topics : [],
+          lang:        fb.lang         || '',
+          image:       fb.image        || '',
+          featured:    FEATURED.includes(api.name),
+        };
+      });
+    }
+
+    // ── TAGS ─────────────────────────────────────────────────────────
+    function buildTagsHtml(language, topics, fallbackLang) {
+      let tags;
+      if (language || (topics && topics.length)) {
+        tags = [language, ...(topics || [])].filter(Boolean);
+      } else if (fallbackLang) {
+        tags = fallbackLang.split(',').map(t => t.trim()).filter(Boolean);
+      } else {
+        return '';
+      }
+      const seen = new Set();
+      tags = tags.filter(t => {
+        const key = t.toLowerCase();
+        if (IGNORE_TOPICS.has(key)) return false;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+      return tags.slice(0, 7).map(t =>
+        `<span class="lang-tag" aria-label="Tag: ${t}">${t}</span>`
+      ).join('');
+    }
+
+    // ── MONOGRAM ─────────────────────────────────────────────────────
+    function getMonogram(name) {
+      return name.replace(/[™®]/g, '').replace(/[^A-Za-z0-9]/g, ' ').trim()
+        .split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+    }
+
+    // ── FEATURED THUMB (button — opens panel on click) ────────────────
+    function featuredThumbHtml(repo) {
+      const imgPath = repo.image
+        ? IMG_BASE + repo.image
+        : IMG_BASE + repo.slug.toLowerCase() + '.png';
+      const mono = getMonogram(repo.name);
+      return `
+        <button class="featured-thumb card-panel-trigger" data-slug="${repo.slug}"
+                aria-label="View details for ${repo.name}">
+          <img src="${imgPath}" alt="" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="thumb-placeholder" style="display:none" aria-hidden="true">
+            <span class="thumb-monogram">${mono}</span>
+          </div>
+        </button>`;
+    }
+
+    // ── PANEL THUMB ───────────────────────────────────────────────────
+    function panelThumbHtml(repo) {
+      const imgPath = repo.image
+        ? IMG_BASE + repo.image
+        : IMG_BASE + repo.slug.toLowerCase() + '.png';
+      const mono = getMonogram(repo.name);
+      return `
+        <div class="panel-thumb-lg" aria-hidden="true">
+          <img src="${imgPath}" alt="" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="thumb-placeholder" style="display:none">
+            <span class="thumb-monogram">${mono}</span>
+          </div>
+        </div>`;
+    }
+
+    // ── REPO LINKS ────────────────────────────────────────────────────
+    function repoLinksHtml(repo) {
+      let html = '';
+      if (repo.repoUrl) {
+        html += `<a class="repo-link" href="${repo.repoUrl}" target="_blank" rel="noopener noreferrer" aria-label="View ${repo.name} on GitHub">${icons.github} Code</a>`;
+      }
+      if (repo.website) {
+        html += `<a class="repo-link" href="${repo.website}" target="_blank" rel="noopener noreferrer" aria-label="${repo.name} website">${icons.web} Website</a>`;
+      }
+      if (repo.demo) {
+        html += `<a class="repo-link" href="${repo.demo}" target="_blank" rel="noopener noreferrer" aria-label="${repo.name} demo">${icons.demo} Demo</a>`;
+      }
+      if (repo.docs) {
+        html += `<a class="repo-link" href="${repo.docs}" target="_blank" rel="noopener noreferrer" aria-label="${repo.name} documentation">${icons.docs} Docs</a>`;
+      }
+      return html;
+    }
+
+    // ── RENDER FEATURED ───────────────────────────────────────────────
+    function renderFeatured(repos) {
+      const el = document.getElementById('featured-grid');
+      const featured = FEATURED
+        .map(slug => repos.find(r => r.slug === slug))
+        .filter(Boolean);
+      if (!featured.length) {
+        el.innerHTML = '<p class="error-state">No featured repositories found.</p>';
+        return;
+      }
+      el.innerHTML = featured.map(repo => `
+        <article class="featured-card" role="listitem" aria-label="${repo.name} — featured repository">
+          ${featuredThumbHtml(repo)}
+          <span class="featured-badge" aria-label="Featured">Featured</span>
+          <div class="featured-body">
+            <h3>
+              <button class="card-title-btn card-panel-trigger" data-slug="${repo.slug}"
+                      aria-label="View details for ${repo.name}">${repo.name}</button>
+            </h3>
+            <p>${repo.description || 'No description available.'}</p>
+            <div class="repo-meta">
+              ${buildTagsHtml(repo.language, repo.topics, repo.lang)}
+            </div>
+            <div class="repo-links">${repoLinksHtml(repo)}</div>
+          </div>
+        </article>
+      `).join('');
+      document.getElementById('stat-repos').textContent = repos.length;
+    }
+
+    // ── RENDER ALL REPOS ──────────────────────────────────────────────
+    let allRepos = [];
+
+    function renderGrid(repos) {
+      const el    = document.getElementById('repo-grid');
+      const count = document.getElementById('repo-count');
+      if (!repos.length) {
+        el.innerHTML = '<p class="error-state">No repositories match your search.</p>';
+        count.textContent = '0 repos';
+        return;
+      }
+      count.textContent = `${repos.length} repo${repos.length !== 1 ? 's' : ''}`;
+      el.innerHTML = repos.map(repo => `
+        <article class="repo-card" role="listitem" aria-label="${repo.name} repository">
+          <h3>
+            <button class="card-title-btn card-panel-trigger" data-slug="${repo.slug}"
+                    aria-label="View details for ${repo.name}">${repo.name}</button>
+          </h3>
+          <p>${repo.description || 'No description available.'}</p>
+          <div class="repo-meta">
+            ${buildTagsHtml(repo.language, repo.topics, repo.lang)}
+          </div>
+          <div class="repo-links">${repoLinksHtml(repo)}</div>
+        </article>
+      `).join('');
+    }
+
+    // ── SEARCH ────────────────────────────────────────────────────────
+    function initSearch() {
+      const input = document.getElementById('repo-search');
+      input.addEventListener('input', function () {
+        const q = this.value.toLowerCase().trim();
+        if (!q) { renderGrid(allRepos); return; }
+        renderGrid(allRepos.filter(r =>
+          r.name.toLowerCase().includes(q) ||
+          r.description.toLowerCase().includes(q) ||
+          r.slug.toLowerCase().includes(q) ||
+          (r.language || '').toLowerCase().includes(q) ||
+          (r.topics || []).some(t => t.toLowerCase().includes(q)) ||
+          (r.lang || '').toLowerCase().includes(q)
+        ));
+      });
+    }
+
+    // ── MARKED.JS LAZY LOAD ───────────────────────────────────────────
+    let _markedReady = null;
+    function loadMarked() {
+      if (window.marked) return Promise.resolve();
+      if (_markedReady) return _markedReady;
+      _markedReady = new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/marked@12/marked.min.js';
+        s.onload = resolve;
+        s.onerror = () => reject(new Error('Failed to load marked.js'));
+        document.head.appendChild(s);
+      });
+      return _markedReady;
+    }
+
+    // ── PANEL STATE ───────────────────────────────────────────────────
+    let panelFocusReturn = null;
+
+    function openPanel(repo, triggerEl) {
+      panelFocusReturn = triggerEl || null;
+      const panel   = document.getElementById('repo-panel');
+      const overlay = document.getElementById('panel-overlay');
+      const titleEl = document.getElementById('panel-title');
+      const bodyEl  = document.getElementById('panel-body');
+
+      titleEl.textContent = repo.name;
+      bodyEl.innerHTML = `
+        ${panelThumbHtml(repo)}
+        <div class="repo-links">${repoLinksHtml(repo)}</div>
+        <div class="panel-readme panel-loading" aria-live="polite">
+          <div class="loading-state" style="padding:20px 0">
+            <div class="spinner" aria-hidden="true"></div>
+            Loading README…
+          </div>
+        </div>`;
+
+      panel.classList.add('is-open');
+      overlay.classList.add('is-open');
+      panel.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.getElementById('panel-close').focus();
+      document.addEventListener('keydown', handlePanelKeydown);
+
+      fetchAndRenderReadme(repo, bodyEl);
+    }
+
+    function closePanel() {
+      const panel   = document.getElementById('repo-panel');
+      const overlay = document.getElementById('panel-overlay');
+      panel.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.removeEventListener('keydown', handlePanelKeydown);
+      if (panelFocusReturn) { panelFocusReturn.focus(); panelFocusReturn = null; }
+    }
+
+    function handlePanelKeydown(e) {
+      if (e.key === 'Escape') { e.preventDefault(); closePanel(); return; }
+      if (e.key !== 'Tab') return;
+      const panel = document.getElementById('repo-panel');
+      const focusable = Array.from(panel.querySelectorAll(
+        'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+      )).filter(el => el.offsetParent !== null);
+      if (focusable.length < 2) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    }
+
+    // ── README FETCH + RENDER ─────────────────────────────────────────
+    async function fetchAndRenderReadme(repo, bodyEl) {
+      try {
+        await loadMarked();
+        const res = await fetch(RAW_README(repo.slug));
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        let md = await res.text();
+
+        // Resolve relative image paths → raw GitHub URLs
+        const imgBase = `https://raw.githubusercontent.com/DepressionCenter/${repo.slug}/main/`;
+        md = md.replace(
+          /!\[([^\]]*)\]\((?!https?:\/\/)(?!#)([^)]+)\)/g,
+          (_, alt, path) => `![${alt}](${imgBase}${path.replace(/^\.?\//,'')})`
+        );
+        md = md.replace(
+          /<img([^>]*)\ssrc="(?!https?:\/\/)([^"]+)"([^>]*)>/gi,
+          (_, before, path, after) => `<img${before} src="${imgBase}${path.replace(/^\.?\//,'')}"${after}>`
+        );
+
+        const html = window.marked.parse(md, { gfm: true, breaks: false });
+        bodyEl.innerHTML = `
+          ${panelThumbHtml(repo)}
+          <div class="repo-links">${repoLinksHtml(repo)}</div>
+          <div class="panel-readme">${html}</div>
+          <div class="repo-links panel-links-bottom">${repoLinksHtml(repo)}</div>`;
+      } catch {
+        bodyEl.innerHTML = `
+          ${panelThumbHtml(repo)}
+          <div class="repo-links">${repoLinksHtml(repo)}</div>
+          <div class="panel-readme">
+            <p>${repo.description || 'No description available.'}</p>
+          </div>`;
+      }
+    }
+
+    // ── INIT PANEL ────────────────────────────────────────────────────
+    function initPanel() {
+      document.getElementById('panel-close').addEventListener('click', closePanel);
+      document.getElementById('panel-overlay').addEventListener('click', closePanel);
+      document.addEventListener('click', function (e) {
+        const trigger = e.target.closest('.card-panel-trigger');
+        if (!trigger) return;
+        const slug = trigger.dataset.slug;
+        const repo = allRepos.find(r => r.slug === slug);
+        if (repo) openPanel(repo, trigger);
+      });
+    }
+
+    // ── FETCH & BOOTSTRAP ─────────────────────────────────────────────
+    async function init() {
+      const fallback = getFallbackRepos();
+      try {
+        const res = await fetch(GITHUB_API_URL);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const apiRepos = await res.json();
+        if (!Array.isArray(apiRepos) || !apiRepos.length) throw new Error('Empty API response');
+        allRepos = mergeWithFallback(apiRepos, fallback);
+      } catch (err) {
+        console.warn('GitHub API fetch failed, using fallback.', err);
+        allRepos = fallback;
+      }
+      renderFeatured(allRepos);
+      renderGrid(allRepos);
+      initSearch();
+      initPanel();
+    }
+
+    // ── FALLBACK DATA ─────────────────────────────────────────────────
+    function getFallbackRepos() {
+      return [
+        { slug:'AI-prompt-database',   name:'AI Prompts Database™',             repoUrl:'https://github.com/DepressionCenter/AI-prompt-database',    description:'Real-world examples of AI prompts from the University of Michigan.', featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
+        { slug:'AutomatorsAnonymous',  name:'AutomatorsAnonymous',                   repoUrl:'https://github.com/DepressionCenter/AutomatorsAnonymous',   description:'AI, JavaScript, SharePoint, and Power Platform projects built by the Automators Anonymous™ community of practice at UMich.', featured:false, website:'', demo:'', docs:'', lang:'JavaScript', language:'JavaScript', topics:[], image:'' },
+        { slug:'Data-and-Design-Core', name:'Data-and-Design-Core',                  repoUrl:'https://github.com/DepressionCenter/Data-and-Design-Core',  description:'Code developed by the EFDC Data and Design Core team to support mental health research.', featured:false, website:'', demo:'', docs:'', lang:'Stata', language:'Stata', topics:[], image:'' },
+        { slug:'datalavista',          name:'DataLaVista™',                      repoUrl:'https://github.com/DepressionCenter/datalavista',            description:'🕶️ Tell your expensive BI tools: “Data la vista, baby!” DataLaVista is a lightweight, client-side reporting and dashboard toolkit.', featured:true,  website:'https://code.depressioncenter.org/datalavista', demo:'', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=15179', lang:'JavaScript', language:'JavaScript', topics:[], image:'' },
+        { slug:'DepressionCenter.github.io', name:'DepressionCenter.github.io',      repoUrl:'https://github.com/DepressionCenter/DepressionCenter.github.io', description:"Eisenberg Family Depression Center's Static Code Pages.", featured:false, website:'', demo:'', docs:'', lang:'HTML', language:'HTML', topics:[], image:'' },
+        { slug:'DontDeleteMyEmail',    name:'DontDeleteMyEmail',                      repoUrl:'https://github.com/DepressionCenter/DontDeleteMyEmail',      description:'Collection of solutions to the “IT is going to delete my old emails” problem, using Power Automate or other tools.', featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
+        { slug:'EFDC-Repo-Template',   name:'EFDC-Repo-Template',                    repoUrl:'https://github.com/DepressionCenter/EFDC-Repo-Template',    description:'Standard code repo template that provides common features, README sections, and U-M copyright notices to help new repositories comply with U-M guidelines.', featured:false, website:'', demo:'', docs:'', lang:'CSS', language:'CSS', topics:[], image:'' },
+        { slug:'EFDC-TDX-KB',          name:'EFDC-TDX-KB',                           repoUrl:'https://github.com/DepressionCenter/EFDC-TDX-KB',           description:'Custom HTML and CSS for the Depression Center KB (TDX Client Portal), with templates for Bootstrap components that work inside knowledge base articles.', featured:false, website:'', demo:'', docs:'', lang:'HTML', language:'HTML', topics:[], image:'' },
+        { slug:'EMA-CleanR',           name:'EMA-CleanR',                             repoUrl:'https://github.com/DepressionCenter/EMA-CleanR',            description:'Efficient pre-processing, cleaning, and visualization of Ecological Momentary Assessment (EMA) survey data in R to enable high-quality, real-time behavioral insights.', featured:true,  website:'', demo:'https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14610', lang:'HTML', language:'HTML', topics:[], image:'' },
+        { slug:'GitHub-Usage-Stats',   name:'GitHub Usage Stats',                     repoUrl:'https://github.com/DepressionCenter/GitHub-Usage-Stats',    description:'Scripts to capture GitHub repository and usage statistics daily.', featured:false, website:'', demo:'', docs:'', lang:'PowerShell', language:'PowerShell', topics:[], image:'' },
+        { slug:'device-integration-diagrams', name:'Glucose Monitor and Insulin Delivery Device Integrations', repoUrl:'https://github.com/DepressionCenter/mobile-tech-illustrations/tree/main/device-integration-diagrams', description:'Interactive diagram of integration and compatibility between CGMs, BGMs, and insulin delivery devices (pumps, pens, etc.).', featured:false, website:'', demo:'https://code.depressioncenter.org/mobile-tech-illustrations/device-integration-diagrams/GlucoseMonitor-InsulinDeliveryDevice-Integration.html', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=12933', lang:'HTML', language:'HTML', topics:[], image:'GlucoseMonitor-DeviceIntegration.png' },
+        { slug:'MDEN',                 name:'MDEN',                                   repoUrl:'https://github.com/DepressionCenter/MDEN',                  description:"Mobile technologies code from the University of Michigan's Mobile Data Experts Network (MDEN), featuring data cleaning automations, REDCap project templates, and more.", featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
+        { slug:'MiNap',                name:'MiNap™',                             repoUrl:'https://github.com/DepressionCenter/MiNap',                 description:'Code and documentation for Mi Nap sleep diary smartwatch app and related infrastructure, developed by the 2023 ITS intern cohort at the University of Michigan.', featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
+        { slug:'mobile-tech-illustrations', name:'mobile-tech-illustrations',         repoUrl:'https://github.com/DepressionCenter/mobile-tech-illustrations', description:'Diagrams and 3D models showcasing mobile technologies devices used in research, such as wearables, nearables, intermittent wearables, and smartphone sensors.', featured:false, website:'', demo:'', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14686', lang:'HTML', language:'HTML', topics:[], image:'' },
+        { slug:'MTC-Public-PowerBI-Dashboards', name:'MTC-Public-PowerBI-Dashboards', repoUrl:'https://github.com/DepressionCenter/MTC-Public-PowerBI-Dashboards', description:'PowerBI dashboard templates and examples for research teams.', featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
+        { slug:'MTC-SharePoint-Site',  name:'MTC-SharePoint-Site',                    repoUrl:'https://github.com/DepressionCenter/MTC-SharePoint-Site',   description:"Code used by the Mobile Technologies Core team's SharePoint site, including JSON/CSS for View Formatting.", featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
+        { slug:'Sitenalyzer',          name:'Sitenalyzer',                             repoUrl:'https://github.com/DepressionCenter/Sitenalyzer',            description:'Data dictionary and security information extraction for SharePoint sites.', featured:false, website:'', demo:'', docs:'', lang:'HTML', language:'HTML', topics:[], image:'' },
+        { slug:'SleepDataAutomation',  name:'Sleep Data Automation™ for Fitbit', repoUrl:'https://github.com/DepressionCenter/SleepDataAutomation',  description:'Automated sleep data cleanup and processing to harmonize Fitbit data obtained via Fitabase with self-reported sleep diary entries sent via SMS messages.', featured:true,  website:'', demo:'', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=11822', lang:'', language:'', topics:[], image:'' },
+        { slug:'TrackMaster',          name:'TrackMaster™',                       repoUrl:'https://github.com/DepressionCenter/TrackMaster',            description:'Code and documentation for TrackMaster membership tracking tool™ and related infrastructure, developed by the 2023 ITS intern cohort at the University of Michigan.', featured:false, website:'', demo:'', docs:'', lang:'HTML, JavaScript, Power Automate', language:'HTML', topics:['javascript', 'power-automate'], image:'' },
+        { slug:'Useful-SQL-Queries-for-UMich-Research-Centers', name:'Useful SQL Queries for UMich Research Centers', repoUrl:'https://github.com/DepressionCenter/Useful-SQL-Queries-for-UMich-Research-Centers', description:'Useful SQL queries for University of Michigan research cores, centers, institutes and labs, including queries to report on publications and grants.', featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
+        { slug:'Yawnalyzer',           name:'Yawnalyzer™',                        repoUrl:'https://github.com/DepressionCenter/Yawnalyzer',            description:'Automated data cleaning and sleep/gait metrics for Apple Watch data collected via SensorKit and ResearchKit.', featured:false, website:'', demo:'', docs:'', lang:'Python', language:'Python', topics:[], image:'' },
+      ];
+    }
+
+    // ── START ─────────────────────────────────────────────────────────
+    document.getElementById('copy-year').textContent = new Date().getFullYear();
+    init();
+  })();
+  </script>
+</body>
+</html>
