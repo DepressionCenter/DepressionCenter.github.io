@@ -457,8 +457,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     }
     .lang-tag {
       font-family: var(--mono);
-      font-size: 0.52rem;
-      padding: 1px 5px;
+      font-size: 0.65rem;
+      padding: 2px 7px;
       background: var(--tag-bg);
       border: 1px solid rgba(255,203,5,0.2);
       border-radius: 2px;
@@ -697,6 +697,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       border-left: 1px solid var(--card-border);
       z-index: 200;
       overflow-y: auto;
+      overscroll-behavior: contain;
       transform: translateX(100%);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
@@ -1108,7 +1109,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     function panelThumbHtml(repo) {
       const imgPath = repo.image
         ? IMG_BASE + repo.image
-        : IMG_BASE + repo.slug.toLowerCase() + '.png';
+        : IMG_BASE + repo.slug + '.png';
       const mono = getMonogram(repo.name);
       return `
         <div class="panel-thumb-lg" aria-hidden="true">
@@ -1158,10 +1159,10 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
                       aria-label="View details for ${repo.name}">${repo.name}</button>
             </h3>
             <p>${repo.description || 'No description available.'}</p>
+            <div class="repo-links">${repoLinksHtml(repo)}</div>
             <div class="repo-meta">
               ${buildTagsHtml(repo.language, repo.topics, repo.lang)}
             </div>
-            <div class="repo-links">${repoLinksHtml(repo)}</div>
           </div>
         </article>
       `).join('');
@@ -1187,10 +1188,10 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
                     aria-label="View details for ${repo.name}">${repo.name}</button>
           </h3>
           <p>${repo.description || 'No description available.'}</p>
+          <div class="repo-links">${repoLinksHtml(repo)}</div>
           <div class="repo-meta">
             ${buildTagsHtml(repo.language, repo.topics, repo.lang)}
           </div>
-          <div class="repo-links">${repoLinksHtml(repo)}</div>
         </article>
       `).join('');
     }
@@ -1230,6 +1231,17 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     // ── PANEL STATE ───────────────────────────────────────────────────
     let panelFocusReturn = null;
 
+    function lockBodyScroll() {
+      const sw = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = sw > 0 ? `${sw}px` : '';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function unlockBodyScroll() {
+      document.body.style.paddingRight = '';
+      document.body.style.overflow = '';
+    }
+
     function openPanel(repo, triggerEl) {
       panelFocusReturn = triggerEl || null;
       const panel   = document.getElementById('repo-panel');
@@ -1248,6 +1260,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           </div>
         </div>`;
 
+      lockBodyScroll();
       panel.classList.add('is-open');
       overlay.classList.add('is-open');
       panel.setAttribute('aria-hidden', 'false');
@@ -1265,6 +1278,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       overlay.classList.remove('is-open');
       panel.setAttribute('aria-hidden', 'true');
       overlay.setAttribute('aria-hidden', 'true');
+      unlockBodyScroll();
       document.removeEventListener('keydown', handlePanelKeydown);
       if (panelFocusReturn) { panelFocusReturn.focus(); panelFocusReturn = null; }
     }
