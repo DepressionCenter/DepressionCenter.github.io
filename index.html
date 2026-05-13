@@ -1045,28 +1045,10 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       return apiRepos.map(api => {
         const fb = fbMap[api.name] || {};
         
-        // FEATURED LOGIC
         let isFeatured = false;
-        if (api.custom_properties && api.custom_properties.featured !== undefined && api.custom_properties.featured !== null) {
-            
-            // Force to string, remove accidental spaces, and make lowercase
-            const featVal = String(api.custom_properties.featured).trim().toLowerCase();
-            
-            if (featVal === 'true') {
-                isFeatured = true;
-            } else if (featVal === 'false') {
-                isFeatured = false;
-            } else {
-                // If it's some unrecognized string, fallback to the hardcoded array
-                isFeatured = FEATURED.includes(api.name);
-            }
-        } else {
-            // 2. If the property doesn't exist on GitHub at all, use the array
-            isFeatured = FEATURED.includes(api.name);
+        if (api.custom_properties && api.custom_properties.featured != null) {
+            isFeatured = String(api.custom_properties.featured).trim().toLowerCase() === 'true';
         }
-
-        // TEMPORARY DEBUGGER
-        console.log(`Repo: ${api.name} | GitHub Value: ${api.custom_properties?.featured} | Final isFeatured: ${isFeatured}`);
 
         return {
           slug:        api.name,
@@ -1082,7 +1064,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           topics:      Array.isArray(api.topics) ? api.topics : [],
           lang:        fb.lang         || '',
           image:       fb.image        || '',
-          featured:    isFeatured,
+          featured:    isFeatured
         };
       });
     }
@@ -1170,13 +1152,23 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     //  RENDER FEATURED
     function renderFeatured(repos) {
       const el = document.getElementById('featured-grid');
-      const featured = FEATURED
-        .map(slug => repos.find(r => r.slug === slug))
-        .filter(Boolean);
+      
+      // 1. Check for API-driven featured repos first
+      let featured = repos.filter(repo => repo.featured === true);
+      
+      // 2. If none are found (e.g., API failed and raw fallback data is used), 
+      // fallback to the hardcoded FEATURED array
+      if (!featured.length) {
+        featured = FEATURED
+          .map(slug => repos.find(r => r.slug === slug))
+          .filter(Boolean);
+      }
+
       if (!featured.length) {
         el.innerHTML = '<p class="error-state">No featured repositories found.</p>';
         return;
       }
+
       el.innerHTML = featured.map(repo => `
         <article class="featured-card" role="listitem" aria-label="${repo.name} — featured repository">
           ${featuredThumbHtml(repo)}
@@ -1194,6 +1186,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           </div>
         </article>
       `).join('');
+      
       document.getElementById('stat-repos').textContent = repos.length;
     }
 
