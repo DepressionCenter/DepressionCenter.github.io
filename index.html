@@ -1044,9 +1044,13 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       return apiRepos.map(api => {
         const fb = fbMap[api.name] || {};
         
-        const apiFeatured = (api.custom_properties ? (api.custom_properties.featured || 'false') : 'false');
-        // Check if it strictly equals the string 'true' or boolean true, or fall back to array.
-        const isFeatured = (apiFeatured === 'true' || apiFeatured === true) || FEATURED.includes(api.name);
+        let isFeatured = false;
+        if (api.custom_properties && typeof api.custom_properties.featured !== 'undefined') {
+            const featVal = api.custom_properties.featured;
+            isFeatured = (featVal === 'true' || featVal === true);
+        } else {
+            isFeatured = FEATURED.includes(api.name);
+        }
 
         return {
           slug:        api.name,
@@ -1056,8 +1060,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           website:     api.homepage    || fb.website     || '',
           demo:        api.custom_properties?.demo_url   || fb.demo     || '',
           docs:        api.custom_properties?.docs_url   || fb.docs     || '',
-          labName:    (api.custom_properties ? (api.custom_properties.lab_name || '') : ''),
-          labUrl:     (api.custom_properties ? (api.custom_properties.lab_url || '') : ''),
+          labName:     api.custom_properties?.lab_name || '',
+          labUrl:      api.custom_properties?.lab_url || '',
           language:    api.language    || fb.lang        || '',
           topics:      Array.isArray(api.topics) ? api.topics : [],
           lang:        fb.lang         || '',
@@ -1251,6 +1255,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       document.body.style.overflow = '';
     }
 
+    // Creates the side panel
     function openPanel(repo, triggerEl) {
       panelFocusReturn = triggerEl || null;
       const panel   = document.getElementById('repo-panel');
@@ -1260,21 +1265,24 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
 
       titleEl.textContent = repo.name;
 
-      // Conditionally build the lab link if labName is set and not empty
       const labLinkHtml = repo.labName 
         ? `<div class="repo-links"><a href="${repo.labUrl}" target="_blank" rel="noopener noreferrer" class="card-title-btn card-panel-trigger">${repo.labName}</a></div>` 
         : '';
 
+      // Build the permanent UI shell
       bodyEl.innerHTML = `
         ${panelThumbHtml(repo)}
         ${labLinkHtml}
         <div class="repo-links">${repoLinksHtml(repo)}</div>
-        <div class="panel-readme panel-loading" aria-live="polite">
+        
+        <div id="readme-content" class="panel-readme panel-loading" aria-live="polite">
           <div class="loading-state" style="padding:20px 0">
             <div class="spinner" aria-hidden="true"></div>
             Loading README…
           </div>
-        </div>`;
+        </div>
+        
+        <div class="repo-links panel-links-bottom">${repoLinksHtml(repo)}</div>`;
 
       lockBodyScroll();
       panel.classList.add('is-open');
@@ -1284,7 +1292,9 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       document.getElementById('panel-close').focus();
       document.addEventListener('keydown', handlePanelKeydown);
 
-      fetchAndRenderReadme(repo, bodyEl);
+      // Grab the specific target div and pass it to the fetch function
+      const readmeContainer = document.getElementById('readme-content');
+      fetchAndRenderReadme(repo, readmeContainer);
     }
 
     function closePanel() {
@@ -1317,20 +1327,16 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     }
 
     //  README FETCH + RENDER
-    async function fetchAndRenderReadme(repo, bodyEl) {
+   async function fetchAndRenderReadme(repo, readmeContainer) {
       try {
         await loadMarked();
         const res = await fetch(RAW_README(repo.slug));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         let md = await res.text();
 
-        // Remove specific logo images (both Markdown and HTML formats)
-        // Strips: ![...](...EFDCLogo_375w.png...)
         md = md.replace(/!\[.*?\]\([^\)]*EFDCLogo_375w\.png[^\)]*\)/gi, '');
-        // Strips: <img ... EFDCLogo_375w.png ... >
         md = md.replace(/<img[^>]*EFDCLogo_375w\.png[^>]*>/gi, '');
 
-        // Resolve relative image paths → raw GitHub URLs
         const imgBase = `https://raw.githubusercontent.com/DepressionCenter/${repo.slug}/main/`;
         md = md.replace(
           /!\[([^\]]*)\]\((?!https?:\/\/)(?!#)([^)]+)\)/g,
@@ -1342,18 +1348,15 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         );
 
         const html = window.marked.parse(md, { gfm: true, breaks: false });
-        bodyEl.innerHTML = `
-          ${panelThumbHtml(repo)}
-          <div class="repo-links">${repoLinksHtml(repo)}</div>
-          <div class="panel-readme">${html}</div>
-          <div class="repo-links panel-links-bottom">${repoLinksHtml(repo)}</div>`;
+        
+        // Simply replace the loading innerHTML with the parsed Markdown
+        readmeContainer.classList.remove('panel-loading');
+        readmeContainer.innerHTML = html;
+        
       } catch {
-        bodyEl.innerHTML = `
-          ${panelThumbHtml(repo)}
-          <div class="repo-links">${repoLinksHtml(repo)}</div>
-          <div class="panel-readme">
-            <p>${repo.description || 'No description available.'}</p>
-          </div>`;
+        // Fallback state if the README fetch fails
+        readmeContainer.classList.remove('panel-loading');
+        readmeContainer.innerHTML = `<p>${repo.description || 'No description available.'}</p>`;
       }
     }
 
