@@ -1044,7 +1044,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       return apiRepos.map(api => {
         const fb = fbMap[api.name] || {};
         
-        const apiFeatured = api.custom_properties?.featured;
+        const apiFeatured = (api.custom_properties ? (api.custom_properties.featured || 'false') : 'false');
         // Check if it strictly equals the string 'true' or boolean true, or fall back to array.
         const isFeatured = (apiFeatured === 'true' || apiFeatured === true) || FEATURED.includes(api.name);
 
@@ -1056,8 +1056,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           website:     api.homepage    || fb.website     || '',
           demo:        api.custom_properties?.demo_url   || fb.demo     || '',
           docs:        api.custom_properties?.docs_url   || fb.docs     || '',
-          lab_name:    api.custom_properties?.lab_name   || '',
-          lab_url:     api.custom_properties?.lab_url    || '',
+          labName:    (api.custom_properties ? (api.custom_properties.lab_name || '') : ''),
+          labUrl:     (api.custom_properties ? (api.custom_properties.lab_url || '') : ''),
           language:    api.language    || fb.lang        || '',
           topics:      Array.isArray(api.topics) ? api.topics : [],
           lang:        fb.lang         || '',
@@ -1260,9 +1260,9 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
 
       titleEl.textContent = repo.name;
 
-      // Conditionally build the lab link if lab_name is set and not empty
-      const labLinkHtml = repo.lab_name 
-        ? `<a href="${repo.lab_url}" target="_blank" rel="noopener noreferrer" class="card-title-btn card-panel-trigger">${repo.lab_name}</a>` 
+      // Conditionally build the lab link if labName is set and not empty
+      const labLinkHtml = repo.labName 
+        ? `<div class="repo-links"><a href="${repo.labUrl}" target="_blank" rel="noopener noreferrer" class="card-title-btn card-panel-trigger">${repo.labName}</a></div>` 
         : '';
 
       bodyEl.innerHTML = `
