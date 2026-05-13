@@ -454,10 +454,11 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-bottom: 10px;
     }
     .lang-tag {
       font-family: var(--mono);
-      font-size: 0.65rem;
+      font-size: 0.585rem;
       padding: 2px 7px;
       background: var(--tag-bg);
       border: 1px solid rgba(255,203,5,0.2);
@@ -692,7 +693,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       top: 0;
       right: 0;
       bottom: 0;
-      width: min(520px, 100vw);
+      width: min(600px, 100vw);
       background: var(--card-bg);
       border-left: 1px solid var(--card-border);
       z-index: 200;
@@ -1092,7 +1093,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     function featuredThumbHtml(repo) {
       const imgPath = repo.image
         ? IMG_BASE + repo.image
-        : IMG_BASE + repo.slug.toLowerCase() + '.png';
+        : IMG_BASE + repo.slug + '.png';
       const mono = getMonogram(repo.name);
       return `
         <button class="featured-thumb card-panel-trigger" data-slug="${repo.slug}"
