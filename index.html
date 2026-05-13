@@ -1397,7 +1397,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     }
 
     //  START ─
-    document.getElementById('copy-year').textContent = new Date().getFullYear();
+    document.getElementById('copy-year').textContent = (String(new Date().getFullYear()) == '2026' ? '2026' : '2026-' + String(new Date().getFullYear()));
     init();
   })();
   </script>
