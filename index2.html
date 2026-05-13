@@ -1159,11 +1159,11 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
               <button class="card-title-btn card-panel-trigger" data-slug="${repo.slug}"
                       aria-label="View details for ${repo.name}">${repo.name}</button>
             </h3>
-            <p>${repo.description || 'No description available.'}</p>
-            <div class="repo-links">${repoLinksHtml(repo)}</div>
+            <p>${repo.description || 'No description available.'}</p>            
             <div class="repo-meta">
               ${buildTagsHtml(repo.language, repo.topics, repo.lang)}
             </div>
+            <div class="repo-links">${repoLinksHtml(repo)}</div>
           </div>
         </article>
       `).join('');
