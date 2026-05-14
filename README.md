@@ -3,8 +3,14 @@
 # Eisenberg Family Depression Center: Open Source Projects
 
 ## About
-This repository contains the code for the landing webpage for the code repository: https://code.depressioncenter.org
+This repository contains the code for the landing webpage for the Eisnberg Family Depression Center's code repository: [https://code.depressioncenter.org](https://code.depressioncenter.org). This site creates a grid of all our public repos through the GitHub API, including custom properties such as lab name and URL, DOI#, documentation URL, etc. When users click on a tile, a side panel opens, wich gets the README.md file for that repository in real time and renders it inside the side panel.
 
+## Quick Start Guide
++ To re-use the code, you will need to either [fork](https://github.com/DepressionCenter/DepressionCenter.github.io/fork) the repo or download and edit index.html and upload to your web server.
++ If you would like to use GitHub Pages for free web hosting, simply [fork](https://github.com/DepressionCenter/DepressionCenter.github.io/fork) this repo and make your changes to index.html there. Keep the ".nojekyll" file to avoid having to run GitHub Actions.
++ In the "index.html" file, change "DepressionCenter" to your GitHub organization (or user ID). You can also change the "fallback" data at the bottom of the script to use in case a browser is unable to reach the GitHub API.
++ Images must be stored under /images/repo-previews. Each file needs to match the name of the repo exactly (including upper case and lower case letters) plus ".png" for the larger image, or "-thumb.png" for the thumbnail image (400x125px). Both images must have a 16:9 aspect ratio.
++ Please remove the copyright notice in the code, especially if you are not affiliated with University of Michigan. However, the license notice at the top of the file (in HTML comments) must remain there, as the code is licensed under the GPLv3.0 or later license.
 
 ## Where are the repos located?
 Please see our GitHub site at:  [https://github.com/DepressionCenter](https://github.com/DepressionCenter)
@@ -16,7 +22,6 @@ Please see our Knowledge Base at:  [https://michmed.org/efdc-kb](https://michmed
 
 
 
-
 ## Additional Resources
 + [Eisenberg Family Depression Center](https://depressioncenter.org)
 + [Michigan Medicine](https://michiganmedicine.org)
@@ -24,11 +29,16 @@ Please see our Knowledge Base at:  [https://michmed.org/efdc-kb](https://michmed
 
 
 
-
 ## Credits
+
 #### Contributors:
 + Eisenberg Family Depression Center [(@DepressionCenter)](https://github.com/DepressionCenter/)
 + Gabriel Mongefranco [(@gabrielmongefranco)](https://github.com/gabrielmongefranco)
+
+#### This work is based in part on the following projects, libraries and/or studies:
++ [Marked](https://github.com/markedjs/marked). A markdown parser library, used here to render README.md files.
++ [DOMPurify](https://github.com/cure53/DOMPurify). An HTML sanitizer library, used here to help prevent XSS attacks from rendered markdown.
++ [GitHub REST API](https://docs.github.com/rest/about-the-rest-api/about-the-rest-api).
 
 
 ## License

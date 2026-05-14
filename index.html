@@ -5,7 +5,7 @@ Author(s): Gabriel Mongefranco.
 Created: 2026-05-12
 Last Modified: 2026-05-13
 Summary: Code for the landing page at code.depressioncenter.org.
-         The list of repositories comes from the organization's profile README.md file (.github/profile/README.md)
+         The list of repositories comes from the organization's repos via the GitHub API.
 Notes: See README file for documentation and full license information.
 Website: https://code.depressioncenter.org/
 
@@ -39,6 +39,9 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     gtag('js', new Date());
     gtag('config', 'G-3Q455XWS5F');
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@18.0.3/lib/marked.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.3/dist/purify.min.js" integrity="sha256-tCuDEbsjbEVeoHllSezIHYrAte9A+HueUKct10SNDqY=" crossorigin="anonymous"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1225,22 +1228,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       });
     }
 
-    //  MARKED.JS LAZY LOAD
-    let _markedReady = null;
-    function loadMarked() {
-      if (window.marked) return Promise.resolve();
-      if (_markedReady) return _markedReady;
-      _markedReady = new Promise((resolve, reject) => {
-        const s = document.createElement('script');
-        s.src = 'https://cdn.jsdelivr.net/npm/marked@12/marked.min.js';
-        s.onload = resolve;
-        s.onerror = () => reject(new Error('Failed to load marked.js'));
-        document.head.appendChild(s);
-      });
-      return _markedReady;
-    }
-
-    //  PANEL STATE
+      //  PANEL STATE
     let panelFocusReturn = null;
 
     function lockBodyScroll() {
@@ -1328,14 +1316,16 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     //  README FETCH + RENDER
    async function fetchAndRenderReadme(repo, readmeContainer) {
       try {
-        await loadMarked();
         const res = await fetch(RAW_README(repo.slug));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         let md = await res.text();
 
+        // Remove log that sits at the top of each repo's README so it doesn't look odd below the preview image
         md = md.replace(/!\[.*?\]\([^\)]*EFDCLogo_375w\.png[^\)]*\)/gi, '');
         md = md.replace(/<img[^>]*EFDCLogo_375w\.png[^>]*>/gi, '');
 
+        // Convert relative paths to absolute paths
+        // TODO: Create global variable for the organization name insetad of hard-coding "DepressionCenter"
         const imgBase = `https://raw.githubusercontent.com/DepressionCenter/${repo.slug}/main/`;
         md = md.replace(
           /!\[([^\]]*)\]\((?!https?:\/\/)(?!#)([^)]+)\)/g,
@@ -1346,13 +1336,30 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           (_, before, path, after) => `<img${before} src="${imgBase}${path.replace(/^\.?\//,'')}"${after}>`
         );
 
-        const html = window.marked.parse(md, { gfm: true, breaks: false });
+        // Configure DOMPurify to open all links in new windows
+        // Sample code from: https://github.com/cure53/DOMPurify/tree/main/demos#hook-to-open-all-links-in-a-new-window-link
+        window.DOMPurify.addHook('afterSanitizeAttributes', function (node) {
+          // set all elements owning target to target=_blank
+          if ('target' in node) {
+            node.setAttribute('target', '_blank');
+          }
+          // set non-HTML/MathML links to xlink:show=new
+          if (
+            !node.hasAttribute('target') &&
+            (node.hasAttribute('xlink:href') || node.hasAttribute('href'))
+          ) {
+            node.setAttribute('xlink:show', 'new');
+          }
+        });
+        
+        // Render markdown as HTML and passit through DOMPurify to sanitize it, to help prevent XSS attacks.
+        const html = window.DOMPurify.sanitize(window.marked.parse(md, { gfm: true, breaks: false }));
         
         // Simply replace the loading innerHTML with the parsed Markdown
         readmeContainer.classList.remove('panel-loading');
         readmeContainer.innerHTML = html;
         
-      } catch {
+      } catch (err) {
         // Fallback state if the README fetch fails
         readmeContainer.classList.remove('panel-loading');
         readmeContainer.innerHTML = `<p>${repo.description || 'No description available.'}</p>`;
@@ -1421,7 +1428,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         { slug:'SleepDataAutomation',  name:'Sleep Data Automation™ for Fitbit', repoUrl:'https://github.com/DepressionCenter/SleepDataAutomation',  description:'Automated sleep data cleanup and processing to harmonize Fitbit data obtained via Fitabase with self-reported sleep diary entries sent via SMS messages.', featured:true,  website:'', demo:'', docs:'https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=11822', lang:'', language:'', topics:[], image:'' },
         { slug:'TrackMaster',          name:'TrackMaster™',                       repoUrl:'https://github.com/DepressionCenter/TrackMaster',            description:'Code and documentation for TrackMaster membership tracking tool™ and related infrastructure, developed by the 2023 ITS intern cohort at the University of Michigan.', featured:false, website:'', demo:'', docs:'', lang:'HTML, JavaScript, Power Automate', language:'HTML', topics:['javascript', 'power-automate'], image:'' },
         { slug:'Useful-SQL-Queries-for-UMich-Research-Centers', name:'Useful SQL Queries for UMich Research Centers', repoUrl:'https://github.com/DepressionCenter/Useful-SQL-Queries-for-UMich-Research-Centers', description:'Useful SQL queries for University of Michigan research cores, centers, institutes and labs, including queries to report on publications and grants.', featured:false, website:'', demo:'', docs:'', lang:'', language:'', topics:[], image:'' },
-        { slug:'Yawnalyzer',           name:'Yawnalyzer™',                        repoUrl:'https://github.com/DepressionCenter/Yawnalyzer',            description:'Automated data cleaning and sleep/gait metrics for Apple Watch data collected via SensorKit and ResearchKit.', featured:false, website:'', demo:'', docs:'', lang:'Python', language:'Python', topics:[], image:'' },
+        { slug:'Yawnalyzer',           name:'Yawnalyzer™',                        repoUrl:'https://github.com/DepressionCenter/Yawnalyzer',            description:'Automated data cleaning and sleep/gait metrics for Apple Watch data collected via SensorKit and ResearchKit.', featured:false, website:'', demo:'', docs:'', lang:'Python', language:'Python', topics:[], image:'' }
       ];
     }
 
