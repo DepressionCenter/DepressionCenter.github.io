@@ -686,7 +686,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       font-size: 0.85rem;
     }
     #oss-table .tabulator-header {
-      background: var(--navy-mid);
+      background: var(--navy-deep);
       border-bottom: 1.5px solid var(--card-border);
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
@@ -702,14 +702,14 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     #oss-table .tabulator-col .tabulator-col-sorter .tabulator-arrow { border-top-color: var(--slate); border-bottom-color: var(--slate); }
     #oss-table .tabulator-col.tabulator-col-sorter-element.tabulator-header-sort-up .tabulator-col-sorter .tabulator-arrow,
     #oss-table .tabulator-col.tabulator-col-sorter-element.tabulator-header-sort-down .tabulator-col-sorter .tabulator-arrow { border-top-color: var(--maize); border-bottom-color: var(--maize); }
-    #oss-table .tabulator-tableholder { background: transparent; }
-    #oss-table .tabulator-row { background: transparent; border-bottom: 1px solid rgba(255,203,5,0.07); color: var(--off-white); }
-    #oss-table .tabulator-row:hover { background: rgba(255,203,5,0.04); }
-    #oss-table .tabulator-cell { border-right: none; padding: 12px 14px; }
+    #oss-table .tabulator-tableholder { background: var(--navy-mid); }
+    #oss-table .tabulator-row { background: var(--navy-mid); border-bottom: 1px solid rgba(255,203,5,0.07); color: var(--off-white); }
+    #oss-table .tabulator-row:hover { background: var(--navy-mid); filter: brightness(1.12); }
+    #oss-table .tabulator-cell { border-right: none; padding: 12px 14px; background: var(--navy-mid); color: var(--off-white); }
     #oss-table .tabulator-cell a { color: var(--maize); text-decoration: none; }
     #oss-table .tabulator-cell a:hover { text-decoration: underline; }
     #oss-table .tabulator-footer {
-      background: var(--navy-mid);
+      background: var(--navy-deep);
       border-top: 1px solid var(--card-border);
       border-radius: 0 0 var(--radius-lg) var(--radius-lg);
       color: var(--slate);
