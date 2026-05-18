@@ -479,6 +479,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       border-radius: 2px;
       color: var(--maize);
       letter-spacing: 0.05em;
+      cursor: pointer;
     }
 
     /* SEARCH / FILTER */
@@ -662,6 +663,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       padding: 2px 6px;
       color: var(--slate-light);
       margin: 1px 2px 1px 0;
+      cursor: pointer;
     }
     .oss-search-bar { margin-bottom: 16px; }
     .oss-search-bar input {
@@ -877,6 +879,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     .repo-card h3 .card-title-btn:hover { color: var(--white); }
     .featured-body h3 .card-title-btn { color: var(--white); }
     .featured-body h3 .card-title-btn:hover { color: var(--maize); }
+    p.card-panel-trigger { cursor: pointer; }
+    p.card-panel-trigger:focus-visible { outline: 2px solid var(--maize); outline-offset: 2px; border-radius: 2px; }
 
     /* FEATURED THUMB AS BUTTON */
     button.featured-thumb {
@@ -979,8 +983,18 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     .panel-thumb-lg .thumb-monogram { font-size: 4.5rem; color: rgba(255,203,5,0.12); }
 
     /* PANEL README MARKDOWN */
+    .panel-lab {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .panel-lab-label { color: var(--slate-light); font-weight: 400; }
+    .panel-lab a { color: var(--maize); text-decoration: none; }
+    .panel-lab a:hover { text-decoration: underline; }
     .panel-readme {
-      margin-top: 20px;
+      margin-top: 24px;
+      border-top: 1px solid var(--card-border);
+      padding-top: 20px;
       font-size: 0.85rem;
       color: var(--slate-light);
       line-height: 1.7;
@@ -1114,7 +1128,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           <span class="stat-label">Repositories</span>
         </div>
         <div class="stat" role="listitem">
-          <span class="stat-num">6K+</span>
+          <span class="stat-num">7K+</span>
           <span class="stat-label">Downloads</span>
         </div>
         <div class="stat" role="listitem">
@@ -1383,9 +1397,10 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         seen.add(key);
         return true;
       });
-      return tags.slice(0, 7).map(t =>
-        `<span class="lang-tag" aria-label="Tag: ${t}">${t}</span>`
-      ).join('');
+      return tags.slice(0, 7).map(t => {
+        const safe = t.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+        return `<span class="lang-tag" aria-label="Tag: ${t}" data-tag="${safe}" role="button" tabindex="0">${t}</span>`;
+      }).join('');
     }
 
     //  MONOGRAM
@@ -1466,7 +1481,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
               <button class="card-title-btn card-panel-trigger" data-slug="${repo.slug}"
                       aria-label="View details for ${repo.name}">${repo.name}</button>
             </h3>
-            <p>${repo.description || 'No description available.'}</p>            
+            <p class="card-panel-trigger" data-slug="${repo.slug}">${repo.description || 'No description available.'}</p>
             <div class="repo-meta">
               ${buildTagsHtml(repo.language, repo.topics, repo.lang)}
             </div>
@@ -1474,7 +1489,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           </div>
         </article>
       `).join('');
-      
+
       document.getElementById('stat-repos').textContent = repos.length;
     }
     //  RENDER ALL REPOS 
@@ -1496,7 +1511,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
                     aria-label="View details for ${repo.name}">${repo.name}</button>
           </h3>
           ${featuredThumbHtml(repo)}
-          <p>${repo.description || 'No description available.'}</p>
+          <p class="card-panel-trigger" data-slug="${repo.slug}">${repo.description || 'No description available.'}</p>
           <div class="repo-meta">
             ${buildTagsHtml(repo.language, repo.topics, repo.lang)}
           </div>
@@ -1519,6 +1534,37 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           (r.topics || []).some(t => t.toLowerCase().includes(q)) ||
           (r.lang || '').toLowerCase().includes(q)
         ));
+      });
+
+      function applyTagFilter(tagValue, scrollToSearch) {
+        input.value = tagValue;
+        input.dispatchEvent(new Event('input'));
+        if (scrollToSearch) {
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        input.focus();
+      }
+
+      const grid = document.getElementById('repo-grid');
+      grid.addEventListener('click', function (e) {
+        const tag = e.target.closest('.lang-tag[data-tag]');
+        if (tag) applyTagFilter(tag.dataset.tag, false);
+      });
+      grid.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const tag = e.target.closest('.lang-tag[data-tag]');
+        if (tag) { e.preventDefault(); applyTagFilter(tag.dataset.tag, false); }
+      });
+
+      const featuredGrid = document.getElementById('featured-grid');
+      featuredGrid.addEventListener('click', function (e) {
+        const tag = e.target.closest('.lang-tag[data-tag]');
+        if (tag) applyTagFilter(tag.dataset.tag, true);
+      });
+      featuredGrid.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const tag = e.target.closest('.lang-tag[data-tag]');
+        if (tag) { e.preventDefault(); applyTagFilter(tag.dataset.tag, true); }
       });
     }
 
@@ -1546,8 +1592,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
 
       titleEl.textContent = repo.name;
 
-      const labLinkHtml = repo.labName 
-        ? `<div class="repo-links"><a href="${repo.labUrl}" target="_blank" rel="noopener" class="card-title-btn card-panel-trigger">${repo.labName}</a></div>`
+      const labLinkHtml = repo.labName
+        ? `<div class="panel-lab"><span class="panel-lab-label">Lab/Team:</span> <a href="${repo.labUrl}" target="_blank" rel="noopener">${repo.labName}</a></div>`
         : '';
 
       // Build the permanent UI shell
@@ -1738,7 +1784,9 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       var val = cell.getValue() || '';
       return val.split(',').map(function (t) {
         t = t.trim();
-        return t ? '<span class="oss-tag">' + t + '</span>' : '';
+        if (!t) return '';
+        var safe = t.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+        return '<span class="oss-tag" data-tag="' + safe + '" role="button" tabindex="0">' + t + '</span>';
       }).join('');
     }
     function linkFormatter(cell) {
@@ -1765,7 +1813,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       ],
     });
 
-    document.getElementById('oss-search').addEventListener('input', function () {
+    var ossSearchInput = document.getElementById('oss-search');
+    ossSearchInput.addEventListener('input', function () {
       var q = this.value.trim();
       if (!q) { ossTable.clearFilter(); return; }
       ossTable.setFilter([
@@ -1777,6 +1826,23 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           { field: 'research_stage', type: 'like', value: q },
         ]
       ]);
+    });
+
+    function applyOssTagFilter(tagValue) {
+      ossSearchInput.value = tagValue;
+      ossSearchInput.dispatchEvent(new Event('input'));
+      ossSearchInput.focus();
+    }
+
+    var ossTableEl = document.getElementById('oss-table');
+    ossTableEl.addEventListener('click', function (e) {
+      var tag = e.target.closest('.oss-tag[data-tag]');
+      if (tag) applyOssTagFilter(tag.dataset.tag);
+    });
+    ossTableEl.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var tag = e.target.closest('.oss-tag[data-tag]');
+      if (tag) { e.preventDefault(); applyOssTagFilter(tag.dataset.tag); }
     });
   })();
   </script>
