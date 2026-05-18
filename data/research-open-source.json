@@ -1,0 +1,10 @@
+[
+  {
+    "project": "Sleep Classifiers",
+    "url": "https://github.com/ojwalch/sleep_classifiers",
+    "authors": "Olivia Walch",
+    "summary": "Classify sleep from heart rate and acceleration via Apple Watch",
+    "keywords": "Apple Watch, HealthKit, SensorKit, Sleep Stages, Python",
+    "research_stage": "Preprocessing, Analysis"
+  }
+]
