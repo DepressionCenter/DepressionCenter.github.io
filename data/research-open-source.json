@@ -6,5 +6,141 @@
     "summary": "Classify sleep from heart rate and acceleration via Apple Watch",
     "keywords": "Apple Watch, HealthKit, SensorKit, Sleep Stages, Python",
     "research_stage": "Preprocessing, Analysis"
+  },
+  {
+    "project": "Screen-Scrape",
+    "url": "https://github.com/Arcascope/screen-scrape",
+    "authors": "Arcascope",
+    "summary": "Open source script for scraping screen time from screenshots of iPhones.",
+    "keywords": "Screen time, iPhone, iOS",
+    "research_stage": "Data Collection, Preprocessing"
+  },
+  {
+    "project": "Memoiz",
+    "url": "https://github.com/faranalytics/memoiz",
+    "authors": "Adam Patterson",
+    "summary": "Memoiz provides a function decorator that adds memoization to a function or method. It makes reasonable assumptions about how and if to cache the return value of a function or method based on the arguments passed to the callable.",
+    "keywords": "Memoization, Caching, Python",
+    "research_stage": "Analysis"
+  },
+  {
+    "project": "Flatten It",
+    "url": "https://github.com/faranalytics/flatten_iterables",
+    "authors": "Adam Patterson",
+    "summary": "Flatten It uses iteration (no recursion) to flatten iterables into a dictionary where each key is a reference path and each value is the value at the respective path.",
+    "keywords": "Array Flattening, Iterables, Python",
+    "research_stage": "Preprocessing"
+  },
+  {
+    "project": "iglu",
+    "url": "https://github.com/irinagain/iglu",
+    "authors": "Irina Gaynanova",
+    "summary": "R package for Interpreting GLUcose data from CGMs (Continuous Glucose Monitors).",
+    "keywords": "R, CGM, Continuous Glucose Monitors, Glucose, Time-in-Range, AGP",
+    "research_stage": "Preprocessing, Analysis"
+  },
+  {
+    "project": "GlucoBench",
+    "url": "https://github.com/IrinaStatsLab/GlucoBench",
+    "authors": "Irina Gaynanova",
+    "summary": "The official implementation of the paper 'GlucoBench: Curated List of Continuous Glucose Monitoring Datasets with Prediction Benchmarks.'",
+    "keywords": "CGM, Benchmarks, Continuous Glucose Monitors, Glucose Data",
+    "research_stage": "Preprocessing, Analysis"
+  },
+  {
+    "project": "CountSMART",
+    "url": "https://github.com/jamieyap/CountSMART",
+    "authors": "Jamie Yap",
+    "summary": "Code to estimate sample size needed to compare dynamic treatment regimens using longitudinal count outcomes from a Sequential Multiple Assignment Randomized Trial (SMART).",
+    "keywords": "Sample size, SMART, Dynamic treatment regimens, Longitudinal data, R",
+    "research_stage": "Analysis"
+  },
+  {
+    "project": "EMAeval-R-Package",
+    "url": "https://github.com/manateelab/EMAeval-R-Package",
+    "authors": "Noah Kraus",
+    "summary": "The R package EMAeval contains functions created to help researchers identify careless responses as well as responders in Ecological Momentary Assessment (EMA) data.",
+    "keywords": "EMA, R, Ecological Momentary Assessment, Data cleaning",
+    "research_stage": "Preprocessing"
+  },
+  {
+    "project": "actigraphy-scripts",
+    "url": "https://github.com/ojwalch/actigraphy-scripts",
+    "authors": "Olivia Walch",
+    "summary": "Open-source scripts for processing actigraphy data.",
+    "keywords": "Actigraphy, Data processing, Sleep Data",
+    "research_stage": "Preprocessing"
+  },
+  {
+    "project": "predicting_dlmo",
+    "url": "https://github.com/ojwalch/predicting_dlmo",
+    "authors": "Olivia Walch",
+    "summary": "Source code for predictdlmo.com. It implements the 2007 St. Hilaire model of the human circadian clock to predict DLMO on the last day of a recording in response to uploaded actigraphy data.",
+    "keywords": "DLMO, Circadian Rythm, Actigraphy, St. Hilaire model, Prediction",
+    "research_stage": "Analysis"
+  },
+  {
+    "project": "ShinyGPS",
+    "url": "https://github.com/sobradob/shinyapp",
+    "authors": "Boaz Sobrado",
+    "summary": "An R Shiny App for visualising human movements over time using sensor data from Android devices.",
+    "keywords": "R, Shiny Apps, GPS, Human movement, Android, Phone Sensor Data",
+    "research_stage": "Visualization"
+  },
+  {
+    "project": "WARN-D EMA Item Performance",
+    "url": "https://osf.io/yf3up/",
+    "authors": "Björn S. Siepe, et al.",
+    "summary": "Understanding Ecological-Momentary-Assessment Data: A Tutorial on Exploring Item Performance in Ecological-Momentary-Assessment Data.",
+    "keywords": "EMA, Ecological Momentary Assessment, Item performance",
+    "research_stage": "Analysis, Reporting"
+  },
+  {
+    "project": "INSA-home",
+    "url": "https://github.com/SRI-human-sleep/INSA-home",
+    "authors": "Menghini, L., Yuksel, D., Prouty, D., Baker, F. C., King, C., & de Zambotti, M.",
+    "summary": "Datasets, data pre-processing, and data analysis code and full ouputs of the study 'Wearable and mobile technology to characterize daily patterns of sleep, stress, pre-sleep worry and mood in adolescent insomnia.'",
+    "keywords": "Sleep, Insomnia, Wearables, Stress, Adolescents",
+    "research_stage": "Data Collection, Preprocessing, Analysis"
+  },
+  {
+    "project": "Sleep-Trackers-Performance",
+    "url": "https://github.com/SRI-human-sleep/sleep-trackers-performance",
+    "authors": "Menghini, L., Yuksel, D., Prouty, D., Baker, F. C., King, C., & de Zambotti, M.",
+    "summary": "Analytical pipeline and R functions for testing the performance of sleep-tracking technology.",
+    "keywords": "Sleep tracking, Performance testing, R, Analytical pipeline",
+    "research_stage": "Analysis"
+  },
+  {
+    "project": "Wearipedia",
+    "url": "https://github.com/Stanford-Health/wearipedia",
+    "authors": "Stanford Center for Personalized Health",
+    "summary": "A one-stop shop for wearable device data extraction and simulation.",
+    "keywords": "Wearables, Data extraction, Simulation, Device data, Python",
+    "research_stage": "Data Collection, Preprocessing"
+  },
+  {
+    "project": "SleepStagePrediction",
+    "url": "https://github.com/Stanford-STAGES/SleepStagePrediction",
+    "authors": "Jens B. Stephansen, Alexander N. Olesen, Mads Olsen, Aditya Ambati, Eileen B. Leary, Hyatt E. Moore, Oscar Carrillo et al.",
+    "summary": "Deep learning-based prediction of sleep stages using wearable accelerometry and photoplethysmography.",
+    "keywords": "Deep learning, Sleep Stages, Accelerometry, PPG, Prediction, Wearables",
+    "research_stage": "Analysis"
+  },
+  {
+    "project": "snoozr",
+    "url": "https://github.com/trackthatsleep/snoozr",
+    "authors": "Trackthatsleep",
+    "summary": "Scraping your Fitbit data for scientific discovery (and longitudinal sleep analyses).",
+    "keywords": "Fitbit, Fitness Trackers, Sleep Analysis",
+    "research_stage": "Data Collection, Preprocessing"
+  },
+  {
+    "project": "GGIR",
+    "url": "https://github.com/wadpac/GGIR",
+    "authors": "Vincent van Hees, Accelting",
+    "summary": "R package GGIR for raw accelerometer data analysis. A tool to process and analyse data collected with wearable raw acceleration sensors.",
+    "keywords": "R, Accelerometer, GGIR, Wearables",
+    "research_stage": "Preprocessing, Analysis"
   }
 ]
