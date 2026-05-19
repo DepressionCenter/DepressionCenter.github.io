@@ -142,5 +142,21 @@
     "summary": "R package GGIR for raw accelerometer data analysis. A tool to process and analyse data collected with wearable raw acceleration sensors.",
     "keywords": "R, Accelerometer, GGIR, Wearables",
     "research_stage": "Preprocessing, Analysis"
+  },
+  {
+    "project": "What Stat?",
+    "url": "https://stats.oarc.ucla.edu/other/mult-pkg/whatstat/",
+    "authors": "Lapeer, James; UCLA: Statistical Consulting Group",
+    "summary": "Guidance for choosing the Correct Statistical Test in SAS, Stata, SPSS and R, with sample code.",
+    "keywords": "Statistics, Data Analysis, SAS, Stata, SPSS, R, Tutorials, Statistical Tests",
+    "research_stage": "Analysis"
+  },
+  {
+    "project": "QuantDev Methodology: Tutorials",
+    "url": "http://quantdev.ssri.psu.edu/tutorials",
+    "authors": "PennState Quantitative Developmental Systems Methodology Core",
+    "summary": "Many useful tutorials in R on statistical methodology including intensive longitudinal data (helpful for EMA and wearable data), multivariate analysis, growth and trajectory modeling, survival analysis, and more.",
+    "keywords": "Statistics, Data Analysis, Tutorials, Statistical Tests, R, Longitudinal Data, Multivariate Analysis, Growth Modeling, Trajectory Modeling, Survival Analysis",
+    "research_stage": "Analysis"
   }
 ]
