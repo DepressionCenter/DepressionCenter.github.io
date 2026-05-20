@@ -147,8 +147,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     }
     .header-logo-text .org {
       font-family: var(--mono);
-      font-size: 0.62rem;
-      color: var(--slate);
+      font-size: 0.7rem;
+      color: var(--slate-light);
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -1122,20 +1122,20 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       <p class="hero-desc">
         The Eisenberg Family Depression Center publishes open source tools, automations, and research workflows designed to accelerate mental health discoveries while remaining highly reusable across any research discipline. By reducing technical barriers and promoting interdisciplinary collaboration, we help researchers solve complex data problems without starting from zero.
       </p>
-      <div class="hero-stats" role="list" aria-label="Repository statistics">
-        <div class="stat" role="listitem">
+      <ul class="hero-stats" aria-label="Repository statistics">
+        <li class="stat">
           <span class="stat-num" id="stat-repos">24</span>
           <span class="stat-label">Repositories</span>
-        </div>
-        <div class="stat" role="listitem">
+        </li>
+        <li class="stat">
           <span class="stat-num">7K+</span>
           <span class="stat-label">Downloads</span>
-        </div>
-        <div class="stat" role="listitem">
+        </li>
+        <li class="stat">
           <span class="stat-num">GPL v3.0+</span>
           <span class="stat-label">Open Source License</span>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -1165,7 +1165,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
           <h2 class="section-heading" id="featured-heading">Featured Repositories</h2>
         </div>
         <div id="featured-grid" class="featured-grid" role="list" aria-label="Featured repositories">
-          <div class="loading-state" aria-live="polite" aria-label="Loading featured repositories">
+          <div class="loading-state" role="status" aria-live="polite" aria-label="Loading featured repositories">
             <div class="spinner" aria-hidden="true"></div>
             Loading featured repositories…
           </div>
@@ -1199,7 +1199,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       </div>
 
       <div id="repo-grid" class="repo-grid" role="list" aria-label="All repositories" aria-live="polite">
-        <div class="loading-state" aria-label="Loading all repositories">
+        <div class="loading-state" role="status" aria-label="Loading all repositories">
           <div class="spinner" aria-hidden="true"></div>
           Loading repositories…
         </div>
@@ -1315,7 +1315,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
   <!--  DETAIL PANEL -->
   <div id="panel-overlay" class="panel-overlay" aria-hidden="true"></div>
   <aside id="repo-panel" class="repo-panel" role="dialog" aria-modal="true"
-         aria-labelledby="panel-title" aria-hidden="true">
+         aria-labelledby="panel-title" aria-hidden="true" inert>
     <div class="panel-header">
       <h2 class="panel-title" id="panel-title">Repository Details</h2>
       <button class="panel-close" id="panel-close" aria-label="Close repository details">
@@ -1326,7 +1326,9 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         </svg>
       </button>
     </div>
-    <div class="panel-body" id="panel-body" aria-live="polite"></div>
+    <div class="panel-body" id="panel-body" aria-live="polite">
+      <p class="sr-only">Select a repository to view details.</p>
+    </div>
   </aside>
 
   <!-- VISUALLY HIDDEN UTILITY -->
@@ -1404,7 +1406,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       });
       return tags.slice(0, 7).map(t => {
         const safe = t.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-        return `<span class="lang-tag" aria-label="Tag: ${t}" data-tag="${safe}" role="button" tabindex="0">${t}</span>`;
+        return `<span class="lang-tag" aria-label="${t}" data-tag="${safe}" role="button" tabindex="0">${t}</span>`;
       }).join('');
     }
 
@@ -1423,7 +1425,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       return `
         <button class="featured-thumb card-panel-trigger" data-slug="${repo.slug}"
                 aria-label="View details for ${repo.name}">
-          <img src="${imgPath}" alt="" loading="lazy"
+          <img src="${imgPath}" alt="" role="presentation" loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <div class="thumb-placeholder" style="display:none" aria-hidden="true">
             <span class="thumb-monogram">${mono}</span>
@@ -1439,7 +1441,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       const mono = getMonogram(repo.name);
       return `
         <div class="panel-thumb-lg" aria-hidden="true">
-          <img src="${imgPath}" alt="" loading="lazy"
+          <img src="${imgPath}" alt="" role="presentation" loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <div class="thumb-placeholder" style="display:none">
             <span class="thumb-monogram">${mono}</span>
@@ -1480,7 +1482,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       el.innerHTML = featured.map(repo => `
         <article class="featured-card" role="listitem" aria-label="${repo.name} — featured repository">
           ${featuredThumbHtml(repo)}
-          <span class="featured-badge" aria-label="Featured">Featured</span>
+          <span class="featured-badge" aria-hidden="true">Featured</span>
           <div class="featured-body">
             <h3>
               <button class="card-title-btn card-panel-trigger" data-slug="${repo.slug}"
@@ -1607,7 +1609,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         ${labLinkHtml}
         <div class="repo-links">${repoLinksHtml(repo)}</div>
         
-        <div id="readme-content" class="panel-readme panel-loading" aria-live="polite">
+        <div id="readme-content" class="panel-readme panel-loading" aria-live="off">
           <div class="loading-state" style="padding:20px 0">
             <div class="spinner" aria-hidden="true"></div>
             Loading README…
@@ -1618,6 +1620,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
 
       lockBodyScroll();
       panel.classList.add('is-open');
+      panel.removeAttribute('inert');
       overlay.classList.add('is-open');
       panel.setAttribute('aria-hidden', 'false');
       overlay.setAttribute('aria-hidden', 'false');
@@ -1633,6 +1636,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
       const panel   = document.getElementById('repo-panel');
       const overlay = document.getElementById('panel-overlay');
       panel.classList.remove('is-open');
+      panel.setAttribute('inert', '');
       overlay.classList.remove('is-open');
       panel.setAttribute('aria-hidden', 'true');
       overlay.setAttribute('aria-hidden', 'true');
@@ -1702,11 +1706,13 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         
         // Simply replace the loading innerHTML with the parsed Markdown
         readmeContainer.classList.remove('panel-loading');
+        readmeContainer.setAttribute('aria-live', 'polite');
         readmeContainer.innerHTML = html;
-        
+
       } catch (err) {
         // Fallback state if the README fetch fails
         readmeContainer.classList.remove('panel-loading');
+        readmeContainer.setAttribute('aria-live', 'polite');
         readmeContainer.innerHTML = `<p>${repo.description || 'No description available.'}</p>`;
       }
     }
@@ -1791,7 +1797,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         t = t.trim();
         if (!t) return '';
         var safe = t.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-        return '<span class="oss-tag" data-tag="' + safe + '" role="button" tabindex="0">' + t + '</span>';
+        return '<span class="oss-tag" data-tag="' + safe + '" aria-label="' + t + '" role="button" tabindex="0">' + t + '</span>';
       }).join('');
     }
     function linkFormatter(cell) {
