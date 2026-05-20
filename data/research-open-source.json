@@ -17,16 +17,16 @@
   },
   {
     "project": "Memoiz",
-    "url": "https://github.com/faranalytics/memoiz",
-    "authors": "Adam Patterson",
+    "url": "https://github.com/far-analytics/memoiz",
+    "authors": "Adam Patterson, FAR Analytics Lab",
     "summary": "Memoiz provides a function decorator that adds memoization to a function or method. It makes reasonable assumptions about how and if to cache the return value of a function or method based on the arguments passed to the callable.",
     "keywords": "Memoization, Caching, Python",
     "research_stage": "Analysis"
   },
   {
     "project": "Flatten It",
-    "url": "https://github.com/faranalytics/flatten_iterables",
-    "authors": "Adam Patterson",
+    "url": "https://github.com/far-analytics/flatten_iterables",
+    "authors": "Adam Patterson, FAR Analytics Lab",
     "summary": "Flatten It uses iteration (no recursion) to flatten iterables into a dictionary where each key is a reference path and each value is the value at the respective path.",
     "keywords": "Array Flattening, Iterables, Python",
     "research_stage": "Preprocessing"
