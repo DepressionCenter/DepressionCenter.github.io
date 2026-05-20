@@ -39,6 +39,7 @@ Please see our Knowledge Base at:  [https://michmed.org/efdc-kb](https://michmed
 + [Marked](https://github.com/markedjs/marked). A markdown parser library, used here to render README.md files.
 + [DOMPurify](https://github.com/cure53/DOMPurify). An HTML sanitizer library, used here to help prevent XSS attacks from rendered markdown.
 + [GitHub REST API](https://docs.github.com/rest/about-the-rest-api/about-the-rest-api).
++ [Tabulator](https://www.tabulator.info/). A lightweight library for creating JavaScript tables and grids, featuring full support for digital accessibility standards.
 
 
 ## License
