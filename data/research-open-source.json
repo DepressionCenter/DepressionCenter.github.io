@@ -158,5 +158,45 @@
     "summary": "Many useful tutorials in R on statistical methodology including intensive longitudinal data (helpful for EMA and wearable data), multivariate analysis, growth and trajectory modeling, survival analysis, and more.",
     "keywords": "Statistics, Data Analysis, Tutorials, Statistical Tests, R, Longitudinal Data, Multivariate Analysis, Growth Modeling, Trajectory Modeling, Survival Analysis",
     "research_stage": "Analysis"
+  },
+  {
+    "project": "pJITAI Toolbox",
+    "url": "https://github.com/MIACollaborative/pJITAI-toolbox",
+    "authors": "MIA Collaborative, d3center",
+    "summary": "A no-code, web-based platform that guides health scientists through designing and deploying reinforcement learning-powered just-in-time adaptive interventions (JITAIs), making personalization accessible without advanced programming skills.",
+    "keywords": "Reinforcement Learning, JITAI, Just-in-Time Adaptive Intervention, Digital Health, mHealth, Intervention Design, Python",
+    "research_stage": "Study Design, Data Collection"
+  },
+  {
+    "project": "JustIn Reinforcement Learning API",
+    "url": "https://github.com/StatisticalReinforcementLearningLab/JustIn_RL_API",
+    "authors": "Statistical Reinforcement Learning Lab, d3center",
+    "summary": "A template for deploying decision-making algorithms, including reinforcement learning (RL) algorithms, in digital health interventions. Includes a demonstration implementation using a flat fixed probability mock RL algorithm.",
+    "keywords": "Reinforcement Learning, API, Digital Health, mHealth, Decision Algorithms, Intervention Deployment, Python",
+    "research_stage": "Data Collection, Analysis"
+  },
+  {
+    "project": "Pilot SMART Sample Size Shiny App",
+    "url": "https://d3center.shinyapps.io/SMART_Pilot_Sample_Size/",
+    "authors": "Jamie Yap, d3center",
+    "summary": "A Shiny app for sample size planning for a pilot Sequential Multiple Assignment Randomized Trial (SMART). Accompanied by a tutorial video (https://youtu.be/4F--UR3G2-c) and slide deck (https://cdn.prod.website-files.com/63f5227ac421a40a91184418/65d4f64309e69136c30325f0_Slides_Module6_CATIE.pdf).",
+    "keywords": "Sample Size, SMART, Sequential Multiple Assignment Randomized Trial, Shiny, R, Study Design, Power",
+    "research_stage": "Study Design"
+  },
+  {
+    "project": "MRT Binary Outcome Sample Size/Power Tool",
+    "url": "https://d3c.isr.umich.edu/software/calculate-the-sample-size-or-power-for-a-micro-randomized-trial-mrt-with-a-binary-proximal-outcome/",
+    "authors": "d3center",
+    "summary": "Web tool to calculate sample size or power for a Micro-Randomized Trial (MRT) with a binary proximal outcome.",
+    "keywords": "Sample Size, Power, Micro-Randomized Trial, MRT, Binary Outcome, Study Design",
+    "research_stage": "Study Design"
+  },
+  {
+    "project": "MRT Continuous Outcome Sample Size/Power Tool",
+    "url": "https://d3c.isr.umich.edu/software/calculate-the-sample-size-and-power-for-a-micro-randomized-trial-with-a-continuous-proximal-outcome/",
+    "authors": "d3center",
+    "summary": "Web tool to calculate sample size and power for a Micro-Randomized Trial (MRT) with a continuous proximal outcome.",
+    "keywords": "Sample Size, Power, Micro-Randomized Trial, MRT, Continuous Outcome, Study Design",
+    "research_stage": "Study Design"
   }
 ]
