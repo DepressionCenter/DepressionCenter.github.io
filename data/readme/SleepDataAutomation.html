@@ -1,0 +1,101 @@
+<div class="panel-thumb-lg" aria-hidden="true"><img src="images/repo-previews/SleepDataAutomation.png" alt="" loading="lazy" /></div>
+<div class="panel-lab"><span class="panel-lab-label">Lab/Team:</span> <a href="https://medschool.umich.edu/departments/psychiatry/psychiatry-programs/sleep-circadian-rhythms" target="_blank" rel="noopener">Sleep &amp; Circadian Research Laboratory</a></div>
+<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/SleepDataAutomation" target="_blank" rel="noopener" aria-label="View SleepDataAutomation on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/sleepdata" target="_blank" rel="noopener" aria-label="SleepDataAutomation website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://michmed.org/sleepdata" target="_blank" rel="noopener" aria-label="SleepDataAutomation documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">Sleep Data Automation™</h2></div>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
+<p dir="auto">Automated sleep data cleanup and processing to harmonize Fitbit data obtained via Fitabase with self-reported sleep diary entries sent via SMS-to-Email. This project uses Microsoft Power Automate for processing sleep diary entries in a shared mailbox, and Excel / Power Query for loading and cleaning sleep stages and HRV data.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">What this automation does:</h4></div>
+<ul dir="auto">
+<li>Parse sms-to-email messages to get a list of sleep markers (self-reported sleep/wake times) into a spreadsheet</li>
+<li>Decipher the correct sleep/wake times based on sleep stages from Fitabase (because Fitbit includes time in bed before and after sleep sometimes)</li>
+<li>Identify the main sleep episode and filter out naps, based on configurable settings (longest duration, latest sleep episode, etc.)</li>
+<li>From that, get the correct total time asleep, time awake, time in bed, and other measures</li>
+<li>Use the calculated sleep/wake times to get the correct HRV values falling only inside that time window, and calculate averages for RMSSD/HF/LF</li>
+<li>Combine sleep stages, HRV and email markers (sleep diary)</li>
+<li>Optionally, adjust the sleep/wake up times based on self-reported times automatically when actual vs self-reported differ by a certain number of minutes</li>
+<li>Option to enter manual time adjustments in an override file, which will will override both Fitbit and self-reported times</li>
+<li>Present everything in a single sheet with one row per participant, per day, per sleep episode</li>
+<li>Show a weekly summary with a drop-down to select the study participant and the week</li>
+</ul>
+<p dir="auto"><a target="_blank" href="https://github.com/DepressionCenter/SleepDataAutomation/blob/main/images/SleepDataAutomation-Screenshot.png?raw=true" rel="nofollow noopener noreferrer"><img src="https://github.com/DepressionCenter/SleepDataAutomation/raw/main/images/SleepDataAutomation-Screenshot.png?raw=true" alt="Sleep Data Automation Output Screenshot" title="Sleep Data Automation Output Example"></a></p>
+<p dir="auto"><a target="_blank" href="https://github.com/DepressionCenter/SleepDataAutomation/blob/main/images/SleepDataAutomation-WeeklySummary-Screenshot.png?raw=true" rel="nofollow noopener noreferrer"><img src="https://github.com/DepressionCenter/SleepDataAutomation/raw/main/images/SleepDataAutomation-WeeklySummary-Screenshot.png?raw=true" alt="Sleep Data Automation Weekly Summary Screenshot" title="Sleep Data Automation Weekly Summary Example"></a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
+<ul dir="auto">
+<li>Download the Excel-PowerQuery directory</li>
+<li>Save your Fitbit, sleep markers, and sleep override files to the CSV directory</li>
+<li>Open CleanSleepData.xlsx, adjust the parameters in Power Query, and refresh all data</li>
+<li>To use sms-to-email sleep markers, import the Power Automate zip file into your Power Automate environment, adjust the mailbox name and output location for OneDrive, and create the needed directories in the mailbox</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
+<p dir="auto">Documentation for this project is available at the Eisenberg Family Depression Center's <a target="_blank" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=11822" rel="nofollow noopener noreferrer">Knowledge Base</a>.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Detailed Setup</h4></div>
+<ul dir="auto">
+<li>Download the Excel-PowerQuery directory.</li>
+<li>Login to Fitabase, and create a "merged" export that includes 30-second sleep stages and 5-minute HRV. Be sure to click the "merge" checkbox so all participants are included in one file per measure.</li>
+<li>Download and unzip the export, and place the two CSV files in the Excel-PowerQuery\CSV sub-directory.</li>
+<li>Open CleanSleepData.xlsx in Excel. Alternatively, load CleanSleepData-PowerQuery.odc in PowerBI Desktop.</li>
+<li>In Excel, right-click on the data table and select Table -&gt; Edit Query to open Power Query.</li>
+<li>Find the CSV-Directory parameter and enter your local path to the CSV sub-directory.</li>
+<li>Adjust the other optional parameters for automatically adjusting times based on sleep diary entries, how to identify main sleep vs naps, etc.</li>
+<li>Click Refresh Preview. If there are no errors, click File -&gt; Save and Load.</li>
+<li>In Excel, under the Data ribbon, click Refresh All.</li>
+<li>The data table will now have a row for every participant, per day, with measures such as sleep start/end times, sleep duration, and average RMMSD / HF / LF.</li>
+<li>To use sleep markers, setup a shared mailbox to which participants can send an SMS/MMS message. Participants should send a text to that email address with the format "ParticipantID sleep" upon going to sleep, and "ParticipantID wake" upon waking up.</li>
+<li>In the shared mailbox, create two top-level folders called "Data-Processed" and "Data-Failed". Power Automate will automatically move emails to one of these folders after processing. Anything under Data-Failed will need to be processed manually.</li>
+<li>Login to OneDrive for Business (if you are a Michigan Medicine user, login using your level-2 credentials). Create a folder called EmailSleepMarkers or similar. In this project, we use a mailbox called "sleeptimes@....edu" so the folder is called EmailSleepMarkers-SleepTimesMailbox. Upload the sample EmailSleepMakers.xlsx spreadsheet to this folder, and clear all rows except the headers.</li>
+<li>Login to <a target="_blank" href="https://make.powerautomate.com" rel="nofollow noopener noreferrer">Power Automate</a> (if you are a Michigan Medicine user, login using your level-2 credentials). Go to My Flows -&gt; Import -&gt; Import Package (Legacy) and upload a copy of ParseMessagesInSleepTimesMailbox.zip (from the PowerAutomate\packages sub-dirctory). When prompted, enter your credentials to connect to OneDrive and Outlook.</li>
+<li>Once imported, edit the flow and change the shared mailbox email address in the 2nd step, under "Set Shared Mailbox Address Here." Then scroll down to the last step, and change the path to your EmailSleepMarkers.xlsx spreadsheet (saved to OneDrive) under the step titled "Add a row into a table."</li>
+<li>Enable the flow. By default it will run every 30 minutes and process 25 emails at a time. Do not run it more often than this to avoid being throttled by the Microsoft Graph API.</li>
+<li>Emails will be processed and saved to the spreadsheet in OneDrive. Once a week, copy the spreadsheet from OneDrive and place it in the CSV sub-directory. Refresh the data, and the sleep markers will show alongside the sleep and HRV data.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
+<ul dir="auto">
+<li>Mobile Technologies KB Article - <a target="_blank" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/?CategoryID=847" rel="nofollow noopener noreferrer">Sleep Data Automation: Overview</a></li>
+<li>Mobile Data Expert Network (MDEN) - <a target="_blank" href="https://github.com/DepressionCenter/MDEN" rel="nofollow noopener noreferrer">MDEN Code Repository</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">About the Team</h3></div>
+<p dir="auto">The Mobile Technologies Core provides investigators across the University of Michigan the support and guidance needed to utilize mobile technologies and digital mental health measures in their studies. Experienced faculty and staff offer hands-on consultative services to researchers throughout the University – regardless of specialty or research focus.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Contact</h3></div>
+<p dir="auto">To get in touch, contact the individual developers in the check-in history.</p>
+<p dir="auto">If you need assistance identifying a contact person, email the EFDC's Mobile Technologies Core at: <a href="mailto:efdc-mobiletech@umich.edu" rel="nofollow noopener noreferrer">efdc-mobiletech@umich.edu</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Credits</h3></div>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Contributors:</h5></div>
+<div class="markdown-heading" dir="auto"><h6 class="heading-element" dir="auto">Eisenberg Family Depression Center <a target="_blank" href="https://github.com/DepressionCenter/" rel="nofollow noopener noreferrer">(@DepressionCenter)</a>:</h6></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://depressioncenter.org/become-member/our-members/cathygo" rel="nofollow noopener noreferrer">Dr. Cathy Goldstein, M.D., M.S.</a></li>
+<li><a target="_blank" href="https://gabriel.mongefranco.com/" rel="nofollow noopener noreferrer">Gabriel Mongefranco</a> <a target="_blank" href="https://github.com/gabrielmongefranco" rel="nofollow noopener noreferrer">(@gabrielmongefranco)</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h6 class="heading-element" dir="auto"><a target="_blank" href="https://medicine.umich.edu/dept/psychiatry/programs/sleep/sleep-circadian-research-laboratory" rel="nofollow noopener noreferrer">Sleep and Circadian Research Laboratory</a>:</h6></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://medicine.umich.edu/dept/psychiatry/helen-burgess-phd" rel="nofollow noopener noreferrer">Dr. Helen J. Burgess, Ph.D.</a></li>
+<li><a target="_blank" href="https://www.linkedin.com/in/muneer-rizvydeen-b3b26254?original_referer=https%3A%2F%2Fdepressioncenter.org" rel="nofollow noopener noreferrer">Moony Rizvydeen</a></li>
+<li><a target="_blank" href="https://mcommunity.umich.edu/person/fzainab" rel="nofollow noopener noreferrer">Zainab Fayyaz</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">This work is based in part on the following projects, libraries and/or studies:</h5></div>
+<ul dir="auto">
+<li>"IBD-Sleep: A Pilot Study Looking at Changes in Sleep Timing and IBD Symptoms." Principal investigator: <a target="_blank" href="https://medicine.umich.edu/dept/psychiatry/helen-burgess-phd" rel="nofollow noopener noreferrer">Helen J. Burgess, Ph.D.</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">License</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Copyright Notice</h4></div>
+<p dir="auto">Sleep Data Automation™ is a trademark of the The Regents of the University of Michigan.
+Copyright © 2024-2026 The Regents of the University of Michigan.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Software and Library License</h4></div>
+<p dir="auto">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p dir="auto">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p dir="auto">You should have received a copy of the GNU General Public License along with this program. If not, see <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/gpl-3.0-standalone.html</a>.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Documentation License</h4></div>
+<p dir="auto">Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+You should have received a copy of the license included in the section entitled "GNU
+Free Documentation License". If not, see <a target="_blank" href="https://www.gnu.org/licenses/fdl-1.3-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/fdl-1.3-standalone.html</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Citation</h3></div>
+<p dir="auto">If you find this repository, code or paper useful for your research, please cite it.</p>
+<blockquote>
+<p dir="auto"><em>Mongefranco, Gabriel; Rizvydeen, Moony; Fayyaz, Zainab; Burgess, Helen; Goldstein, Cathy (2024). Sleep Data Automation™. University of Michigan. Software. <a target="_blank" href="https://michmed.org/sleepdata" rel="nofollow noopener noreferrer">https://michmed.org/sleepdata</a></em><br>
+​​​​​​​&nbsp; &nbsp; &gt;<em>DOI: 10.6084/m9.figshare.25669173.v1</em></p>
+</blockquote>
+<hr>
+<p dir="auto">Copyright © 2024-2026 The Regents of the University of Michigan</p></div>
+<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/SleepDataAutomation" target="_blank" rel="noopener" aria-label="View SleepDataAutomation on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/sleepdata" target="_blank" rel="noopener" aria-label="SleepDataAutomation website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://michmed.org/sleepdata" target="_blank" rel="noopener" aria-label="SleepDataAutomation documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>

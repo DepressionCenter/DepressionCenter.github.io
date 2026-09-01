@@ -1,0 +1,171 @@
+<div class="panel-thumb-lg" aria-hidden="true"><img src="images/repo-previews/ShareR.png" alt="" loading="lazy" /></div>
+<div class="panel-lab"><span class="panel-lab-label">Lab/Team:</span> <a href="https://depressioncenter.org/mobiletech" target="_blank" rel="noopener">Mobile Technologies Core</a></div>
+<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/ShareR" target="_blank" rel="noopener" aria-label="View ShareR on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR&amp;script=/EMA-CleanR.rmd" target="_blank" rel="noopener" aria-label="ShareR demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Demo</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="ShareR documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">ShareR™</h2></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto"><em>Share your science. R in the browser, nothing to install.</em></h4></div>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
+<p dir="auto">ShareR™ runs R and R Markdown scripts entirely inside a web browser. There is no server, no R installation, and no setup. Point it at a GitHub repository, add your own data files, and press Run.</p>
+<p dir="auto"><a target="_blank" href="https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR" title="View live demo of ShareR" rel="nofollow noopener noreferrer"><img src="./images/ShareR-preview-2.png" alt="Preview Image" title="ShareR Preview"></a></p>
+<p dir="auto">ShareR™ lets you run an R analysis right in your web browser, no installation required. Share a link to your R script or R Markdown file on GitHub, and anyone can open it, add their own data, and run it instantly, even on a locked-down work laptop where they can't install software.</p>
+<p dir="auto">Everything happens on your computer. Your files are never uploaded anywhere, and there's no server behind ShareR that could receive them. When you run an analysis, you'll see the results build in real time: charts, tables, and any files the script creates, all wrapped up into a report you can view right away or download as a package to keep.</p>
+<p dir="auto">For research teams, that means anyone on the project can run the same analysis the same way, without needing R installed or any technical setup, just a link and a browser.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
+<p dir="auto"><strong>Run someone else's analysis</strong></p>
+<ol dir="auto">
+<li>Open ShareR with the repository in the URL:
+<a target="_blank" href="https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR" title="View live demo of ShareR" rel="nofollow noopener noreferrer"><code>https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR</code></a></li>
+<li>Wait for the one-time download of the R engine and packages. The script will run automatically using the sample data file(s) included in the repository.</li>
+<li>You can also replace the data files with your own in the Workspace panel, then click the yellow Run button. ShareR will use your files instead of the sample data, and regenerate the report tab.</li>
+<li>Read the report, then press <strong>Download all outputs</strong> to get a ZIP with the report, the generated files, the console log, and a run manifest.</li>
+</ol>
+<p dir="auto"><strong>Run your own script without a repository</strong></p>
+<ol dir="auto">
+<li>Open <a target="_blank" href="https://code.depressioncenter.org/ShareR/" title="View live demo of ShareR" rel="nofollow noopener noreferrer"><code>https://code.depressioncenter.org/ShareR/</code></a> with no parameters.</li>
+<li>Drop in your <code>.R</code> or <code>.Rmd</code> file together with its data files, or drop a whole folder.</li>
+<li>Press <strong>Run analysis</strong>.</li>
+</ol>
+<p dir="auto"><strong>Run it locally</strong></p>
+<ol dir="auto">
+<li>Clone or download this repository.</li>
+<li>Run <code>.\run-windows.ps1</code> (Windows), <code>./run-linux.sh</code> (Linux), or double-click <code>run-mac.command</code> (macOS). These wrap the bundled <a target="_blank" href="https://github.com/DepressionCenter/ZippyServe" rel="nofollow noopener noreferrer">ZippyServe</a> binary, so nothing has to be installed.</li>
+<li>Your browser opens to <code>http://localhost:8010</code>.</li>
+</ol>
+<p dir="auto"><strong>Share your script with others</strong></p>
+<ol dir="auto">
+<li>Publish your repository on GitHub, then share the link to ShareR with the <code>?repo=Owner/RepoName</code> parameter. For example, <code>https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR</code> runs the reference workflow in the <code>DepressionCenter/EMA-CleanR</code> repository.</li>
+<li>If your repository contains multiple scripts, ShareR will list them and let the user choose which one to run. If you want to be explicit about which script is the entry point, add a <code>&amp;script=</code> parameter to the URL, followed by the path to the script (relative to the repository root). Example: <code>https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR&amp;script=EMA-CleanR.rmd</code>.</li>
+<li>If your script references sample data files, and you have those in your repo, it will run with the sample data. You can also specify which data files to use by adding a <code>&amp;data=</code> parameter to the URL, followed by a comma-separated list of file names (relative to the repository root). Example: <code>https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR&amp;script=EMA-CleanR.rmd&amp;data=EMA-Data.csv</code>.</li>
+<li>Share the link with your colleagues, and they can run the analysis in their own browser, with their own data files, without installing anything!</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
+<ul dir="auto">
+<li>The full documentation is available at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">https://michmed.org/efdc-kb</a></li>
+<li>Technical specification: <a href="docs/ShareR-Technical-Specification.md" rel="nofollow noopener noreferrer"><code>docs/ShareR-Technical-Specification.md</code></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Setting Up and Using ShareR</h4></div>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Putting Up Your Own Copy</h5></div>
+<ol dir="auto">
+<li>Fork or copy this repository.</li>
+<li>In your repository's <strong>Settings &gt; Pages</strong>, choose to publish from the <code>main</code> branch, root folder. Make sure <strong>Enforce HTTPS</strong> is turned on.</li>
+<li>Add your organization's name to <code>CONFIG.TRUSTED_OWNERS</code> in <code>index.html</code>, so that repositories you publish don't show visitors an "unknown author" warning.</li>
+<li>That's it. There's no build step, no software to install, nothing to compile. Whatever is in the repository is exactly what gets published.</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Requirements and Configuration</h4></div>
+<p dir="auto"><strong>For users:</strong> a current version of Chrome, Edge, Firefox, or Safari with WebAssembly enabled. Roughly 300 MB of free browser storage for the cached R engine and packages. No account, no login, no API key.</p>
+<p dir="auto"><strong>URL parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repo</code></td>
+<td><code>Owner/RepoName</code> of a public GitHub repository, or a full GitHub/GitLab/Bitbucket repository URL</td>
+<td>none, which starts ShareR in upload mode</td>
+</tr>
+<tr>
+<td><code>ref</code></td>
+<td>Branch, tag, or commit SHA. <code>branch</code> is accepted as an alias.</td>
+<td>the repository's default branch (main)</td>
+</tr>
+<tr>
+<td><code>entry</code> or <code>script</code></td>
+<td>Path to the script to run or the URL to the script (if not using a repository)</td>
+<td>auto-detected (when using a repository)</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">ShareR always runs the script automatically once it and its files are staged; use the <strong>Run</strong> button to run again manually.</p>
+<p dir="auto"><strong>For repository authors:</strong> nothing is required. Optionally, include sample data for your script in your repo (preferably in a <code>data/</code> folder). Any files referenced by your script and hosted in the same repository will be loaded automatically.</p>
+<p dir="auto"><strong>For maintainers:</strong> all configuration lives in a single frozen <code>CONFIG</code> object at the top of <code>index.html</code>, including the pinned webR version, the package repository URL, size limits, and the trusted-owner allowlist. There are no secrets, no environment variables, and no build step. Editing <code>WEBR_VERSION</code> is the only supported way to upgrade the R engine, and doing so automatically invalidates the old cache.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Privacy, Security, and Accessibility</h4></div>
+<p dir="auto"><strong>Where your data goes:</strong> nowhere but your own computer. Files you open in ShareR are only ever processed inside your browser. They are never uploaded, and there is no server on the other end that could receive them, even if it wanted to. ShareR is built so that it technically cannot send your files out, and it doesn't use analytics or tracking cookies either.</p>
+<p dir="auto"><strong>What ShareR does reach out for:</strong> when you point it at a GitHub repository, it does contact GitHub to fetch that repository's files, which means GitHub can see which project you're running, the same as it would if you visited that page in your browser. ShareR also downloads the R software itself the first time you use it. None of this ever includes your own data. If you'd rather ShareR make no outside requests at all, you can use it with files from your computer once the R software is already cached.</p>
+<p dir="auto"><strong>On compliance:</strong> Always check with your IRB and your organization's cybersecurity or information assurance team before using this application with PHI or confidential data.</p>
+<p dir="auto"><strong>A note on running other people's code:</strong> ShareR can open and run any public GitHub repository. The code always runs safely inside your browser and can't reach the rest of your computer, but it can read any file you personally add to the page.</p>
+<p dir="auto"><strong>Accessibility:</strong> ShareR is built to work well with screen readers, keyboard-only navigation, and other assistive technology, aiming to meet the WCAG 2.2 AA accessibility standard.</p>
+<p dir="auto"><strong>A few things ShareR can't do yet:</strong></p>
+<ul dir="auto">
+<li>Only R packages that have a browser-compatible version available can be used. If a script needs one that isn't available, ShareR will display an error message, but will give you the option to try running the script anyway without the missing packages.</li>
+<li>Your browser has a limited amount of memory, so very large datasets combined with many packages may not fit.</li>
+<li>Private (non-public) GitHub repositories aren't supported directly. Use the drag-and-drop upload option instead. ShareR never asks for, and never stores, any GitHub login or access credentials.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://depressioncenter.org" rel="nofollow noopener noreferrer">Eisenberg Family Depression Center</a></li>
+<li><a target="_blank" href="https://code.depressioncenter.org" rel="nofollow noopener noreferrer">EFDC open source projects</a></li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/EMA-CleanR" rel="nofollow noopener noreferrer">EMA-CleanR</a>, the reference workflow</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/ZippyServe" rel="nofollow noopener noreferrer">ZippyServe</a>, the bundled local web server</li>
+<li><a target="_blank" href="https://docs.r-wasm.org/webr/latest/" rel="nofollow noopener noreferrer">webR documentation</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">About the Team</h3></div>
+<p dir="auto">The <a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">Mobile Technologies Core</a> provides investigators across the University of Michigan the support and guidance needed to utilize mobile technologies and digital mental health measures in their studies. Experienced faculty and staff offer hands-on consultative services to researchers throughout the University – regardless of specialty or research focus.</p>
+<p dir="auto">Learn more at: <a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">https://depressioncenter.org/mobiletech</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Contact</h3></div>
+<p dir="auto">To get in touch, contact the individual developers in the check-in history.</p>
+<p dir="auto">If you need assistance identifying a contact person, email the EFDC's Mobile Technologies Core at: <a href="mailto:efdc-mobiletech@umich.edu" rel="nofollow noopener noreferrer">efdc-mobiletech@umich.edu</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Credits</h3></div>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Authors:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://gabriel.mongefranco.com" rel="nofollow noopener noreferrer">Gabriel Mongefranco</a> <a target="_blank" href="https://github.com/gabrielmongefranco" rel="nofollow noopener noreferrer">(@gabrielmongefranco)</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Contributors:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://depressioncenter.org" rel="nofollow noopener noreferrer">Eisenberg Family Depression Center</a> <a target="_blank" href="https://github.com/DepressionCenter" rel="nofollow noopener noreferrer">(@DepressionCenter)</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">This work is based in part on the following projects, libraries and/or studies:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://github.com/r-wasm/webr" rel="nofollow noopener noreferrer">webR</a> - "The statistical language R compiled to WebAssembly via Emscripten, for use in web browsers and Node," by George Stagg and Lionel Henry. Runs the R and R Markdown scripts entirely inside the browser; it is ShareR's execution engine. License: GPL-3.</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/DataLaVista" rel="nofollow noopener noreferrer">DataLaVista™</a> - A lightweight, client-side reporting and dashboard toolkit. This project re-uses some of the CORS proxy fallback functions and UI design ideas.</li>
+<li><a target="_blank" href="https://github.com/101arrowz/fflate" rel="nofollow noopener noreferrer">fflate</a> - "High performance (de)compression in an 8kB package." Builds the downloadable ZIP archive of a run's output files, rendered report, execution log, manifest, and source script. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/nodeca/js-yaml" rel="nofollow noopener noreferrer">js-yaml</a> - "JavaScript YAML parser and dumper. Very fast." Parses an <code>.Rmd</code> file's YAML front matter (title, <code>params</code>, output options). License: MIT.</li>
+<li><a target="_blank" href="https://github.com/markedjs/marked" rel="nofollow noopener noreferrer">marked</a> - "A markdown parser and compiler. Built for speed." Renders the Markdown prose in <code>.Rmd</code> chunks to HTML for the Report tab. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/cure53/DOMPurify" rel="nofollow noopener noreferrer">DOMPurify</a> - "A DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG." Sanitizes that rendered HTML before it is ever inserted into the page - the app's one deliberate <code>innerHTML</code> assignment. License: Apache-2.0 or MPL-2.0 (dual-licensed).</li>
+<li><a target="_blank" href="https://github.com/FIameCaster/prism-code-editor" rel="nofollow noopener noreferrer">prism-code-editor</a> - "Lightweight, extensible code editor component for the web using Prism." Powers the syntax-highlighted R/R Markdown script editor. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/dolanmiu/docx" rel="nofollow noopener noreferrer">docx</a> - "Easily generate and modify .docx files with JS/TS with a nice declarative API. Works for Node and on the Browser." Builds the downloadable Word export of a rendered report. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/gitbrent/PptxGenJS" rel="nofollow noopener noreferrer">PptxGenJS</a> - "Build PowerPoint presentations with JavaScript. Works with Node, React, web browsers, and more." Builds the downloadable PowerPoint export of a rendered report. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/exceljs/exceljs" rel="nofollow noopener noreferrer">ExcelJS</a> - "Excel Workbook Manager." Builds the downloadable Excel workbook export of a run's output tables. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/parallax/jsPDF" rel="nofollow noopener noreferrer">jsPDF</a> - "Client-side JavaScript PDF generation for everyone." Builds the downloadable PDF export of a rendered report. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/simonbengtsson/jsPDF-AutoTable" rel="nofollow noopener noreferrer">jsPDF-AutoTable</a> - "jsPDF plugin for generating PDF tables with javascript." Renders output tables inside the PDF exports jsPDF produces. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/twbs/icons" rel="nofollow noopener noreferrer">Bootstrap Icons</a> - "Official open source SVG icon library for Bootstrap with over 2,000 icons." Most icons in ShareR's interface are inline SVG path data copied from this library; there is no icon font or runtime request. License: MIT.</li>
+<li><a target="_blank" href="https://github.com/fstpackage/fst" rel="nofollow noopener noreferrer">fst</a>, <a target="_blank" href="https://github.com/fstpackage/fstcore" rel="nofollow noopener noreferrer">fstcore</a>, and <a target="_blank" href="https://github.com/fstpackage/fstlib" rel="nofollow noopener noreferrer">fstlib</a> - "Lightning Fast Serialization of Data Frames for R" (<a target="_blank" href="https://github.com/fstpackage/fst" rel="nofollow noopener noreferrer">fst</a>), its "R bindings to the fstlib library" (<a target="_blank" href="https://github.com/fstpackage/fstcore" rel="nofollow noopener noreferrer">fstcore</a>), and the underlying "C++ library for lightning fast multi-threaded serialization of tabular data" (<a target="_blank" href="https://github.com/fstpackage/fstlib" rel="nofollow noopener noreferrer">fstlib</a>). These libraries are cross-compiled for WebR and included here as they do not exist (yet) in official r-wasm repositories; see <a href="build/fst/build-fst.ps1" rel="nofollow noopener noreferrer"><code>build/fst/build-fst.ps1</code></a>. License: AGPL-3.</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/ZippyServe" rel="nofollow noopener noreferrer">ZippyServe</a> - A zero-dependency local web server. It lets you test single-page apps quickly. It serves directories, zips, HTML, and Markdown. It powers ShareR's <code>run-windows.ps1</code>/<code>run-linux.sh</code>/<code>run-mac.command</code> scripts so the app can be served locally without installing a full web server. License: GPL-3.0 or later. DOI: <a target="_blank" href="https://doi.org/10.5281/zenodo.21613944" rel="nofollow noopener noreferrer">10.5281/zenodo.21613944</a>.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Library and Package Repositories</h5></div>
+<p dir="auto">The following public repositories are used to download JavaScript, R and WebAssembly libraries and packages:</p>
+<ul dir="auto">
+<li><a target="_blank" href="https://www.jsdelivr.com/" rel="nofollow noopener noreferrer">jsDelivr</a> - "A free CDN for open source projects." Serves webR and most JavaScript libraries listed previously at pinned versions.</li>
+<li><a target="_blank" href="https://webr.r-wasm.org/" rel="nofollow noopener noreferrer">webr.r-wasm.org</a> - Hosts the compiled webR WebAssembly runtime binaries that the browser downloads on first run.</li>
+<li><a target="_blank" href="https://repo.r-wasm.org/" rel="nofollow noopener noreferrer">repo.r-wasm.org</a> - "A CRAN-like repository hosted via CDN that provides pre-compiled R packages for WebAssembly." The primary repository webR's <code>install()</code> uses to fetch R packages a script requests.</li>
+<li><a target="_blank" href="https://tidyverse.r-universe.dev/" rel="nofollow noopener noreferrer">tidyverse.r-universe.dev</a> - An <a target="_blank" href="https://github.com/r-universe-org" rel="nofollow noopener noreferrer">R-universe</a> package-distribution repository, consulted as a fallback source for WebAssembly package binaries not found on repo.r-wasm.org.</li>
+<li><a target="_blank" href="https://fstpackage.r-universe.dev/" rel="nofollow noopener noreferrer">fstpackage.r-universe.dev</a> - Another R-universe repository, consulted as the same kind of fallback source.</li>
+<li><a target="_blank" href="https://github.com/r-wasm/webr/pkgs/container/webr" rel="nofollow noopener noreferrer">ghcr.io/r-wasm/webr</a> - A Docker container image maintained by the webR project, pre-loaded with the Emscripten toolchain and <code>rwasm</code> needed to cross-compile R packages to WebAssembly. Used only by <a href="build/fst/build-fst.ps1" rel="nofollow noopener noreferrer"><code>build/fst/build-fst.ps1</code></a> at build time, not by the running app, to compile the fst/fstcore/fstlib packages listed previously.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">License</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Copyright Notice</h4></div>
+<p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Software and Library License Notice</h4></div>
+<p dir="auto">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p dir="auto">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p dir="auto">You should have received a copy of the GNU General Public License along with this program. If not, see <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/gpl-3.0-standalone.html</a>.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Documentation License Notice</h4></div>
+<p dir="auto">Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+You should have received a copy of the license included in the section entitled "GNU
+Free Documentation License". If not, see <a target="_blank" href="https://www.gnu.org/licenses/fdl-1.3-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/fdl-1.3-standalone.html</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Citation</h3></div>
+<p dir="auto">If you find this repository, code or paper useful for your research, please cite it.</p>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Citation Example:</h5></div>
+<blockquote>
+<p dir="auto"><em>Mongefranco, Gabriel (2026). ShareR. University of Michigan. Software. <a target="_blank" href="https://github.com/DepressionCenter/ShareR" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/ShareR</a></em><br>
+​​​​​​​&nbsp; &nbsp;  <em>DOI: <a target="_blank" href="https://doi.org/10.5281/zenodo.21812997" rel="nofollow noopener noreferrer">10.5281/zenodo.21812997</a></em></p>
+</blockquote>
+<hr>
+<p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p></div>
+<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/ShareR" target="_blank" rel="noopener" aria-label="View ShareR on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://code.depressioncenter.org/ShareR/?repo=DepressionCenter/EMA-CleanR&amp;script=/EMA-CleanR.rmd" target="_blank" rel="noopener" aria-label="ShareR demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Demo</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="ShareR documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>

@@ -3,3 +3,7 @@ __pycache__/
 
 # Ignore pyc files
 *.pyc
+
+# Ignore local Python virtual environments
+.venv/
+venv/

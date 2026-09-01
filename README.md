@@ -3,13 +3,15 @@
 # Eisenberg Family Depression Center: Open Source Projects
 
 ## About
-This repository contains the code for the landing webpage for the Eisnberg Family Depression Center's code repository: [https://code.depressioncenter.org](https://code.depressioncenter.org). This site creates a grid of all our public repos through the GitHub API, including custom properties such as lab name and URL, DOI#, documentation URL, etc. When users click on a tile, a side panel opens, wich gets the README.md file for that repository in real time and renders it inside the side panel.
+This repository contains the code for the landing webpage for the Eisenberg Family Depression Center's code repository: [https://code.depressioncenter.org](https://code.depressioncenter.org).
+
+A nightly GitHub Action reads all our public repos through the GitHub API, including custom properties such as lab name and URL, documentation URL, and whether a repo is featured. It writes finished HTML into this repository, so search engines and visitors without JavaScript see every repository description and README. Each repo also gets its own page under `/repos/`. When users click a tile, a side panel opens with the same content, loaded from a file built ahead of time.
 
 ## Quick Start Guide
-+ To re-use the code, you will need to either [fork](https://github.com/DepressionCenter/DepressionCenter.github.io/fork) the repo or download and edit index.html and upload to your web server.
-+ If you would like to use GitHub Pages for free web hosting, simply [fork](https://github.com/DepressionCenter/DepressionCenter.github.io/fork) this repo and make your changes to index.html there. Keep the ".nojekyll" file to avoid having to run GitHub Actions.
-+ In the "index.html" file, change "DepressionCenter" to your GitHub organization (or user ID). You can also change the "fallback" data at the bottom of the script to use in case a browser is unable to reach the GitHub API.
-+ Images must be stored under /images/repo-previews. Each file needs to match the name of the repo exactly (including upper case and lower case letters) plus ".png" for the larger image, or "-thumb.png" for the thumbnail image (400x125px). Both images must have a 16:9 aspect ratio.
++ **index.html is generated. Do not edit it.** Edit `templates/index.html`, `templates/repo.html`, `styles/site.css`, or `scripts/site.js` instead, then run the build.
++ To build the site yourself: `pip install -r requirements.txt`, then `python scripts/build_site.py`. No GitHub account or token is needed. See [how to run the build locally](docs/how-to/run-the-build-locally.md).
++ To re-use this for your own organization, [fork](https://github.com/DepressionCenter/DepressionCenter.github.io/fork) the repo and change `ORG` and `SITE_BASE_URL` at the top of `scripts/build_site.py`. Keep the ".nojekyll" file.
++ Preview images can live in the repo they describe, as `images/Repo-preview.png` (912x513) and `images/Repo-preview-thumb.png` (360x202). If a repo has none, add them here under `/images/repo-previews/`, named to match the repo exactly, including capital letters. Both must be 16:9. See [how to add a repository preview image](docs/how-to/add-a-repo-preview-image.md).
 + Please remove the copyright notice in the code, especially if you are not affiliated with University of Michigan. However, the license notice at the top of the file (in HTML comments) must remain there, as the code is licensed under the GPLv3.0 or later license.
 
 ## Where are the repos located?
@@ -19,6 +21,8 @@ Please see our GitHub site at:  [https://github.com/DepressionCenter](https://gi
 
 ## Documentation
 Please see our Knowledge Base at:  [https://michmed.org/efdc-kb](https://michmed.org/efdc-kb)
+
+Technical documentation lives in [/docs](docs/README.md): [architecture](docs/architecture.md), [data flow](docs/data-flow.md), [how-to guides](docs/how-to/run-the-build-locally.md), [troubleshooting](docs/troubleshooting.md), and [compliance](docs/compliance.md).
 
 
 
@@ -36,9 +40,9 @@ Please see our Knowledge Base at:  [https://michmed.org/efdc-kb](https://michmed
 + Gabriel Mongefranco [(@gabrielmongefranco)](https://github.com/gabrielmongefranco)
 
 #### This work is based in part on the following projects, libraries and/or studies:
-+ [Marked](https://github.com/markedjs/marked). A markdown parser library, used here to render README.md files.
-+ [DOMPurify](https://github.com/cure53/DOMPurify). An HTML sanitizer library, used here to help prevent XSS attacks from rendered markdown.
-+ [GitHub REST API](https://docs.github.com/rest/about-the-rest-api/about-the-rest-api).
++ [GitHub REST API](https://docs.github.com/rest/about-the-rest-api/about-the-rest-api). Provides the repository list and renders each README to HTML.
++ [nh3](https://github.com/messense/nh3). An HTML sanitizer library, used here to help prevent XSS attacks from rendered markdown.
++ [Pillow](https://python-pillow.github.io/). An imaging library, used here to crop and resize repository preview images.
 + [Tabulator](https://www.tabulator.info/). A lightweight library for creating JavaScript tables and grids, featuring full support for digital accessibility standards.
 
 

@@ -1,0 +1,87 @@
+<div class="panel-thumb-lg" aria-hidden="true"><img src="images/repo-previews/EMA-CleanR.png" alt="" loading="lazy" /></div>
+<div class="panel-lab"><span class="panel-lab-label">Lab/Team:</span> <a href="https://sperry.lab.medicine.umich.edu/active-projects" target="_blank" rel="noopener">Emotion and Temporal Dynamics (EmoTe) Lab</a></div>
+<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/EMA-CleanR" target="_blank" rel="noopener" aria-label="View EMA-CleanR on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://sperry.lab.medicine.umich.edu/" target="_blank" rel="noopener" aria-label="EMA-CleanR website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html" target="_blank" rel="noopener" aria-label="EMA-CleanR demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Demo</a><a class="repo-link" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14610" target="_blank" rel="noopener" aria-label="EMA-CleanR documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">EMA-CleanR™</h2></div>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
+<p dir="auto">EMA-CleanR™ is a program for efficient pre-processing, cleaning, and visualization of Ecological Momentary Assessment (EMA) survey data in R to enable high-quality, real-time behavioral insights. It was created by Dr. Sarah Sperry and Victoria Murphy of the Emotion and Temporal Dynamics (EmoTe) Lab at the University of Michigan.</p>
+<a target="_blank" href="https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html" rel="nofollow noopener noreferrer">
+  <img src="images/EMA-CleanR-Screenshot1.png" alt="Screenshot of EMA-CleanR™ output in HTML">
+</a>
+<a target="_blank" href="https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html" rel="nofollow noopener noreferrer">
+  <img src="images/EMA-CleanR-Screenshot2.png" alt="Screenshot of EMA-CleanR™ visualizations">
+</a>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
+<ul dir="auto">
+<li>To view sample data and a code walk-through, simply visit: <a target="_blank" href="https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html" rel="nofollow noopener noreferrer">https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html</a></li>
+<li>To use with your own data, first download and extract this repository (or clone it).</li>
+<li>Replace <strong>EMA-Data.csv</strong> with your own file.
+<ul dir="auto">
+<li>Ensure it has at least these columns: participantidentifier,surveyname,start_datetime,end_datetime</li>
+<li>There should be one column per question, and the column headings should start with "EMA_" (e.g. EMA_01, EMA_02, etc.)</li>
+<li>Each row represents one survey taken by one participant at one point in time.</li>
+</ul>
+</li>
+<li>Open <strong>EMA-CleanR.Rmd</strong> with R-Studio. If asked, install any missing packages.</li>
+<li>Edit the parameters at the top if needed (e.g. input file name), in the YAML section.</li>
+<li>Click the "Knit" button (or Ctrl+Shift+K) to generate a new <strong>EMA-CleanR.html</strong> file. This will contain a walk-through analysis of your data and visualizations.</li>
+<li>The output directory will contain exports of the data analysis in CSV format.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
+<ul dir="auto">
+<li>The full documentation is available at: <a target="_blank" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14610" rel="nofollow noopener noreferrer">https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14610</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
+<ul dir="auto">
+<li>EmoTe Lab projects - <a target="_blank" href="https://sperry.lab.medicine.umich.edu/active-projects" rel="nofollow noopener noreferrer">https://sperry.lab.medicine.umich.edu/active-projects</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">About the Team</h3></div>
+<p dir="auto">The Emotion and Temporal Dynamics (EmoTe) Lab, directed by Dr. Sarah Sperry, in the Department of Psychiatry at the University of Michigan and affiliated with the Heinz C. Prechter Bipolar Research Program, has a broad mission to improve early detection, predict illness trajectory, and develop personalized interventions for bipolar spectrum disorders (BSDs). Within this broader mission we are working to better characterize and understand intraindividual variability in emotion and behavior in real-world contexts. We use digital phenotyping methods (smartphones and wearables) and advanced idiographic statistical methods to model dynamics over both micro (e.g., momentary) and macro (e.g., years) timescales.</p>
+<p dir="auto">Learn more at: <a target="_blank" href="https://sperry.lab.medicine.umich.edu/home" rel="nofollow noopener noreferrer">EmoTe Lab</a></p>
+<p dir="auto"><em>The code for this project is maintained in collaboration with the <a target="_blank" href="https://depressioncenter.org" rel="nofollow noopener noreferrer">Eisenberg Family Depression Center</a> <a target="_blank" href="https://github.com/DepressionCenter" rel="nofollow noopener noreferrer">(@DepressionCenter)</a> at the University of Michigan.</em></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Contact</h3></div>
+<p dir="auto">To get in touch, contact the individual developers in the check-in history.</p>
+<p dir="auto">If you need assistance identifying a contact person, email the project maintainers at: <a href="mailto:efdc-mobiletech@umich.edu" rel="nofollow noopener noreferrer">efdc-mobiletech@umich.edu</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Credits</h3></div>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Authors:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://medschool.umich.edu/profile/7615/sarah-sperry" rel="nofollow noopener noreferrer">Sarah Sperry</a></li>
+<li><a target="_blank" href="https://mcommunity.umich.edu/person/vamurphy" rel="nofollow noopener noreferrer">Victoria Murphy</a> <a target="_blank" href="https://github.com/victoria-murphy" rel="nofollow noopener noreferrer"> (@victoria-murphy) </a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Contributors:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://medschool.umich.edu/profile/7615/sarah-sperry" rel="nofollow noopener noreferrer">Sarah Sperry</a></li>
+<li><a target="_blank" href="https://mcommunity.umich.edu/person/vamurphy" rel="nofollow noopener noreferrer">Victoria Murphy</a> <a target="_blank" href="https://github.com/victoria-murphy" rel="nofollow noopener noreferrer"> (@victoria-murphy) </a></li>
+<li><a target="_blank" href="https://gabriel.mongefranco.com" rel="nofollow noopener noreferrer">Gabriel Mongefranco</a> <a target="_blank" href="https://github.com/gabrielmongefranco" rel="nofollow noopener noreferrer">(@gabrielmongefranco)</a></li>
+<li><a target="_blank" href="https://depressioncenter.org" rel="nofollow noopener noreferrer">Eisenberg Family Depression Center</a> <a target="_blank" href="https://github.com/DepressionCenter" rel="nofollow noopener noreferrer">(@DepressionCenter)</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">This work is based in part on the following projects, libraries and/or studies:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://sperry.lab.medicine.umich.edu/active-projects" rel="nofollow noopener noreferrer">Emotion-based Impulsivity in Bipolar Disorder (EBI-BD)</a> study</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/EFDC-TDX-KB" rel="nofollow noopener noreferrer">EFDC TDX Knowldge Base Templates</a></li>
+<li>R libraries used: dplyr, psych, tidyverse, lubridate, table1, corrplot, ggplot2, patchwork, rlang</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">License</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Copyright Notice</h4></div>
+<p dir="auto">EMA-CleanR™ is trademark of The Regents of the University of Michigan.
+Copyright © 2025-2026 The Regents of the University of Michigan.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Software and Library License Notice</h4></div>
+<p dir="auto">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p dir="auto">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p dir="auto">You should have received a copy of the GNU General Public License along with this program. If not, see <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/gpl-3.0-standalone.html</a>.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Documentation License Notice</h4></div>
+<p dir="auto">Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+You should have received a copy of the license included in the section entitled "GNU
+Free Documentation License". If not, see <a target="_blank" href="https://www.gnu.org/licenses/fdl-1.3-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/fdl-1.3-standalone.html</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Citation</h3></div>
+<p dir="auto">If you find this repository, code or paper useful for your research, please cite it.</p>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Citation Example:</h5></div>
+<blockquote>
+<p dir="auto"><em>Sperry, Sarah; Murphy, Victoria (2025). EMA-CleanR™. University of Michigan. Software. <a target="_blank" href="https://github.com/DepressionCenter/EMA-CleanR" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/EMA-CleanR</a></em><br>
+​​​​​​​&nbsp; &nbsp;  <em>DOI: <a target="_blank" href="https://doi.org/10.5281/zenodo.17982075" rel="nofollow noopener noreferrer">10.5281/zenodo.17982075</a></em></p>
+</blockquote>
+<hr>
+<p dir="auto">Copyright © 2025-2026 The Regents of the University of Michigan</p></div>
+<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/EMA-CleanR" target="_blank" rel="noopener" aria-label="View EMA-CleanR on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://sperry.lab.medicine.umich.edu/" target="_blank" rel="noopener" aria-label="EMA-CleanR website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://code.depressioncenter.org/EMA-CleanR/EMA-CleanR.html" target="_blank" rel="noopener" aria-label="EMA-CleanR demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Demo</a><a class="repo-link" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=14610" target="_blank" rel="noopener" aria-label="EMA-CleanR documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>

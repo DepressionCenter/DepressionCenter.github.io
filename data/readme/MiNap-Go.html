@@ -1,0 +1,86 @@
+<div class="panel-thumb-lg" aria-hidden="true"><img src="images/repo-previews/MiNap-Go.png" alt="" loading="lazy" /></div>
+<div class="panel-lab"><span class="panel-lab-label">Lab/Team:</span> <a href="https://depressioncenter.org/mobiletech" target="_blank" rel="noopener">Mobile Technologies Core</a></div>
+<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/MiNap-Go" target="_blank" rel="noopener" aria-label="View MiNap-Go on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="http://code.depressioncenter.org/MiNap-Go/" target="_blank" rel="noopener" aria-label="MiNap-Go website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://code.depressioncenter.org/MiNap-Go/" target="_blank" rel="noopener" aria-label="MiNap-Go demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Demo</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="MiNap-Go documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">MiNap Go!</h2></div>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
+<p dir="auto">MiNap Go is a standalone, ready-to-run version of <a target="_blank" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/10603/MiNap-Facilitating-Sleep-Medicine-Research-with-Smartwatch-Technology" rel="nofollow noopener noreferrer">MiNap</a> with no additional technology required. A Google account is required to host the Apps Script web app and the Google Sheet it writes to.</p>
+<p dir="auto"><a target="_blank" href="https://code.depressioncenter.org/MiNap-Go" rel="nofollow noopener noreferrer"><img src="/images/MiNap-Go-Preview.gif" alt="MiNap Go Preview"></a></p>
+<p dir="auto">MiNap Go is a browser-based sleep diary: participants tap Sleep and Wake, and each timestamped event is saved to a private, researcher-owned Google Sheet. It runs entirely as a single Google Apps Script web app, with no server, no database, and no code editing needed to deploy a new study.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
+<p dir="auto">Want to try it first? Check out the <a target="_blank" href="https://code.depressioncenter.org/MiNap-Go" rel="nofollow noopener noreferrer">live demo</a> before deploying your own copy.</p>
+<ol dir="auto">
+<li>A Google account is required. Each study gets its own copy of MiNap Go, and data lives in the researcher's own Google Drive.</li>
+<li>Make a copy of the <a target="_blank" href="https://docs.google.com/spreadsheets/d/1oygo0kEPhFN6bKEcw8wE7RhUb_JM3K7jTiy6z6Hv8rg/copy" rel="nofollow noopener noreferrer">MiNap Go template sheet</a> (if the link doesn't automatically take you to the "copy document" screen, open the sheet, expand the menu, and click <strong>File &gt; Make a copy</strong> to copy it to your own Google Drive). Rename the copy to your study name or study ID.</li>
+<li>In your copy, click <strong>Extensions &gt; Apps Script &gt; Deploy &gt; New deployment &gt; Web app</strong>. Set "Execute as" to <strong>Me</strong> and "Who has access" to <strong>Anyone</strong>. Click <strong>Deploy</strong> and authorize the script when prompted.</li>
+<li>The first authorization shows a Google "unverified app" screen: click <strong>Advanced</strong>, then "<strong>Go to MiNap Go (unsafe)</strong>". This is expected -- it is your own copy of the script.</li>
+<li>Once deployed, you will be given the URL for your new web app. Open that URL once. A <strong>Setup</strong> tab appears in the Sheet with three columns: the web app URL, your Active Study ID, and your Active Participant IDs. Also copy that URL somewhere safe as a backup.</li>
+<li>In the <strong>Setup</strong> tab, replace the default Active Study ID (<code>STUDY1</code>) with your actual study ID, and replace the sample Active Participant IDs (<code>P01</code>, <code>P02</code>, <code>P03</code>) with your real participant IDs, one per row — only IDs listed there will be able to log in. Give each participant their Study ID and their own Participant ID during enrollment.</li>
+<li>Share the URL with participants. To start another study, make another copy of the template Sheet and repeat these steps.</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
+<ul dir="auto">
+<li>Overview of MiNap Go's architecture and design is available in the <a href="./docs/Overview.md" rel="nofollow noopener noreferrer">MiNap Go Technical Overview</a>.</li>
+<li>The full documentation is available at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">https://michmed.org/efdc-kb</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Optional: manual deployment into a blank project</h4></div>
+<p dir="auto">You can also deploy the app manually into a blank project if you want to rebuild it from scratch instead of copying the template Sheet:</p>
+<ol dir="auto">
+<li>Create a new Google Sheet. This becomes your data store.</li>
+<li>Open the sheet and click<strong>Extensions &gt; Apps Script</strong> to open the bound script project.</li>
+<li>Replace the default <code>Code.gs</code> contents with this repo's <a href="src/Code.gs" rel="nofollow noopener noreferrer"><code>src/Code.gs</code></a>.</li>
+<li><strong>File &gt; New &gt; HTML file</strong>, three times; name them exactly <code>Index</code>, <code>Stylesheet</code>, and <code>JavaScript</code>, and paste in the matching files from the repo's <a href="src/" rel="nofollow noopener noreferrer"><code>src</code></a> folder.</li>
+<li>Open Project Settings (gear icon) and enable "Show <code>appsscript.json</code> manifest file in editor"; open <code>appsscript.json</code>, delete its contents, and paste in this repo's <a href="src/appsscript.json" rel="nofollow noopener noreferrer"><code>src/appsscript.json</code></a>.</li>
+<li>Click <strong>Deploy &gt; New deployment &gt; Web app</strong>. Set "Execute as" to "Me" to ensure it runs under your account. Set "Who has access" to "Anyone" so particants can access it without a Google account. Authorize the script (as described in the quick start guide).</li>
+<li>Open the web app URL once; the shareable URL is written to the <strong>Setup</strong> tab.</li>
+</ol>
+<p dir="auto">Because the script is created from inside the Sheet, it is bound to that Sheet. All data will be written there, so it is important not to share it with anyone outside your study team or technical support.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/10603/MiNap-Facilitating-Sleep-Medicine-Research-with-Smartwatch-Technology" rel="nofollow noopener noreferrer">MiNap: Facilitating Sleep Medicine Research with Smartwatch Technology</a> - Article describing the original MiNap smartwatch sleep diary, with full documentation for the smartwatch, iPhone, and server-side components.</li>
+<li>Google Apps Script documentation: <a target="_blank" href="https://developers.google.com/apps-script" rel="nofollow noopener noreferrer">https://developers.google.com/apps-script</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">About the Team</h3></div>
+<p dir="auto">The <a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">Mobile Technologies Core</a> provides investigators across the University of Michigan the support and guidance needed to utilize mobile technologies and digital mental health measures in their studies. Experienced faculty and staff offer hands-on consultative services to researchers throughout the University – regardless of specialty or research focus.</p>
+<p dir="auto">Learn more at: <a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">https://depressioncenter.org/mobiletech</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Contact</h3></div>
+<p dir="auto">To get in touch, contact the individual developers in the check-in history.</p>
+<p dir="auto">If you need assistance identifying a contact person, email the EFDC's Mobile Technologies Core at: <a href="mailto:efdc-mobiletech@umich.edu" rel="nofollow noopener noreferrer">efdc-mobiletech@umich.edu</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Credits</h3></div>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Authors:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://depressioncenter.org" rel="nofollow noopener noreferrer">Eisenberg Family Depression Center</a> <a target="_blank" href="https://github.com/DepressionCenter" rel="nofollow noopener noreferrer">(@DepressionCenter)</a></li>
+<li><a target="_blank" href="https://gabriel.mongefranco.com" rel="nofollow noopener noreferrer">Gabriel Mongefranco</a> <a target="_blank" href="https://github.com/gabrielmongefranco" rel="nofollow noopener noreferrer">(@gabrielmongefranco)</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Contributors:</h5></div>
+<ul dir="auto">
+<li>Abhiram V. <a target="_blank" href="https://github.com/abhiramvsmg" rel="nofollow noopener noreferrer">(@abhiramvsmg)</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">This work is based in part on the following projects, libraries and/or studies:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://github.com/DepressionCenter/MiNap" rel="nofollow noopener noreferrer">MiNap</a> - MiNap Go is a browser-based, standalone edition of the MiNap smartwatch sleep diary.</li>
+<li><a target="_blank" href="https://developers.google.com/apps-script" rel="nofollow noopener noreferrer">Google Apps Script</a> - MiNap Go is built entirely on Google Apps Script, a cloud-based scripting platform for light-weight application development in the G Suite platform.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">License</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Copyright Notice</h4></div>
+<p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Software and Library License Notice</h4></div>
+<p dir="auto">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p dir="auto">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p dir="auto">You should have received a copy of the GNU General Public License along with this program. If not, see <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/gpl-3.0-standalone.html</a>.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Documentation License Notice</h4></div>
+<p dir="auto">Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+You should have received a copy of the license included in the section entitled "GNU
+Free Documentation License". If not, see <a target="_blank" href="https://www.gnu.org/licenses/fdl-1.3-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/fdl-1.3-standalone.html</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Citation</h3></div>
+<p dir="auto">If you find this repository, code or paper useful for your research, please cite it.</p>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Citation Example:</h5></div>
+<blockquote>
+<p dir="auto"><em>Mongefranco, Gabriel (2026). MiNap Go. University of Michigan. Software. <a target="_blank" href="https://github.com/DepressionCenter/MiNap-Go" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/MiNap-Go</a></em><br>
+​​​​​​​&nbsp; &nbsp;  <em>DOI: <a target="_blank" href="https://doi.org/10.5281/zenodo.21302686" rel="nofollow noopener noreferrer">10.5281/zenodo.21302686</a></em></p>
+</blockquote>
+<hr>
+<p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p></div>
+<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/MiNap-Go" target="_blank" rel="noopener" aria-label="View MiNap-Go on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="http://code.depressioncenter.org/MiNap-Go/" target="_blank" rel="noopener" aria-label="MiNap-Go website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://code.depressioncenter.org/MiNap-Go/" target="_blank" rel="noopener" aria-label="MiNap-Go demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Demo</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="MiNap-Go documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>

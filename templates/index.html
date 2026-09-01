@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--
+This file is part of Eisenberg Family Depression Center Open Source Hub (DepressionCenter.github.io repository).
+index.html - Landing page for our open source repositories.
+Author(s): Gabriel Mongefranco.
+Created: 2026-05-12
+Last Modified: 2026-05-20
+Summary: Code for the landing page at code.depressioncenter.org.
+         The list of repositories comes from the organization's repos via the GitHub API.
+Notes: See README file for documentation and full license information.
+Website: https://code.depressioncenter.org/
+
+Copyright (c) 2026 The Regents of the University of Michigan
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{HEAD_META}}
+  <link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt" />
+{{JSONLD}}
+  
+  <!-- Google tag (gtag.js) — only loads on depressioncenter.org and umich.edu domains -->
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      if (/(?:^|\.)(?:depressioncenter\.org|umich\.edu)$/.test(host)) {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-3Q455XWS5F';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-3Q455XWS5F');
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/css/tabulator_simple.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/js/tabulator.min.js" integrity="sha512-8+qwMD/110YLl5T2bPupMbPMXlARhei2mSxerb/0UWZuvcg4NjG7FdxzuuvDs2rBr/KCNqhyBDe8W3ykKB1dzA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/site.css" />
+</head>
+<body>
+  <!-- Skip navigation for screen readers -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- HEADER  -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="header-logo" href="https://depressioncenter.org" aria-label="Eisenberg Family Depression Center home">
+        <img
+          src="images/EFDC_Logo-Stacked-White.png"
+          alt="Eisenberg Family Depression Center logo with yellow M and white text"
+          width="60"
+          height="60"
+          onerror="this.style.display='none'"
+        />
+        <div class="header-logo-text">
+          <span class="org">Eisenberg Family Depression Center</span>
+          <span class="title">Open Source Hub</span>
+        </div>
+      </a>
+      <nav class="header-nav" aria-label="External links">
+        <a href="https://github.com/DepressionCenter/?view_as=public" target="_blank" rel="noopener" title="GitHub" alt="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <a href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" title="Knowledge Base" alt="Knowledge Base" aria-label="Knowledge Base">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </a>
+        <a href="https://depressioncenter.org" target="_blank" rel="noopener" title="Website" alt="Website" aria-label="Depression Center Website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO  -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow" aria-hidden="true">Research & Automation Code — University of Michigan</p>
+      <h1 id="hero-heading">
+        Code that <em>accelerates</em><br />research breakthroughs.
+      </h1>
+      <p class="hero-desc">
+        The Eisenberg Family Depression Center publishes open source tools, automations, and research workflows designed to accelerate mental health discoveries while remaining highly reusable across any research discipline. By reducing technical barriers and promoting interdisciplinary collaboration, we help researchers solve complex data problems without starting from zero.
+      </p>
+      <ul class="hero-stats" aria-label="Repository statistics">
+        <li class="stat">
+          <span class="stat-num" id="stat-repos">{{REPO_COUNT}}</span>
+          <span class="stat-label">Repositories</span>
+        </li>
+        <li class="stat">
+          <span class="stat-num">7K+</span>
+          <span class="stat-label">Downloads</span>
+        </li>
+        <li class="stat">
+          <span class="stat-num">GPL v3.0+</span>
+          <span class="stat-label">Open Source License</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!--  MAIN CONTENT  -->
+  <main id="main-content">
+
+
+    <!-- FEATURED SECTION -->
+    <section id="featured" aria-labelledby="featured-heading">
+      <div class="featured-wrapper">
+        <div style="max-width:1200px;margin:0 auto;">
+          <p class="section-label" aria-hidden="true">// highlighted projects</p>
+          <h2 class="section-heading" id="featured-heading">Featured Repositories</h2>
+        </div>
+        <div id="featured-grid" class="featured-grid" role="list" aria-label="Featured repositories">
+{{FEATURED_CARDS}}
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ALL REPOS SECTION -->
+    <section id="all-repos" class="section" aria-labelledby="all-repos-heading">
+      <p class="section-label" aria-hidden="true">// complete catalog</p>
+      <h2 class="section-heading" id="all-repos-heading">All Repositories</h2>
+
+      <div class="filter-bar" role="search">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <label for="repo-search" class="sr-only">Search repositories</label>
+          <input
+            type="search"
+            id="repo-search"
+            placeholder="Search repositories…"
+            autocomplete="off"
+            aria-controls="repo-grid"
+            aria-label="Filter repositories by name or description"
+          />
+        </div>
+        <span class="count-label" id="repo-count" aria-live="polite" aria-atomic="true">{{REPO_COUNT_LABEL}}</span>
+      </div>
+
+      <div id="repo-grid" class="repo-grid" role="list" aria-label="All repositories">
+{{REPO_CARDS}}
+      </div>
+      <p class="error-state" id="repo-empty" hidden>No repositories match your search.</p>
+    </section>
+
+    <!-- MOSS BANNER -->
+    <section id="moss-banner" aria-labelledby="moss-heading">
+      <div class="moss-inner">
+        <div class="moss-body">
+          <span class="section-label">Featured Partner</span>
+          <h2 id="moss-heading" class="section-heading">Michigan Open Source Support</h2>
+          <p>MOSS unlocks the power of open source for research, education, and innovation at the University of Michigan.
+             The MOSS collection hosts technologies created by U-M faculty, staff, and students &mdash; freely available for collaboration,
+             adaptation, and advancement across diverse fields.</p>
+          <div class="moss-actions">
+            <a href="https://available-inventions.umich.edu/products/MOSS"
+               class="btn-primary" target="_blank" rel="noopener">Browse MOSS Listing</a>
+            <a href="https://innovationpartnerships.umich.edu/moss/"
+               class="btn-secondary" target="_blank" rel="noopener">Learn About MOSS</a>
+          </div>
+        </div>
+        <img src="images/moss-banner.png" alt="" role="presentation" class="moss-img" />
+      </div>
+    </section>
+
+    <!-- COMMUNITY OPEN SOURCE -->
+    <section id="community-oss" aria-labelledby="community-oss-heading">
+      <div class="oss-inner">
+        <span class="section-label">Community Resources</span>
+        <h2 id="community-oss-heading" class="section-heading">Community Open Source</h2>
+        <p class="section-subheading">
+          A curated list of open source tools and libraries that can benefit researchers across disciplines.
+        </p>
+        <div class="oss-search-bar">
+          <label for="oss-search" class="sr-only">Search community open source tools</label>
+          <input type="search" id="oss-search" placeholder="Search tools…" autocomplete="off" />
+        </div>
+        <div id="oss-table"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT EFDC -->
+    <section id="about-efdc" aria-labelledby="about-efdc-heading">
+      <div class="about-inner">
+        <div class="about-text">
+          <span class="section-label">About Us</span>
+          <h2 id="about-efdc-heading" class="section-heading">Eisenberg Family Depression Center</h2>
+          <p>Established in 2001, the Frances and Kenneth Eisenberg Family Depression Center is the first of its kind devoted
+             to bringing depression into the mainstream of research, care, and community education. Today, our Center is
+             expanding the scope of mental health research to accelerate innovations that lead to improved outcomes across
+             our communities.</p>
+          <p>One in five Americans will experience depression &mdash; yet few will receive treatment that leads to long-term
+             relief. As the leading cause of disability worldwide, depression is not only a personal hardship; it is a global
+             burden. We believe transformative change is needed to address this enormous impact.</p>
+          <div class="about-vm">
+            <div class="about-vm-item">
+              <strong>Our Vision</strong>
+              <span>To eliminate the burden of depression.</span>
+            </div>
+            <div class="about-vm-item">
+              <strong>Our Mission</strong>
+              <span>To improve lives and empower communities through bold innovations and interdisciplinary collaborations across research and outreach.</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-cores">
+          <p class="about-cores-label">Resources for Researchers</p>
+          <div class="core-cards">
+            <a href="https://depressioncenter.org/research-services/research-innovation-core"
+               class="core-card" target="_blank" rel="noopener">
+              <div class="core-card-title">Research Innovation Core</div>
+              <div class="core-card-desc">Creative, interdisciplinary approaches to mental health research.</div>
+            </a>
+            <a href="https://depressioncenter.org/research-services/data-design-core"
+               class="core-card" target="_blank" rel="noopener">
+              <div class="core-card-title">Data &amp; Design Core</div>
+              <div class="core-card-desc">Secondary dataset resources and expertise to accelerate bold research ideas.</div>
+            </a>
+            <a href="https://depressioncenter.org/mobiletech"
+               class="core-card" target="_blank" rel="noopener">
+              <div class="core-card-title">Mobile Technologies Core</div>
+              <div class="core-card-desc">Accelerating mental health treatment and prevention discoveries through wearables and mobile technologies.</div>
+            </a>
+            <a href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/13448/MTC-Code-Publishing-Service"
+               class="core-card" target="_blank" rel="noopener">
+              <div class="core-card-title">Code Publishing Service</div>
+              <div class="core-card-desc">A free service for U-M research teams to generalize and publish their code as open source.</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!--  FOOTER  -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://depressioncenter.org" target="_blank" rel="noopener">Depression Center</a>
+        <a href="https://github.com/DepressionCenter/?view_as=public" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://michmed.org/efdc-kb" target="_blank" rel="noopener">Knowledge Base</a>
+        <a href="https://www.youtube.com/@DepressionCenter" target="_blank" rel="noopener">Video Library</a>
+      </nav>
+      <div class="copyright-info">
+        <strong>&copy;</strong> {{COPYRIGHT_YEAR}} The Regents of the University of Michigan &nbsp;|&nbsp;
+        <a href="https://depressioncenter.org/" target="_blank">Eisenberg Family Depression Center</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--  DETAIL PANEL -->
+  <div id="panel-overlay" class="panel-overlay" aria-hidden="true"></div>
+  <aside id="repo-panel" class="repo-panel" role="dialog" aria-modal="true"
+         aria-labelledby="panel-title" aria-hidden="true" inert>
+    <div class="panel-header">
+      <h2 class="panel-title" id="panel-title">Repository Details</h2>
+      <button class="panel-close" id="panel-close" aria-label="Close repository details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+             stroke-linecap="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="panel-body" id="panel-body" aria-live="polite">
+      <p class="sr-only">Select a repository to view details.</p>
+    </div>
+  </aside>
+
+
+  <script src="scripts/site.js" defer></script>
+</body>
+</html>

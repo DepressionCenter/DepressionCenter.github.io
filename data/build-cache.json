@@ -1,0 +1,90 @@
+{
+  "repo_count": 26,
+  "repos": {
+    "AI-prompt-database": {
+      "readme_etag": "\"2a5ccf8e01a5535ead52c6f2d4dbaf8990817926\""
+    },
+    "AutomatorsAnonymous": {
+      "readme_etag": "\"6558fe384d98c1a26866cef436a79ea3e1cc5510\""
+    },
+    "Data-and-Design-Core": {
+      "image_sha": "bc2e6fd01c710ee67c6d933ae0d8e5c54881dbe8",
+      "readme_etag": "\"a1c561f55e9e1874206b7acf99573bea15789523\"",
+      "thumb_sha": "bc2e6fd01c710ee67c6d933ae0d8e5c54881dbe8"
+    },
+    "DontDeleteMyEmail": {
+      "readme_etag": "\"6ac62c47333c32c9354bd78edcf97c0cb8efcfdc\""
+    },
+    "EFDC-Repo-Template": {
+      "readme_etag": "\"85f73aeb779ea834f342c6ee660038d0d1d0b833\""
+    },
+    "EFDC-TDX-KB": {
+      "readme_etag": "\"950bd73ca696db3262f1ef45b5ffe96abe4645ba\""
+    },
+    "EMA-CleanR": {
+      "readme_etag": "\"baf2901d54a147de23efffe5ee77350cafc48d09\""
+    },
+    "FieldStationAI": {
+      "readme_etag": "\"b31a060e8c6f43e0b05b90c733ad2d1cc3f9f1fe\""
+    },
+    "GitHub-Usage-Stats": {
+      "readme_etag": "\"59411886b3d9db3809547a05c448e67f5bb72fb6\""
+    },
+    "MDEN": {
+      "readme_etag": "\"dfcc74acbaff885f86db64a0bd1d0bdaede2d8f6\""
+    },
+    "MTC-Internal-Tools-and-Automation": {
+      "readme_etag": "\"d3ccea1b4f4a00e97036b2f30425ec6f93d36d8b\""
+    },
+    "MTC-Public-PowerBI-Dashboards": {
+      "readme_etag": "\"452ad9556e35f623e6b127494485695991598f0e\""
+    },
+    "MTC-SharePoint-Site": {
+      "readme_etag": "\"6496c8766ba5d87897a3cac7c1dbd6b2c98e74ae\""
+    },
+    "MiNap": {
+      "readme_etag": "\"e3c9f08cc641b20d654327eec11d00fbe9dd186c\""
+    },
+    "MiNap-Go": {
+      "readme_etag": "\"5b1251b69e9d9241b81d9dbdac8a6197b45dea51\""
+    },
+    "OffgridDev": {
+      "readme_etag": "\"7e635ae99e9a06eef4c9cfb9317feb0bf641d9ec\""
+    },
+    "ShareR": {
+      "readme_etag": "\"d7b093fdccdbc8d205e1e73c476d5d69039da7f0\""
+    },
+    "Sitenalyzer": {
+      "readme_etag": "\"3ed3ae9d2b37d47bd31f68e5486f1bf4bf2eb7a5\""
+    },
+    "SleepDataAutomation": {
+      "readme_etag": "\"6923cd2ae0877e62960ff8e9169aab2a7604e854\""
+    },
+    "TrackMaster": {
+      "readme_etag": "\"8f64aede6bf70b2bb3231c074c6a14da601746b5\""
+    },
+    "Useful-SQL-Queries-for-UMich-Research-Centers": {
+      "readme_etag": "\"28f9f616537d873d7cb2522402d8736c673288f8\""
+    },
+    "Yawnalyzer": {
+      "image_sha": "ef03b509d70158faa73ef3562081b0f159814cd8",
+      "readme_etag": "\"412e0dc7ff2e27c8538503764c5cace875d89928\"",
+      "thumb_sha": "ef03b509d70158faa73ef3562081b0f159814cd8"
+    },
+    "ZippyServe": {
+      "image_sha": "5a3ae3bdb640b8c7735b218940ef85f6258b0132",
+      "readme_etag": "\"7553d334881ba84c3970075705ac3e896cf80d98\"",
+      "thumb_sha": "69190a7153ce0b131f9938927b3a8d4ecbe91137"
+    },
+    "datalavista": {
+      "readme_etag": "\"b92b4ac446815a00f98e917ace1b060456b9dfc2\""
+    },
+    "extractium": {
+      "readme_etag": "\"ea080e0b3b4b8525864d6e626ac164ead5e37468\""
+    },
+    "mobile-tech-illustrations": {
+      "readme_etag": "\"90ef8d5327b4bb9e2dddad5f4b7af5fbe58ed670\""
+    }
+  },
+  "version": 1
+}

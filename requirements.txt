@@ -1,0 +1,17 @@
+# This file is part of Eisenberg Family Depression Center Open Source Hub (DepressionCenter.github.io repository).
+# requirements.txt - Python packages needed by scripts/build_site.py.
+# Notes: See README file for documentation and full license information.
+#
+# Copyright (c) 2026 The Regents of the University of Michigan
+# Licensed under the GNU General Public License v3.0 or later.
+# See <https://www.gnu.org/licenses/>.
+#
+# Pillow  Crops and resizes repository preview images to the site's standard 16:9 sizes.
+# nh3     Allowlist HTML sanitizer applied to README markup fetched from the GitHub API.
+#         Maintained bindings to the Rust "ammonia" library, and the documented replacement
+#         for bleach. Sanitizing is never hand-rolled.
+#
+# Versions are pinned so a build cannot change behavior on its own. Review and raise them
+# deliberately; both packages publish wheels for the runner's Python version.
+Pillow==12.3.0
+nh3==0.3.7

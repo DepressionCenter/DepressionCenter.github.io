@@ -1,0 +1,117 @@
+<div class="panel-thumb-lg" aria-hidden="true"><img src="images/repo-previews/TrackMaster.png" alt="" loading="lazy" /></div>
+<div class="panel-lab"><span class="panel-lab-label">Lab/Team:</span> <a href="https://depressioncenter.org/" target="_blank" rel="noopener">Eisenberg Family Depression Center</a></div>
+<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/TrackMaster" target="_blank" rel="noopener" aria-label="View TrackMaster on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/trackmaster" target="_blank" rel="noopener" aria-label="TrackMaster website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://michmed.org/trackmaster" target="_blank" rel="noopener" aria-label="TrackMaster documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">TrackMaster™</h2></div>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
+<p dir="auto">Welcome to the TrackMaster Membership Management Tool™. TrackMaster is a membership tracking tool and CRM for research centers and institutes at the University of Michigan. This SharePoint-based solution allows research centers and institutes at the University of Michigan to track membership activities, run reports on publications, and automate some membership-related activities such as sending newsletters. This repository contains all the code for the project, along with basic instructions. For complete documentation, visit the Eisenberg Family Depression Center's knowledge base at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">https://michmed.org/efdc-kb</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Prerequisites</h4></div>
+<p dir="auto">Before deploying or administering TrackMaster, ensure you have the following:</p>
+<p dir="auto"><strong>Microsoft 365 Environment</strong></p>
+<ul dir="auto">
+<li>A Microsoft 365 subscription through your employer that includes SharePoint Online</li>
+<li>A SharePoint Online site to which you have Site Collection Administrator rights</li>
+<li>Power Platform environment access (required for Power Automate flows)</li>
+</ul>
+<p dir="auto"><strong>Local Tooling</strong></p>
+<ul dir="auto">
+<li><a target="_blank" href="https://aka.ms/powershell" rel="nofollow noopener noreferrer">PowerShell 7</a> — required for all scripts in this repository</li>
+<li><a target="_blank" href="https://pnp.github.io/powershell/" rel="nofollow noopener noreferrer">PnP.PowerShell</a> — used for SharePoint site export and deployment</li>
+<li><a target="_blank" href="https://aka.ms/PowerAppsCLI" rel="nofollow noopener noreferrer">Power Platform CLI (<code>pac</code>)</a> — used for Power Automate solution export and version control</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Installation</h4></div>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>Install PowerShell 7</strong> — download and run the MSI installer from <a target="_blank" href="https://aka.ms/powershell" rel="nofollow noopener noreferrer">https://aka.ms/powershell</a>. Open all subsequent terminal sessions using <code>pwsh.exe</code>, not <code>powershell.exe</code>.</p>
+</li>
+<li>
+<p dir="auto"><strong>Install PnP.PowerShell</strong> — open PowerShell 7 as Administrator and run:</p>
+<div class="highlight highlight-source-powershell notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-c1">Install-Module</span> PnP.PowerShell <span class="pl-k">-</span>RequiredVersion <span class="pl-c1">1.12</span>.<span class="pl-c1">0</span> <span class="pl-k">-</span>Scope AllUsers <span class="pl-k">-</span>AllowClobber</pre></div>
+<p dir="auto"><sub>Version 1.12.0 is required. PnP.PowerShell v2+ requires an Entra ID app registration, which is not available in most corporate environments.</sub></p>
+</li>
+<li>
+<p dir="auto"><strong>Install Power Platform CLI</strong> — download and run the MSI installer from <a target="_blank" href="https://aka.ms/PowerAppsCLI" rel="nofollow noopener noreferrer">https://aka.ms/PowerAppsCLI</a>.</p>
+</li>
+<li>
+<p dir="auto"><strong>Set PowerShell execution policy</strong> — in PowerShell 7 as Administrator:</p>
+<div class="highlight highlight-source-powershell notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-c1">Set-ExecutionPolicy</span> <span class="pl-k">-</span>Scope CurrentUser RemoteSigned</pre></div>
+</li>
+<li>
+<p dir="auto"><strong>Clone this repository</strong> and navigate to the project root:</p>
+<div class="highlight highlight-source-powershell notranslate position-relative overflow-auto" dir="auto"><pre>git clone https:<span class="pl-k">//</span><span class="pl-c1">github.com</span><span class="pl-k">/</span>DepressionCenter<span class="pl-k">/</span>TrackMaster.git
+cd TrackMaster</pre></div>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Launching TrackMaster</h4></div>
+<p dir="auto">TrackMaster is a SharePoint Online application — no local server or build step is required. Simply navigate to your SharePoint site in a web browser.</p>
+<p dir="auto"><strong>Eisenberg Family Depression Center staff</strong> should use:
+<a target="_blank" href="https://umhealth.sharepoint.com/sites/DepressionCenter-TrackMaster" rel="nofollow noopener noreferrer">https://umhealth.sharepoint.com/sites/DepressionCenter-TrackMaster</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
+<p dir="auto">View the documentation at the <a target="_blank" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/?CategoryID=846" rel="nofollow noopener noreferrer">Depression Center Knowledge Base</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
+<p dir="auto">None.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">About the Team</h3></div>
+<p dir="auto">The tool was developed by a cohort team of 5 members from the <a target="_blank" href="https://its.umich.edu/internship/cohorts" rel="nofollow noopener noreferrer">ITS 2023 internship</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Contact</h3></div>
+<p dir="auto">To get in touch, contact the individual developers in the check-in history or email <a href="mailto:trackmaster@umich.edu" rel="nofollow noopener noreferrer">trackmaster@umich.edu</a>.</p>
+<p dir="auto">If you need assistance identifying a contact person, email the EFDC's Mobile Technologies Core at: <a href="mailto:efdc-mobiletech@umich.edu" rel="nofollow noopener noreferrer">efdc-mobiletech@umich.edu</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Credits</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Authors:</h4></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://gabriel.mongefranco.com" rel="nofollow noopener noreferrer">Gabriel Mongefranco</a> <a target="_blank" href="https://github.com/gabrielmongefranco" rel="nofollow noopener noreferrer">(@gabrielmongefranco)</a></li>
+<li>Conni Harrigan</li>
+<li>Victoria Bennett</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Contributors:</h5></div>
+<ul dir="auto">
+<li>Eisenberg Family Depression Center <a target="_blank" href="https://github.com/DepressionCenter/" rel="nofollow noopener noreferrer">(@DepressionCenter)</a></li>
+<li>ITS Summer Internship 2023 and 2024 cohorts</li>
+</ul>
+<p dir="auto">A&nbsp;huge thank you&nbsp;to the ITS Summer Internship teams who created TrackMaster for the Eisenberg Family Depression Center! The project teams include:</p>
+<p dir="auto"><em><strong>ITS Summer Internship 2023 Project Cohort:</strong></em></p>
+<ul dir="auto">
+<li>Amit Nyamagoudar -&nbsp;<a href="mailto:anyamag@umich.edu" rel="nofollow noopener noreferrer">anyamag@umich.edu</a></li>
+<li>Avinash Singh -&nbsp;<a href="mailto:singhav@umich.edu" rel="nofollow noopener noreferrer">singhav@umich.edu</a></li>
+<li>Nivethaa Srijayanthi Ravichandran -&nbsp;<a href="mailto:nivethaa@umich.edu" rel="nofollow noopener noreferrer">nivethaa@umich.edu</a></li>
+<li>Reed McAlpin -&nbsp;<a href="mailto:rmcalpin@umich.edu" rel="nofollow noopener noreferrer">rmcalpin@umich.edu</a></li>
+<li>Taha Abbas -&nbsp;<a href="mailto:tahaa@umich.edu" rel="nofollow noopener noreferrer">tahaa@umich.edu</a></li>
+</ul>
+<p dir="auto"><em><strong>ITS Summer Internship 2024&nbsp;Project Cohort:</strong></em></p>
+<ul dir="auto">
+<li>Mohammad Arjamand Ali - <a href="mailto:mohamma@umich.edu" rel="nofollow noopener noreferrer">mohamma@umich.edu</a></li>
+<li>Atharva Mandar Kulkarni&nbsp;-&nbsp;<a href="mailto:atharvak@umich.edu" rel="nofollow noopener noreferrer">atharvak@umich.edu</a></li>
+<li>Zhanfeng Charlie Zheng&nbsp;-&nbsp;<a href="mailto:zfzheng@umich.edu" rel="nofollow noopener noreferrer">zfzheng@umich.edu</a></li>
+<li>Sandeep Dwarkaprasad Jala&nbsp;- <a href="mailto:jsandeep@umich.edu" rel="nofollow noopener noreferrer">jsandeep@umich.edu</a></li>
+</ul>
+<p dir="auto"><em><strong>Project sponsors:</strong></em></p>
+<ul dir="auto">
+<li>Conni Harrigan</li>
+<li><a target="_blank" href="https://gabriel.mongefranco.com" rel="nofollow noopener noreferrer">Gabriel Mongefranco</a> <a target="_blank" href="https://github.com/gabrielmongefranco" rel="nofollow noopener noreferrer">(@gabrielmongefranco)</a></li>
+<li>Victoria Bennett</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">This work is based in part on the following projects, libraries and/or studies:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://code.depressioncenter.org/datalavista" rel="nofollow noopener noreferrer">DataLaVista</a> - DataLaVista™ is a lightweight, client-side reporting and dashboard toolkit. It brings the full power of SQL directly to your browser, allowing you to build high-performance visualizations without the need for expensive server-side licenses or complex backend infrastructure.</li>
+<li><a target="_blank" href="https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-script-editor" rel="nofollow noopener noreferrer">Modern Script Editor</a> - The PnP/SPFX delivery vehicle used to deploy this "Unit" into modern SharePoint environments.</li>
+<li><a target="_blank" href="https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service" rel="nofollow noopener noreferrer">Microsoft SharePoint REST API</a> - The primary data uplink for retrieving SharePoint List items and Document Library metadata.</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/Sitenalyzer" rel="nofollow noopener noreferrer">Sitenalyzer</a> - Sitenalyzer helps you extract a data dictionary and security information from your SharePoint sites.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">License</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Copyright Notice</h4></div>
+<p dir="auto">Copyright © 2023-2026 The Regents of the University of Michigan</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Software and Library License</h4></div>
+<p dir="auto">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p dir="auto">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p dir="auto">You should have received a copy of the GNU General Public License along with this program. If not, see <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/gpl-3.0-standalone.html</a>.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Documentation License</h4></div>
+<p dir="auto">Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+You should have received a copy of the license included in the section entitled "GNU
+Free Documentation License". If not, see <a target="_blank" href="https://www.gnu.org/licenses/fdl-1.3-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/fdl-1.3-standalone.html</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Citation</h3></div>
+<p dir="auto">If you find this repository, code or paper useful for your research, please cite it.</p>
+<hr>
+<p dir="auto">Copyright © 2023-2026 The Regents of the University of Michigan</p></div>
+<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/TrackMaster" target="_blank" rel="noopener" aria-label="View TrackMaster on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/trackmaster" target="_blank" rel="noopener" aria-label="TrackMaster website"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Website</a><a class="repo-link" href="https://michmed.org/trackmaster" target="_blank" rel="noopener" aria-label="TrackMaster documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>

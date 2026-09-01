@@ -1,0 +1,9 @@
+# Open Source Hub - Eisenberg Family Depression Center
+# Every page on this site is public and intended to be indexed.
+User-agent: *
+Allow: /
+
+Sitemap: https://code.depressioncenter.org/sitemap.xml
+
+# Guidance for language models and agents, following the llmstxt.org convention:
+# https://code.depressioncenter.org/llms.txt
