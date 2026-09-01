@@ -4,7 +4,7 @@
 <div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">MiNap Go!</h2></div>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
 <p dir="auto">MiNap Go is a standalone, ready-to-run version of <a target="_blank" href="https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/10603/MiNap-Facilitating-Sleep-Medicine-Research-with-Smartwatch-Technology" rel="nofollow noopener noreferrer">MiNap</a> with no additional technology required. A Google account is required to host the Apps Script web app and the Google Sheet it writes to.</p>
-<p dir="auto"><a target="_blank" href="https://code.depressioncenter.org/MiNap-Go" rel="nofollow noopener noreferrer"><img src="/images/MiNap-Go-Preview.gif" alt="MiNap Go Preview"></a></p>
+<p dir="auto"><a target="_blank" href="https://code.depressioncenter.org/MiNap-Go" rel="nofollow noopener noreferrer"><img src="https://raw.githubusercontent.com/DepressionCenter/MiNap-Go/main/images/MiNap-Go-Preview.gif" alt="MiNap Go Preview"></a></p>
 <p dir="auto">MiNap Go is a browser-based sleep diary: participants tap Sleep and Wake, and each timestamped event is saved to a private, researcher-owned Google Sheet. It runs entirely as a single Google Apps Script web app, with no server, no database, and no code editing needed to deploy a new study.</p>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
 <p dir="auto">Want to try it first? Check out the <a target="_blank" href="https://code.depressioncenter.org/MiNap-Go" rel="nofollow noopener noreferrer">live demo</a> before deploying your own copy.</p>
@@ -19,7 +19,7 @@
 </ol>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
 <ul dir="auto">
-<li>Overview of MiNap Go's architecture and design is available in the <a href="./docs/Overview.md" rel="nofollow noopener noreferrer">MiNap Go Technical Overview</a>.</li>
+<li>Overview of MiNap Go's architecture and design is available in the <a target="_blank" href="https://github.com/DepressionCenter/MiNap-Go/blob/main/docs/Overview.md" rel="nofollow noopener noreferrer">MiNap Go Technical Overview</a>.</li>
 <li>The full documentation is available at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">https://michmed.org/efdc-kb</a></li>
 </ul>
 <div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Optional: manual deployment into a blank project</h4></div>
@@ -27,9 +27,9 @@
 <ol dir="auto">
 <li>Create a new Google Sheet. This becomes your data store.</li>
 <li>Open the sheet and click<strong>Extensions &gt; Apps Script</strong> to open the bound script project.</li>
-<li>Replace the default <code>Code.gs</code> contents with this repo's <a href="src/Code.gs" rel="nofollow noopener noreferrer"><code>src/Code.gs</code></a>.</li>
-<li><strong>File &gt; New &gt; HTML file</strong>, three times; name them exactly <code>Index</code>, <code>Stylesheet</code>, and <code>JavaScript</code>, and paste in the matching files from the repo's <a href="src/" rel="nofollow noopener noreferrer"><code>src</code></a> folder.</li>
-<li>Open Project Settings (gear icon) and enable "Show <code>appsscript.json</code> manifest file in editor"; open <code>appsscript.json</code>, delete its contents, and paste in this repo's <a href="src/appsscript.json" rel="nofollow noopener noreferrer"><code>src/appsscript.json</code></a>.</li>
+<li>Replace the default <code>Code.gs</code> contents with this repo's <a target="_blank" href="https://github.com/DepressionCenter/MiNap-Go/blob/main/src/Code.gs" rel="nofollow noopener noreferrer"><code>src/Code.gs</code></a>.</li>
+<li><strong>File &gt; New &gt; HTML file</strong>, three times; name them exactly <code>Index</code>, <code>Stylesheet</code>, and <code>JavaScript</code>, and paste in the matching files from the repo's <a target="_blank" href="https://github.com/DepressionCenter/MiNap-Go/tree/main/src/" rel="nofollow noopener noreferrer"><code>src</code></a> folder.</li>
+<li>Open Project Settings (gear icon) and enable "Show <code>appsscript.json</code> manifest file in editor"; open <code>appsscript.json</code>, delete its contents, and paste in this repo's <a target="_blank" href="https://github.com/DepressionCenter/MiNap-Go/blob/main/src/appsscript.json" rel="nofollow noopener noreferrer"><code>src/appsscript.json</code></a>.</li>
 <li>Click <strong>Deploy &gt; New deployment &gt; Web app</strong>. Set "Execute as" to "Me" to ensure it runs under your account. Set "Who has access" to "Anyone" so particants can access it without a Google account. Authorize the script (as described in the quick start guide).</li>
 <li>Open the web app URL once; the shareable URL is written to the <strong>Setup</strong> tab.</li>
 </ol>

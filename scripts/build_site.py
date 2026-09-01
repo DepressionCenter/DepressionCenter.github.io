@@ -581,7 +581,62 @@ def demote_headings(markup):
     return markup
 
 
-def process_readme(rendered_html):
+RELATIVE_URL_ATTRIBUTE_RE = re.compile(r'\b(src|href)="([^"]*)"')
+ABSOLUTE_URL_PREFIXES = ("http://", "https://", "mailto:", "data:", "#", "//")
+
+
+def absolutize_readme_links(markup, slug, branch):
+    """Point a README's relative links and images at the repository they came from.
+
+    GitHub rewrites Markdown image syntax to absolute proxy URLs when it renders a README, but
+    it leaves raw HTML tags alone. A README written with <img src="images/screenshot.png">
+    therefore arrives with a path that means nothing once the markup is shown on this site.
+
+    A path starting with "/" is treated as relative to the repository root as well. Read
+    literally it would mean the root of github.com, where nothing useful lives, so the author
+    can only have meant the repository.
+
+    Args:
+        markup: Sanitized README HTML.
+        slug: Repository the README belongs to.
+        branch: Branch the README was read from.
+
+    Returns:
+        str: The same markup with relative references made absolute.
+    """
+    quoted_slug = urllib.parse.quote(slug)
+    quoted_branch = urllib.parse.quote(branch)
+    raw_base = f"{RAW_ROOT}/{ORG}/{quoted_slug}/{quoted_branch}/"
+    blob_base = f"https://github.com/{ORG}/{quoted_slug}/blob/{quoted_branch}/"
+    tree_base = f"https://github.com/{ORG}/{quoted_slug}/tree/{quoted_branch}/"
+
+    def rewrite(match):
+        attribute, value = match.group(1), match.group(2)
+        if not value or value.startswith(ABSOLUTE_URL_PREFIXES):
+            return match.group(0)
+
+        path = value
+        while path.startswith("./"):
+            path = path[2:]
+        path = path.lstrip("/")
+        # A path climbing above the repository root has no sensible target; leave it alone
+        # rather than inventing one.
+        if not path or path.startswith("../"):
+            return match.group(0)
+
+        # Images are served from the raw file host; links go to the rendered view on GitHub,
+        # which needs to know whether the target is a file or a directory.
+        if attribute == "src":
+            base = raw_base
+        else:
+            last_segment = path.rstrip("/").rsplit("/", 1)[-1]
+            base = blob_base if "." in last_segment else tree_base
+        return f'{attribute}="{base}{path}"'
+
+    return RELATIVE_URL_ATTRIBUTE_RE.sub(rewrite, markup)
+
+
+def process_readme(rendered_html, slug, branch):
     """Turn GitHub's rendered README into markup safe to embed in this site.
 
     GitHub sanitizes what it renders; this repeats the work with an explicit allowlist because
@@ -589,6 +644,8 @@ def process_readme(rendered_html):
 
     Args:
         rendered_html: HTML as returned by the README endpoint.
+        slug: Repository the README belongs to, used to resolve relative links.
+        branch: Branch the README was read from.
 
     Returns:
         str: Sanitized HTML with headings demoted and external links opening in a new tab.
@@ -616,6 +673,7 @@ def process_readme(rendered_html):
     # sanitizing, and removing the logo can leave an empty paragraph behind.
     markup = EMPTY_ANCHOR_RE.sub("", markup)
     markup = EMPTY_PARAGRAPH_RE.sub("", markup)
+    markup = absolutize_readme_links(markup, slug, branch)
     markup = demote_headings(markup)
 
     # Links to other sites open in a new tab, matching how the panel behaved previously.
@@ -1579,7 +1637,9 @@ def build(output_root, image_root, token, dry_run):
         if rendered is None and etag and new_etag:
             readme_html = extract_cached_readme(fragment_path)
         else:
-            readme_html = process_readme(rendered) if rendered else ""
+            readme_html = (
+                process_readme(rendered, slug, record["default_branch"]) if rendered else ""
+            )
         entry["readme_etag"] = new_etag or ""
 
         tree = fetch_tree(slug, record["default_branch"], token)

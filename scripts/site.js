@@ -48,6 +48,31 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
     return new URL(path, SITE_ROOT).href;
   }
 
+  /**
+   * Rewrite relative links and images inside injected markup so they resolve from the site
+   * root.
+   *
+   * The panel is filled after the address bar has already been changed to /repos/<name>/, and
+   * the browser resolves a relative src or href against whatever the address bar says at that
+   * moment. Without this, a preview image asks for /repos/<name>/images/... and gets nothing.
+   *
+   * @param {Element} container Element whose descendants should be re-anchored.
+   * @returns {void}
+   */
+  function anchorRelativeUrls(container) {
+    var elements = container.querySelectorAll('[src], [href]');
+    Array.prototype.forEach.call(elements, function (element) {
+      ['src', 'href'].forEach(function (attribute) {
+        var value = element.getAttribute(attribute);
+        // Leave absolute URLs, protocol-relative URLs, and in-page anchors as they are.
+        if (!value || /^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(value)) {
+          return;
+        }
+        element.setAttribute(attribute, siteUrl(value));
+      });
+    });
+  }
+
   /* ### Search and tag filtering ### */
 
   /**
@@ -227,7 +252,14 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
         if (!response.ok) { throw new Error('HTTP ' + response.status); }
         return response.text();
       })
-      .then(function (markup) { body.innerHTML = markup; })
+      .then(function (markup) {
+        // Parse into an inert document first. Images there do not start loading, so the
+        // relative paths are corrected before the browser ever requests a wrong URL. The
+        // result still goes in through innerHTML, which never runs script elements.
+        var parsed = new DOMParser().parseFromString(markup, 'text/html');
+        anchorRelativeUrls(parsed.body);
+        body.innerHTML = parsed.body.innerHTML;
+      })
       .catch(function () {
         // Reaching here means this site failed to serve its own content, so the fallback
         // deliberately leaves it: GitHub always has the project, whatever state a build is in.

@@ -63,8 +63,8 @@ Node.js, no bundler, and no framework. Raise the pins deliberately rather than a
 
 ### Security testing performed
 
-`python scripts/test_build_site.py` runs 34 offline checks. Result on 2026-09-01:
-**34/34 passed.** They cover a hostile description, a hostile lab name, `javascript:` and
+`python scripts/test_build_site.py` runs 41 offline checks. Result on 2026-09-01:
+**41/41 passed.** They cover a hostile description, a hostile lab name, `javascript:` and
 `data:` URLs in every author-controlled field, a README containing a script tag, an iframe, an
 `onerror` handler and a `javascript:` link, and a request aimed at a host outside the
 allowlist. The suite also checks that a cached rebuild reproduces the previous output exactly,
@@ -128,9 +128,11 @@ AA conformance.
 
 ## Known gaps
 
-- **README images are hot-linked.** They load from `camo.githubusercontent.com`, exactly as on
-  GitHub. That leaves a third-party dependency in the rendered page. Mirroring them locally is
-  possible but was not part of this change.
+- **README images are hot-linked.** Images written with Markdown syntax load from
+  `camo.githubusercontent.com`, exactly as on GitHub. Images written as raw HTML tags load
+  from `raw.githubusercontent.com`, because GitHub does not rewrite those and the build
+  resolves them itself. Either way a third-party dependency stays in the rendered page.
+  Mirroring them locally is possible but was not part of this change.
 - **Content can be up to a day old.** The build runs nightly. A correction made in the morning
   appears the next night unless someone runs the workflow by hand.
 - **Analytics.** Google Analytics loads on `depressioncenter.org` and `umich.edu` domains only.

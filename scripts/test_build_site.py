@@ -67,6 +67,9 @@ HOSTILE_README = (
     '<p><img src=x onerror="alert(2)"><a href="javascript:alert(3)">bad</a>'
     '<a href="https://example.org">good</a><a href="#section">anchor</a></p>'
     '<iframe src="https://evil.example"></iframe>'
+    '<p><img src="./images/shot.png"><img src="/images/root.png">'
+    '<a href="docs/guide.md">guide</a><a href="src/">folder</a>'
+    '<a href="../outside.md">outside</a></p>'
     "<h2>Sub</h2></article></div>"
 )
 
@@ -117,7 +120,7 @@ def test_hostile_repository_fields():
 def test_readme_sanitizing():
     """README markup arrives from the API and must be reduced to a safe subset."""
     print("README markup from the API")
-    markup = build.process_readme(HOSTILE_README)
+    markup = build.process_readme(HOSTILE_README, "Evil-Repo", "main")
 
     for pattern in ("<script", "onerror", "javascript:", "<iframe"):
         check(f"{pattern} is removed", pattern not in markup.lower())
@@ -139,7 +142,34 @@ def test_readme_sanitizing():
         "an in-page anchor does not open a new tab",
         anchor and 'target="_blank"' not in anchor.group(0),
     )
-    check("empty input is handled", build.process_readme("") == "" and build.process_readme(None) == "")
+    check(
+        "empty input is handled",
+        build.process_readme("", "Evil-Repo", "main") == ""
+        and build.process_readme(None, "Evil-Repo", "main") == "",
+    )
+
+
+def test_relative_readme_links():
+    """GitHub leaves raw HTML tags in a README alone, so relative paths must be resolved here.
+
+    A README written with <img src="images/shot.png"> points at nothing once its markup is
+    shown on this site, because the page it lands on is not in that repository.
+    """
+    print("Relative links inside a README")
+    markup = build.process_readme(HOSTILE_README, "Evil-Repo", "main")
+    raw = "https://raw.githubusercontent.com/DepressionCenter/Evil-Repo/main/"
+    repo = "https://github.com/DepressionCenter/Evil-Repo"
+
+    check('a "./" image path resolves to the raw file host', f'src="{raw}images/shot.png"' in markup, markup)
+    check('a "/" image path is treated as repository-root', f'src="{raw}images/root.png"' in markup)
+    check("a link to a file goes to the blob view", f'href="{repo}/blob/main/docs/guide.md"' in markup)
+    check("a link to a folder goes to the tree view", f'href="{repo}/tree/main/src/"' in markup)
+    check('a path climbing above the repository is left alone', 'href="../outside.md"' in markup)
+    check("an in-page anchor is left alone", 'href="#section"' in markup)
+    check(
+        "a newly absolute link still opens in a new tab",
+        'target="_blank"' in (re.search(r'<a[^>]*docs/guide\.md"[^>]*>', markup) or type("x", (), {"group": lambda s, n=0: ""})()).group(0),
+    )
 
 
 def test_network_allowlist():
@@ -257,6 +287,7 @@ def main():
         test_readme_sanitizing,
         test_network_allowlist,
         test_boundaries,
+        test_relative_readme_links,
         test_template_safety,
         test_cache_round_trip,
     ):

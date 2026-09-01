@@ -4,7 +4,7 @@
 <div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">ZippyServe</h2></div>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
 <p dir="auto">ZippyServe is a zero-dependency local web server. It lets you test single-page apps quickly. It serves directories, zips, HTML, and Markdown, and it has a built-in MCP for AI coding agents.</p>
-<p dir="auto"><a target="_blank" href="images/ZippyServe.png" rel="nofollow noopener noreferrer"><img src="images/ZippyServe.png" alt="Preview Image"></a></p>
+<p dir="auto"><a target="_blank" href="https://github.com/DepressionCenter/ZippyServe/blob/main/images/ZippyServe.png" rel="nofollow noopener noreferrer"><img src="https://raw.githubusercontent.com/DepressionCenter/ZippyServe/main/images/ZippyServe.png" alt="Preview Image"></a></p>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Features</h3></div>
 <ul dir="auto">
 <li>Solves local SPA testing with no bulky web servers required.</li>
@@ -15,7 +15,7 @@
 <li>Excludes dotfiles and dot-directories (<code>.git</code>, <code>.github</code>, <code>.claude</code>, etc.) from being served by default, since the served root is commonly a project's working directory — pass <code>-serve-dotfiles</code> to opt back in. <code>.well-known</code> is always served (RFC 8615).</li>
 <li>Renders GitHub-flavored Markdown natively.</li>
 <li>Launches your browser to <code>localhost</code> automatically.</li>
-<li>Includes a built-in MCP server so AI coding agents can drive and inspect a live local server directly — see <a href="docs/mcp-design.md" rel="nofollow noopener noreferrer">docs/mcp-design.md</a>.</li>
+<li>Includes a built-in MCP server so AI coding agents can drive and inspect a live local server directly — see <a target="_blank" href="https://github.com/DepressionCenter/ZippyServe/blob/main/docs/mcp-design.md" rel="nofollow noopener noreferrer">docs/mcp-design.md</a>.</li>
 <li>Adds to any project by copying just <code>/bin</code> and the run script matching your OS — no other files required.</li>
 <li>Licensed under GPLv3, unlike many similar web servers, allowing re-use and bundling with other open source or commercial projects.</li>
 </ul>
@@ -26,7 +26,7 @@
 <li>Your default browser opens automatically to <code>http://localhost:8010</code>.</li>
 <li>Override the port or serve a different directory/zip: <code>.\run-windows.ps1 -Port 9000</code> or <code>./run-linux.sh --dir ./dist</code>.</li>
 <li>Building from source instead of using the checked-in binaries: run <code>.\build.ps1</code> (Windows) or <code>./build.sh</code> (Linux/macOS) to cross-compile all targets into <code>/bin</code>.</li>
-<li>To use the built-in MCP server for AI coding agents, run the scripts with the <code>-mcp</code> parameter (and optionally <code>-mcp-browser</code> for console error capture). See <a href="docs/mcp-design.md" rel="nofollow noopener noreferrer">docs/mcp-design.md</a> for more information.</li>
+<li>To use the built-in MCP server for AI coding agents, run the scripts with the <code>-mcp</code> parameter (and optionally <code>-mcp-browser</code> for console error capture). See <a target="_blank" href="https://github.com/DepressionCenter/ZippyServe/blob/main/docs/mcp-design.md" rel="nofollow noopener noreferrer">docs/mcp-design.md</a> for more information.</li>
 <li>Dotfiles and dot-directories (<code>.git</code>, <code>.github</code>, <code>.claude</code>, and similar) are excluded from serving by default — this applies to plain file serving as well as the MCP tools, not just one or the other. Pass <code>-serve-dotfiles</code> (or <code>-ServeDotfiles</code> on Windows) if you genuinely need to serve one: <code>.\run-windows.ps1 -ServeDotfiles</code> or <code>./run-linux.sh --serve-dotfiles</code>. <code>.well-known/</code> is always served, dotfile exclusion or not.</li>
 </ul>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>

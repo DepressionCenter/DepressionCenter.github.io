@@ -53,10 +53,15 @@ and published exactly as received. They are never converted to a local time zone
    repository description containing markup renders as visible text, never as markup.
 4. **Sanitize.** README HTML passes through an allowlist sanitizer. Only known-safe tags and
    attributes survive, and links may only use `http`, `https`, or `mailto`.
-5. **Restructure.** Headings in the README shift down one level so each page has exactly one
+5. **Resolve relative links.** GitHub rewrites Markdown image syntax to absolute proxy URLs
+   when it renders a README, but it leaves raw HTML tags alone. A README containing
+   `<img src="images/shot.png">` therefore arrives with a path that means nothing on this
+   site, so the build points it at `raw.githubusercontent.com`. Relative links become GitHub
+   `blob` or `tree` URLs depending on whether the target looks like a file or a folder.
+6. **Restructure.** Headings in the README shift down one level so each page has exactly one
    `<h1>`, which is the repository name. The Center's logo is removed from the top of each
    README because the site header already shows it.
-6. **Normalize images.** Preview images are centre-cropped to 16:9 and resized to 912 pixels
+7. **Normalize images.** Preview images are centre-cropped to 16:9 and resized to 912 pixels
    wide, with a 360-pixel thumbnail. Animated images keep only their first frame.
 
 ## Where the results land

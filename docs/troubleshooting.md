@@ -80,6 +80,19 @@ Anything else missing was removed by the sanitizer, which allows a fixed list of
 `scripts/build_site.py` and note the change in [compliance](compliance.md). Do not disable
 sanitizing.
 
+## An image inside a README does not load
+
+**Symptom.** A screenshot shows as a broken image on a repository page or in the panel.
+
+**Cause.** Usually the file is not where the README says it is. GitHub only rewrites images
+written with Markdown syntax; the build resolves the rest against
+`raw.githubusercontent.com/<org>/<repo>/<branch>/`, using the path exactly as written.
+
+**Fix.** Open the broken image URL directly. A 404 means the path in the README is wrong, or
+the file lives on a different branch, so fix it in that repository. Note that a path starting
+with `/` is treated as relative to the repository root, because read literally it would point
+at the root of github.com where nothing useful lives.
+
 ## A repository page returns "not found"
 
 **Symptom.** `code.depressioncenter.org/repos/SomeRepo/` gives a 404.
