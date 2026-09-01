@@ -919,9 +919,11 @@ def render_card(record, featured):
         f'          <div class="repo-links">{render_links(record)}</div>'
     )
 
+    repo_attribute = f' data-repo-url="{esc(record["repo_url"])}"' if record["repo_url"] else ""
+
     if featured:
         return (
-            f'        <article class="featured-card" role="listitem" '
+            f'        <article class="featured-card" role="listitem"{repo_attribute} '
             f'data-search="{esc(search_text(record))}">\n'
             f'          {render_thumb(record, "", "featured-thumb")}\n'
             f'          <span class="featured-badge" aria-hidden="true">Featured</span>\n'
@@ -932,7 +934,7 @@ def render_card(record, featured):
             f"        </article>"
         )
     return (
-        f'        <article class="repo-card" role="listitem" '
+        f'        <article class="repo-card" role="listitem"{repo_attribute} '
         f'data-search="{esc(search_text(record))}">\n'
         f"          <h3>{title_link}</h3>\n"
         f'          {render_thumb(record, "", "featured-thumb")}\n'

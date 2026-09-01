@@ -90,6 +90,21 @@ private, archived out of view, or on the ignore list in `scripts/build_site.py`.
 **Fix.** Check that it appears in `data/repos.json`. If not, confirm it is public and not in
 `IGNORED_REPOS`, then run the workflow by hand from the Actions tab.
 
+## The workflow fails saying an action is not allowed
+
+**Symptom.** `The actions actions/checkout@v5 and actions/setup-python@v6 are not allowed in
+DepressionCenter/DepressionCenter.github.io because all actions must be from a repository
+owned by your enterprise.`
+
+**Cause.** The University of Michigan enterprise restricts GitHub Actions to actions published
+by repositories the enterprise owns. That setting blocks third-party actions **and** GitHub's
+own `actions/*` marketplace actions.
+
+**Fix.** Already handled: `.github/workflows/build-site.yml` uses no `uses:` line at all. It
+clones the repository with `git` and runs the Python that Ubuntu runners already provide. If
+you add a step, write it as a `run:` shell command. Do not add a `uses:` line unless someone
+has confirmed the enterprise policy allows that specific action.
+
 ## The nightly build stopped running
 
 **Symptom.** No new commits from the workflow for weeks.

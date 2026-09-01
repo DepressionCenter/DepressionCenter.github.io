@@ -40,7 +40,7 @@ which is fine for a catalog of repositories.
 | `templates/repo.html` | The shell for one repository's page. |
 | `styles/site.css` | All styling, shared by the landing page and every repository page. |
 | `scripts/site.js` | Search, tag filtering, and the slide-in panel. Every feature is optional. |
-| `.github/workflows/build-site.yml` | Runs the build nightly, on pushes to `main`, and on request. |
+| `.github/workflows/build-site.yml` | Runs the build nightly, on pushes to `main`, and on request. Uses no marketplace actions, because the enterprise permits only actions it owns. |
 
 Files the build produces are marked in the repository as generated. Do not edit them by hand;
 the next build overwrites them. Edit the templates, the stylesheet, or the script instead.

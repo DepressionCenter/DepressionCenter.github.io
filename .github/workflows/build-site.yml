@@ -8,6 +8,12 @@
 # Notes: See README file for documentation and full license information.
 # Website: https://code.depressioncenter.org/
 #
+# This workflow deliberately uses no third-party or GitHub-published actions. The University
+# of Michigan enterprise policy allows only actions from repositories the enterprise owns,
+# which rules out actions/checkout and actions/setup-python. Every step below is a plain shell
+# command instead: git clones the repository, and the runner's preinstalled Python 3 runs the
+# build. Do not add a "uses:" line without first confirming the policy allows it.
+#
 # Copyright (c) 2026 The Regents of the University of Michigan
 # Licensed under the GNU General Public License v3.0 or later.
 # See <https://www.gnu.org/licenses/>.
@@ -30,6 +36,7 @@ on:
       - 'data/build-cache.json'
       - 'images/repo-previews/remote/**'
       - 'sitemap.xml'
+      - 'llms.txt'
       - 'docs/**'
       - '*.md'
   workflow_dispatch:
@@ -50,34 +57,50 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v5
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
-          cache: pip
-          cache-dependency-path: requirements.txt
-
-      - name: Install dependencies
-        run: pip install --disable-pip-version-check -r requirements.txt
-
-      - name: Build the site
-        # The token is issued automatically for this run and only raises the API rate limit
-        # from 60 to 1000 requests an hour. No secret needs to be created or stored.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/build_site.py
-
-      - name: Commit the generated files
+        # The repository is public, so cloning needs no credentials. Only the push at the end
+        # is authenticated.
         run: |
           set -euo pipefail
-          if git diff --quiet && git diff --cached --quiet && [ -z "$(git status --porcelain)" ]; then
+          git clone --depth 1 --branch "$GITHUB_REF_NAME" \
+            "https://github.com/${GITHUB_REPOSITORY}.git" .
+          git log -1 --format='Starting from %h %s'
+
+      - name: Install dependencies
+        # Ubuntu runners ship Python 3 and pip. A virtual environment keeps the install clear
+        # of the system packages that Ubuntu marks as externally managed.
+        run: |
+          set -euo pipefail
+          python3 --version
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --quiet --disable-pip-version-check --upgrade pip
+          .venv/bin/python -m pip install --quiet --disable-pip-version-check -r requirements.txt
+
+      - name: Check the build's own tests
+        run: .venv/bin/python scripts/test_build_site.py
+
+      - name: Build the site
+        # The token is issued automatically for this run. It only raises the API rate limit
+        # from 60 to 1000 requests an hour; no secret needs to be created or stored.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: .venv/bin/python scripts/build_site.py
+
+      - name: Commit the generated files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No content changed; nothing to publish."
             exit 0
           fi
+          git status --short
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The helper reads the token from the environment at push time, so it is never
+          # written into .git/config and never appears in a command line.
+          git config credential.helper \
+            '!f() { echo username=x-access-token; echo "password=$GITHUB_TOKEN"; }; f'
           git add -A
           git commit -m "Rebuild site from the GitHub API"
-          git push
+          git push origin "HEAD:${GITHUB_REF_NAME}"
