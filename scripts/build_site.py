@@ -104,6 +104,10 @@ PREVIEW_EXTENSIONS = ("png", "jpg", "jpeg", "gif")
 # Search engines truncate descriptions around this length.
 META_DESCRIPTION_LIMIT = 155
 
+# Rendered size of a Related Resources category icon, in pixels. Written into the SVG
+# element itself so the icon is correctly sized even before the stylesheet loads.
+CATEGORY_ICON_SIZE = 18
+
 # Abort rather than publish if the repository count collapses; a partial API response must
 # never wipe out the site. Expressed as the smallest acceptable fraction of the previous build.
 MIN_REPO_RATIO = 0.7
@@ -903,8 +907,14 @@ def render_category_icon(icon_name):
     paths = CATEGORY_ICON_PATHS.get(icon_name)
     if not paths:
         return ""
+    # The width and height attributes are not decoration. An inline SVG carrying only a
+    # viewBox has no intrinsic size, so it expands to fill its container whenever the
+    # stylesheet has not arrived: while CSS is still loading, if it fails, or while a browser
+    # holds a cached copy from before a deploy. Every other icon on this site is sized the
+    # same way. The CSS rule then refines the size; it is never the only thing setting it.
     return (
-        '<svg class="resource-group-icon" viewBox="0 0 16 16" fill="currentColor" '
+        f'<svg class="resource-group-icon" width="{CATEGORY_ICON_SIZE}" '
+        f'height="{CATEGORY_ICON_SIZE}" viewBox="0 0 16 16" fill="currentColor" '
         f'aria-hidden="true" focusable="false">{paths}</svg>'
     )
 

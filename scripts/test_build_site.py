@@ -237,6 +237,20 @@ def test_resource_section():
         markup.count('aria-hidden="true"') == markup.count("<svg"),
     )
     check("category icons are not focusable", markup.count('focusable="false"') == markup.count("<svg"))
+
+    # An inline SVG with only a viewBox has no intrinsic size and expands to fill its
+    # container whenever the stylesheet is missing, still loading, or stale in a cache. Sizing
+    # it in the markup keeps the page usable in all of those cases.
+    unsized = [
+        tag
+        for tag in re.findall(r"<svg\b[^>]*>", markup)
+        if "width=" not in tag or "height=" not in tag
+    ]
+    check(
+        "every icon is sized in the markup, not only in CSS",
+        not unsized,
+        f"{len(unsized)} unsized: {unsized[:1]}",
+    )
     check("each list is labelled by its category heading", markup.count("aria-labelledby=") == categories)
     check(
         "no anchor is nested inside another anchor",
