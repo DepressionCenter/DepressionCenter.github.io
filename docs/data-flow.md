@@ -75,7 +75,7 @@ and published exactly as received. They are never converted to a local time zone
 | `data/build-cache.json` | ETags and image hashes, so unchanged content is not downloaded again. |
 | `images/repo-previews/remote/` | Preview images pulled from other repositories. |
 | `sitemap.xml` | Every page on the site, with real modification dates. |
-| `llms.txt` | A plain-text map of the collection for language models and agents, listing each repository with its source, documentation, and demo links. |
+| `llms.txt` | A plain-text map of the collection for language models and agents, listing the Center's public resources and every repository with its source, documentation, and demo links. |
 
 All of it is committed to the `main` branch and served by GitHub Pages. There is no separate
 deployment step and no build artifact stored outside the repository.

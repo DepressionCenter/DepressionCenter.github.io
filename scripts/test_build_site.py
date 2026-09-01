@@ -215,6 +215,58 @@ def test_boundaries():
     )
 
 
+def test_resource_section():
+    """The Related Resources section must stay accessible as entries are added.
+
+    The rules it has to keep: every summary visible rather than hidden behind a hover, icons
+    hidden from assistive technology, and no anchor nested inside another anchor.
+    """
+    print("Related Resources section")
+    markup = build.render_resource_groups()
+
+    categories = len(re.findall(r'class="resource-group"', markup))
+    items = len(re.findall(r'class="resource-item"', markup))
+    summaries = len(re.findall(r'class="resource-summary"', markup))
+
+    check("every configured category with members is rendered", categories > 0)
+    check("every resource is rendered", items == len(build.RESOURCE_LIBRARY), f"{items} items")
+    check("every resource shows its summary, not a hover", summaries == items)
+    check("no summary is hidden behind a title tooltip", 'title=' not in markup)
+    check(
+        "category icons are hidden from assistive technology",
+        markup.count('aria-hidden="true"') == markup.count("<svg"),
+    )
+    check("category icons are not focusable", markup.count('focusable="false"') == markup.count("<svg"))
+    check("each list is labelled by its category heading", markup.count("aria-labelledby=") == categories)
+    check(
+        "no anchor is nested inside another anchor",
+        not re.findall(r"<a\b[^>]*>(?:(?!</a>).)*<a\b", markup, re.S),
+    )
+    check(
+        "every outbound link is protected with rel=noopener",
+        markup.count('rel="noopener"') == markup.count("<a "),
+    )
+
+    # A category name that does not exist would drop resources off the page without a word.
+    original = build.RESOURCE_LIBRARY
+    build.RESOURCE_LIBRARY = (
+        {
+            "name": "X",
+            "url": "https://example.org",
+            "category": "No Such Category",
+            "summary": "s",
+            "description": "d",
+        },
+    )
+    try:
+        build.render_resource_groups()
+        check("an unknown category stops the build", False)
+    except build.BuildError:
+        check("an unknown category stops the build", True)
+    finally:
+        build.RESOURCE_LIBRARY = original
+
+
 def test_template_safety():
     """A template token left unfilled would publish a visibly broken page."""
     print("Templates")
@@ -288,6 +340,7 @@ def main():
         test_network_allowlist,
         test_boundaries,
         test_relative_readme_links,
+        test_resource_section,
         test_template_safety,
         test_cache_round_trip,
     ):

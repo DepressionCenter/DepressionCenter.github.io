@@ -16,4 +16,5 @@ images/repo-previews/remote/** linguist-generated=true
 *.js   text eol=lf
 *.json text eol=lf
 *.xml  text eol=lf
+*.txt  text eol=lf
 *.py   text eol=lf

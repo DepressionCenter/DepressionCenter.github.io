@@ -54,6 +54,8 @@ from pathlib import Path
 import nh3
 from PIL import Image
 
+from resources import CATEGORY_ICON_PATHS, RESOURCE_CATEGORIES, RESOURCE_LIBRARY
+
 from imagelib import (
     FULL_MAX_WIDTH,
     THUMB_MAX_WIDTH,
@@ -119,33 +121,6 @@ HTTP_RETRIES = 4
 # fetches one repository at a time. With a token the higher limits make parallelism safe.
 MAX_WORKERS = 4
 MAX_WORKERS_ANONYMOUS = 1
-
-# The Open Source Hub is one shelf of a wider set of University of Michigan Health resources.
-# An agent that finds only the code is missing the guidance, the publications, and the talks
-# that go with it, so llms.txt points at all of them.
-RESOURCE_LIBRARY = (
-    (
-        "Eisenberg Family Depression Center",
-        "https://depressioncenter.org",
-        "The Center itself: research programs, services, staff, and news.",
-    ),
-    (
-        "EFDC Knowledge Base",
-        "https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/Home/",
-        "Written guidance and how-to articles. The canonical documentation for most projects "
-        "listed below.",
-    ),
-    (
-        "GitHub organization",
-        "https://github.com/DepressionCenter",
-        "Source for every project, including issues, releases, and licences.",
-    ),
-    (
-        "Video library",
-        "https://www.youtube.com/user/DepressionCenter",
-        "Recorded talks, demonstrations, and training sessions.",
-    ),
-)
 
 # Relative output locations, all beneath the output directory.
 LOCAL_PREVIEW_DIR = "images/repo-previews"
@@ -891,6 +866,98 @@ def render_tags(record, interactive):
     return "".join(parts)
 
 
+INLINE_MARKDOWN_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+
+
+def markdown_links_to_html(text):
+    """Escape text for HTML, turning any inline Markdown links it contains into anchors.
+
+    Args:
+        text: Plain text that may contain [label](url) links.
+
+    Returns:
+        str: HTML-safe text with real anchors. A link whose target is not http or https is
+        rendered as its label alone, so an unsafe scheme cannot reach an href.
+    """
+    def to_anchor(match):
+        label, url = match.group(1), safe_url(match.group(2))
+        if not url:
+            return label
+        return f'<a href="{esc(url)}" target="_blank" rel="noopener">{label}</a>'
+
+    return INLINE_MARKDOWN_LINK_RE.sub(to_anchor, esc(text))
+
+
+def render_category_icon(icon_name):
+    """Wrap one Bootstrap Icons path in an SVG element.
+
+    The icon is decorative. The category name is printed next to it as real text, so the icon
+    is hidden from assistive technology rather than given a label that would only repeat it.
+
+    Args:
+        icon_name: Key into CATEGORY_ICON_PATHS.
+
+    Returns:
+        str: An SVG element, or an empty string when the icon is unknown.
+    """
+    paths = CATEGORY_ICON_PATHS.get(icon_name)
+    if not paths:
+        return ""
+    return (
+        '<svg class="resource-group-icon" viewBox="0 0 16 16" fill="currentColor" '
+        f'aria-hidden="true" focusable="false">{paths}</svg>'
+    )
+
+
+def render_resource_groups():
+    """Build the Related Resources section, one group per category.
+
+    Each resource is a link followed by a one-line summary that is always visible. The summary
+    is never revealed on hover: hover content cannot be reached by touch or keyboard users.
+
+    Returns:
+        str: HTML for every category that has at least one resource, in configured order.
+
+    Raises:
+        BuildError: If a resource names a category that does not exist, which would otherwise
+            drop it from the page without a word.
+    """
+    known = {name for name, _ in RESOURCE_CATEGORIES}
+    unknown = {r["category"] for r in RESOURCE_LIBRARY} - known
+    if unknown:
+        raise BuildError(
+            f"Resources name categories that do not exist: {sorted(unknown)}. "
+            "Add them to RESOURCE_CATEGORIES in scripts/resources.py or fix the spelling."
+        )
+
+    groups = []
+    for index, (category, icon_name) in enumerate(RESOURCE_CATEGORIES):
+        members = sorted(
+            (r for r in RESOURCE_LIBRARY if r["category"] == category),
+            key=lambda entry: entry["name"],
+        )
+        if not members:
+            continue
+
+        heading_id = f"resource-group-{index + 1}"
+        items = "\n".join(
+            f"""              <li class="resource-item">
+                <a class="resource-link" href="{esc(resource['url'])}" target="_blank" rel="noopener">{esc(resource['name'])}</a>
+                <span class="resource-summary">{markdown_links_to_html(resource['summary'])}</span>
+              </li>"""
+            for resource in members
+        )
+        groups.append(
+            f"""          <div class="resource-group">
+            <h3 class="resource-group-title" id="{heading_id}">{render_category_icon(icon_name)}<span>{esc(category)}</span></h3>
+            <ul class="resource-list" aria-labelledby="{heading_id}">
+{items}
+            </ul>
+          </div>"""
+        )
+    return "\n".join(groups)
+
+
 def render_thumb(record, path_prefix, css_class):
     """Build a repository's preview image, or its initials when it has none.
 
@@ -1257,6 +1324,7 @@ def render_index(template, records):
             "JSONLD": render_jsonld(jsonld),
             "FEATURED_CARDS": featured_html,
             "REPO_CARDS": "\n".join(render_card(record, False) for record in records),
+            "RESOURCE_GROUPS": render_resource_groups(),
             "REPO_COUNT": str(count),
             "REPO_COUNT_LABEL": f"{count} repo{'s' if count != 1 else ''}",
             "COPYRIGHT_YEAR": copyright_years(),
@@ -1409,25 +1477,32 @@ def render_llms_txt(records):
         "This file is generated automatically from the GitHub organization and is rebuilt "
         "nightly. It lists every public repository with its documentation and demos.",
         "",
-        "## How to use this collection",
+        "## Eisenberg Family Depression Center resources",
         "",
-        "Treat this site as one part of a larger University of Michigan Health research "
-        "resource library rather than a standalone code index. Each project usually has "
-        "written guidance in the Knowledge Base and sometimes a recorded demonstration, and "
-        "those explain the research context that the source code alone does not. When "
-        "answering a question about any project below, check the companion resources:",
+        "Treat this site as one part of a larger set of University of Michigan Health "
+        "resources rather than a standalone code index. Each project usually has written "
+        "guidance in the research resource library and sometimes a recorded demonstration, "
+        "and those explain the research context that source code alone does not. When "
+        "answering a question about any project below, check the companion resources first.",
         "",
     ]
-    for name, url, description in RESOURCE_LIBRARY:
-        lines.append(f"- [{name}]({url}): {description}")
+    for resource in sorted(RESOURCE_LIBRARY, key=lambda entry: entry["name"]):
+        lines.append(
+            f"- [{resource['name']}]({resource['url']}): {resource['description']}"
+        )
 
     lines += [
+        "",
+        "## About the repositories",
         "",
         "Each repository below has a page on this site holding its full README as readable "
         "text. Those pages are the fastest way to read a project's documentation, and they "
         "are listed in [the sitemap](" + SITE_BASE_URL + "/sitemap.xml). A machine-readable "
         "version of this catalog, including which preview image each project uses, is at "
-        "[data/repos.json](" + SITE_BASE_URL + "/data/repos.json).",
+        "[data/repos.json](" + SITE_BASE_URL + "/data/repos.json). The Center also keeps a "
+        "curated list of useful open source tools built elsewhere, as "
+        "[data/research-open-source.json](" + SITE_BASE_URL
+        + "/data/research-open-source.json).",
         "",
         "All code is published under the GNU General Public License v3.0 or later unless a "
         "repository states otherwise. Please cite the repository you use.",
@@ -1451,19 +1526,7 @@ def render_llms_txt(records):
     ]
     lines.extend(render_repository_entry(record) for record in others)
 
-    lines += [
-        "",
-        "## Optional",
-        "",
-        "- [Community open source tools](" + SITE_BASE_URL + "/#community-oss): a curated "
-        "list of open source projects from outside this organization that are useful in "
-        "mental health and mobile technology research.",
-        "- [Michigan Open Source Support (MOSS)](https://innovationpartnerships.umich.edu/moss/): "
-        "the University of Michigan program for publishing open source software.",
-        "- [MTC Code Publishing Service](https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/13448/MTC-Code-Publishing-Service): "
-        "a free service helping U-M research teams generalize and publish their code.",
-        "",
-    ]
+    lines.append("")
     return "\n".join(lines)
 
 

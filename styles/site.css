@@ -1084,3 +1084,81 @@ div.featured-thumb { cursor: pointer; }
   margin-right: 6px;
   accent-color: var(--maize);
 }
+
+/* RELATED RESOURCES
+   The Center's other public resources, grouped by category. Each entry keeps its one-line
+   summary visible at all times: nothing here is revealed only on hover, which touch and
+   keyboard users cannot do. Category icons are decorative, and the category name beside each
+   one carries the meaning, so no information depends on an icon or on colour alone. */
+#related-resources {
+  background: var(--navy);
+  border-top: 1px solid var(--card-border);
+}
+.resources-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+.resource-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+.resource-group {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.resource-group-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--maize);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--card-border);
+}
+.resource-group-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.resource-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.resource-link {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--off-white);
+  text-decoration: none;
+  /* Keeps the pointer target comfortably above the 24px WCAG 2.2 minimum. */
+  padding: 3px 0;
+}
+.resource-link:hover,
+.resource-link:focus-visible {
+  color: var(--maize);
+  text-decoration: underline;
+}
+.resource-summary {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--slate);
+  line-height: 1.5;
+}
+.resource-summary a { color: var(--maize); }
+
+@media (max-width: 640px) {
+  .resource-groups { grid-template-columns: 1fr; }
+}

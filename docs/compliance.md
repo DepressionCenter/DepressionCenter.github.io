@@ -63,8 +63,8 @@ Node.js, no bundler, and no framework. Raise the pins deliberately rather than a
 
 ### Security testing performed
 
-`python scripts/test_build_site.py` runs 41 offline checks. Result on 2026-09-01:
-**41/41 passed.** They cover a hostile description, a hostile lab name, `javascript:` and
+`python scripts/test_build_site.py` runs 51 offline checks. Result on 2026-09-01:
+**51/51 passed.** They cover a hostile description, a hostile lab name, `javascript:` and
 `data:` URLs in every author-controlled field, a README containing a script tag, an iframe, an
 `onerror` handler and a `javascript:` link, and a request aimed at a host outside the
 allowlist. The suite also checks that a cached rebuild reproduces the previous output exactly,
@@ -95,6 +95,9 @@ became static.
 | Animated GIF previews are flattened to a single frame | Nothing on a card moves on its own |
 | The panel keeps its focus trap, Escape handling, and focus return | Behaviour preserved from the previous version |
 | The panel now closes with the browser Back button | The panel has a real URL, so the expected control works |
+| Related Resources summaries are always visible, never revealed on hover | Hover content cannot be reached by touch or keyboard, and would fail WCAG 1.4.13 |
+| Category icons are decorative (`aria-hidden`, `focusable="false"`) | The category name printed beside each icon carries the meaning, so nothing depends on an icon or on colour alone |
+| Resource links are padded above the 24x24 px pointer target minimum | WCAG 2.2 target size |
 
 The existing `prefers-reduced-motion` and `prefers-contrast: high` rules are carried over
 unchanged in `styles/site.css`.
@@ -103,6 +106,10 @@ unchanged in `styles/site.css`.
 
 Verified on 2026-09-01 by inspecting the generated markup and serving the site locally:
 
+- Contrast measured for every colour pair in the Related Resources section against the card
+  background `#0A1E35`: link text 15.20:1, summary text 6.45:1, category heading 11.04:1, and
+  category icons 11.04:1. All exceed the 4.5:1 text and 3:1 graphical-object thresholds,
+  including the `prefers-contrast: high` variant at 10.46:1.
 - Every repository page has exactly one `<h1>`.
 - All 26 cards, with their descriptions, tags, and links, are present in `index.html` as
   delivered, with no scripting involved.

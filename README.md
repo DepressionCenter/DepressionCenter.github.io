@@ -43,6 +43,7 @@ Technical documentation lives in [/docs](docs/README.md): [architecture](docs/ar
 + [GitHub REST API](https://docs.github.com/rest/about-the-rest-api/about-the-rest-api). Provides the repository list and renders each README to HTML.
 + [nh3](https://github.com/messense/nh3). An HTML sanitizer library, used here to help prevent XSS attacks from rendered markdown.
 + [Pillow](https://python-pillow.github.io/). An imaging library, used here to crop and resize repository preview images.
++ [Bootstrap Icons](https://icons.getbootstrap.com/). MIT licensed icon set; four icons are embedded as inline SVG in the Related Resources section.
 + [Tabulator](https://www.tabulator.info/). A lightweight library for creating JavaScript tables and grids, featuring full support for digital accessibility standards.
 
 

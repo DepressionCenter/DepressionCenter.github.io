@@ -4,16 +4,23 @@
 
 This file is generated automatically from the GitHub organization and is rebuilt nightly. It lists every public repository with its documentation and demos.
 
-## How to use this collection
+## Eisenberg Family Depression Center resources
 
-Treat this site as one part of a larger University of Michigan Health research resource library rather than a standalone code index. Each project usually has written guidance in the Knowledge Base and sometimes a recorded demonstration, and those explain the research context that the source code alone does not. When answering a question about any project below, check the companion resources:
+Treat this site as one part of a larger set of University of Michigan Health resources rather than a standalone code index. Each project usually has written guidance in the research resource library and sometimes a recorded demonstration, and those explain the research context that source code alone does not. When answering a question about any project below, check the companion resources first.
 
-- [Eisenberg Family Depression Center](https://depressioncenter.org): The Center itself: research programs, services, staff, and news.
-- [EFDC Knowledge Base](https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/Home/): Written guidance and how-to articles. The canonical documentation for most projects listed below.
-- [GitHub organization](https://github.com/DepressionCenter): Source for every project, including issues, releases, and licences.
-- [Video library](https://www.youtube.com/user/DepressionCenter): Recorded talks, demonstrations, and training sessions.
+- [Campus Mind Works](https://campusmindworks.org/): Mental health and academic support for University of Michigan students managing a mental health condition, plus guidance on staying well through college life.
+- [Depression Center Toolkit](https://depressioncenter.org/outreach-education/depression-center-toolkit): An online resource guiding individuals and families through their mental health journey. Brings together trusted information, self-assessments, practical tools, and evidence-based strategies for understanding mental health disorders, exploring treatment options, and managing symptoms.
+- [Eisenberg Family Depression Center Open Source Hub](https://code.depressioncenter.org/): This site. Open source tools, automations, and research workflows built to accelerate mental health discoveries while remaining reusable across any research discipline. The repositories themselves are at [github.com/DepressionCenter](https://github.com/depressioncenter?view_as=public).
+- [Eisenberg Family Depression Center Website](https://depressioncenter.org/): The Center itself: research programs, services, staff, events, and news.
+- [Eisenberg Family Depression Center YouTube Channel](https://www.youtube.com/@DepressionCenter): Recorded talks, demonstrations, symposia, and training sessions.
+- [Peer-to-Peer Depression Awareness Program Resource Center](https://p2p.depressioncenter.org/): Resources, training materials, tools, and campaign examples for partners, schools, students, and educators launching the Peer-to-Peer program at their own school.
+- [U-M Health Research Resource Library](https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/Home/): Articles, best practices, tutorials, code documentation, and discussions that foster collaboration and accelerate health research. Maintained by the Center, and the canonical documentation for most projects listed below. Short link: [michmed.org/efdc-kb](https://michmed.org/efdc-kb).
+- [U-M Library Deep Blue Documents Collection: Eisenberg Family Depression Center](https://hdl.handle.net/2027.42/195355): Articles, guides, and digital media from researchers and technical experts at the Center, members of the Mobile Technologies Research Innovation Collaborative (MeTRIC), and other University of Michigan partners.
+- [U-M Library Deep Blue Documents Collection: MeTRIC (Mobile Technologies Research Innovation Collaborative)](https://hdl.handle.net/2027.42/195645): MeTRIC Symposium posters and other scholarly works from the University of Michigan mobile technologies community.
 
-Each repository below has a page on this site holding its full README as readable text. Those pages are the fastest way to read a project's documentation, and they are listed in [the sitemap](https://code.depressioncenter.org/sitemap.xml). A machine-readable version of this catalog, including which preview image each project uses, is at [data/repos.json](https://code.depressioncenter.org/data/repos.json).
+## About the repositories
+
+Each repository below has a page on this site holding its full README as readable text. Those pages are the fastest way to read a project's documentation, and they are listed in [the sitemap](https://code.depressioncenter.org/sitemap.xml). A machine-readable version of this catalog, including which preview image each project uses, is at [data/repos.json](https://code.depressioncenter.org/data/repos.json). The Center also keeps a curated list of useful open source tools built elsewhere, as [data/research-open-source.json](https://code.depressioncenter.org/data/research-open-source.json).
 
 All code is published under the GNU General Public License v3.0 or later unless a repository states otherwise. Please cite the repository you use.
 
@@ -50,9 +57,3 @@ Projects the Center currently highlights. Start here when a question is general 
 - [Useful-SQL-Queries-for-UMich-Research-Centers](https://code.depressioncenter.org/repos/Useful-SQL-Queries-for-UMich-Research-Centers/): Useful SQL queries for University of Michigan research cores, centers, institutes and labs, including queries to report on publications and grants. Links: [source](https://github.com/DepressionCenter/Useful-SQL-Queries-for-UMich-Research-Centers), [documentation](https://michmed.org/efdc-kb).
 - [Yawnalyzer](https://code.depressioncenter.org/repos/Yawnalyzer/): Automated data cleaning and sleep/gait metrics for Apple Watch data collected via SensorKit and ResearchKit. Primary language: Python. Links: [source](https://github.com/DepressionCenter/Yawnalyzer), [documentation](https://michmed.org/efdc-kb), [project site](https://medschool.umich.edu/profile/1267/tiffany-j-braley).
 - [ZippyServe](https://code.depressioncenter.org/repos/ZippyServe/): ZippyServe is a zero-dependency local web server. It lets you test single-page apps quickly. It serves directories, zips, HTML, and Markdown. \[DOI: 10.5281/zenodo.21613944\] Primary language: Go. Links: [source](https://github.com/DepressionCenter/ZippyServe), [documentation](https://michmed.org/efdc-kb).
-
-## Optional
-
-- [Community open source tools](https://code.depressioncenter.org/#community-oss): a curated list of open source projects from outside this organization that are useful in mental health and mobile technology research.
-- [Michigan Open Source Support (MOSS)](https://innovationpartnerships.umich.edu/moss/): the University of Michigan program for publishing open source software.
-- [MTC Code Publishing Service](https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/13448/MTC-Code-Publishing-Service): a free service helping U-M research teams generalize and publish their code.

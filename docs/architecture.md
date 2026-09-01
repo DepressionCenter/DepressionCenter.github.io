@@ -36,6 +36,7 @@ which is fine for a catalog of repositories.
 | --- | --- |
 | `scripts/build_site.py` | Reads GitHub and writes the whole site. The only program that produces pages. |
 | `scripts/imagelib.py` | Crops and resizes preview images. Shared with the two manual resize scripts. |
+| `scripts/resources.py` | The Center's public resources and their categories. Edit this to change the Related Resources section and the resource list in `llms.txt`. |
 | `templates/index.html` | The landing page shell, with placeholder tokens the build fills in. |
 | `templates/repo.html` | The shell for one repository's page. |
 | `styles/site.css` | All styling, shared by the landing page and every repository page. |
@@ -104,9 +105,16 @@ you to change `DETAIL_PATH_PREFIX` rather than publishing pages nobody could rea
 - **The site describes itself to machines as well as people.** Alongside the sitemap and the
   JSON catalog, the build writes `llms.txt`, following the
   [llmstxt.org](https://llmstxt.org/) convention. It lists every repository with its source,
-  documentation, and demo links, and tells an agent that this site is one part of a wider
-  University of Michigan Health research resource library rather than a standalone code index.
+  documentation, and demo links, and tells an agent that this site is one part of a wider set
+  of Eisenberg Family Depression Center resources rather than a standalone code index.
   Because it is generated from the same records as the pages, it cannot drift.
+- **The Center's other resources are listed once, in code.** `scripts/resources.py` holds
+  them, and the build renders that one list into both `llms.txt` and the Related Resources
+  section of the landing page. Add an entry in any order; each category is sorted by name when
+  rendered, and a category name that does not exist stops the build rather than quietly
+  dropping the entry. Each resource carries two lengths of text: a one-line `summary` for the
+  page and a fuller `description` for `llms.txt`. Neither is hidden behind a hover, because
+  content revealed only on hover cannot be reached by touch or keyboard.
 - **There is no fallback repository list.** The old page carried a hand-written copy of the
   repository data that slowly drifted out of date. The fallback now is simply the last
   successful build, which stays published if a build fails.
