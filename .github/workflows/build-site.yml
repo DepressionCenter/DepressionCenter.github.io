@@ -8,11 +8,12 @@
 # Notes: See README file for documentation and full license information.
 # Website: https://code.depressioncenter.org/
 #
-# This workflow deliberately uses no third-party or GitHub-published actions. The University
-# of Michigan enterprise policy allows only actions from repositories the enterprise owns,
-# which rules out actions/checkout and actions/setup-python. Every step below is a plain shell
-# command instead: git clones the repository, and the runner's preinstalled Python 3 runs the
-# build. Do not add a "uses:" line without first confirming the policy allows it.
+# This workflow uses no GitHub Actions at all. Every step is a plain shell command: git clones
+# the repository, and the runner's preinstalled Python 3 runs the build. The University of
+# Michigan enterprise restricts which actions may run, currently allowing those published by
+# GitHub and those owned by the organization, but not the wider marketplace. Depending on no
+# action keeps this workflow running whatever that policy is set to. Before adding a "uses:"
+# line, confirm the action is GitHub-published or organization-owned.
 #
 # Copyright (c) 2026 The Regents of the University of Michigan
 # Licensed under the GNU General Public License v3.0 or later.

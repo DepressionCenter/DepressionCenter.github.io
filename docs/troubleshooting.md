@@ -109,14 +109,18 @@ private, archived out of view, or on the ignore list in `scripts/build_site.py`.
 DepressionCenter/DepressionCenter.github.io because all actions must be from a repository
 owned by your enterprise.`
 
-**Cause.** The University of Michigan enterprise restricts GitHub Actions to actions published
-by repositories the enterprise owns. That setting blocks third-party actions **and** GitHub's
-own `actions/*` marketplace actions.
+**Cause.** The University of Michigan enterprise restricts which GitHub Actions may run. The
+policy now allows actions published by GitHub itself, such as `actions/checkout`, along with
+actions owned by the organization. Actions from other publishers are still refused.
 
-**Fix.** Already handled: `.github/workflows/build-site.yml` uses no `uses:` line at all. It
-clones the repository with `git` and runs the Python that Ubuntu runners already provide. If
-you add a step, write it as a `run:` shell command. Do not add a `uses:` line unless someone
-has confirmed the enterprise policy allows that specific action.
+Note that the message quoted above is from the stricter setting that was in force earlier,
+which blocked GitHub's own actions too. If you see it again, the policy has been tightened
+back; check the organization's Actions settings before changing any code.
+
+**Fix.** `.github/workflows/build-site.yml` uses no actions at all, so it runs under either
+setting. It clones the repository with `git` and uses the Python that Ubuntu runners already
+provide. Keeping it that way is the safest default. If you do add a step that uses an action,
+confirm first that it is published by GitHub or owned by the organization.
 
 ## The nightly build stopped running
 

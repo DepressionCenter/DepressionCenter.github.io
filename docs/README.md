@@ -23,6 +23,7 @@ Start with the architecture page if you are new.
 | [Data flow](data-flow.md) | Where the content comes from, how it is transformed, and where it ends up. |
 | [How to add a repository preview image](how-to/add-a-repo-preview-image.md) | The three places a card image can come from, and the image sizes to use. |
 | [How to run the build locally](how-to/run-the-build-locally.md) | Running and testing the build on your own computer. |
+| [How to work on this site with an AI agent](how-to/work-on-this-site-with-an-ai-agent.md) | A starting prompt for a new AI session, and the reasoning behind each part of it. |
 | [Troubleshooting](troubleshooting.md) | Known failures, what causes them, and how to fix them. |
 | [Compliance](compliance.md) | Security and accessibility measures in place, and what still needs a human to check. |
 
