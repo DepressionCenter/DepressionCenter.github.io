@@ -2,7 +2,7 @@
 # build-site.yml - Rebuild the static site from the GitHub API and commit the result.
 # Author(s): Gabriel Mongefranco.
 # Created: 2026-09-01
-# Last Modified: 2026-09-01
+# Last Modified: 2026-09-02
 # Summary: Runs scripts/build_site.py once a night and after template or style changes, then
 #          commits the generated pages so GitHub Pages serves finished HTML.
 # Notes: See README file for documentation and full license information.
@@ -38,6 +38,7 @@ on:
       - 'images/repo-previews/remote/**'
       - 'sitemap.xml'
       - 'llms.txt'
+      - 'llms.html'
       - 'docs/**'
       - '*.md'
   workflow_dispatch:

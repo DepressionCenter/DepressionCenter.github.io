@@ -3,9 +3,8 @@
 # test_build_site.py - Checks for the site build, covering escaping, sanitizing, and edge cases.
 # Author(s): Gabriel Mongefranco.
 # Created: 2026-09-01
-# Last Modified: 2026-09-01
-# Summary: Verify that content coming from the GitHub API cannot inject markup into a page,
-#          that unsafe link schemes are dropped, and that the build's boundary cases behave.
+# Last Modified: 2026-09-02
+# Summary: Verify safe rendering, shared template composition, site indexes, and boundary cases.
 # Notes: See README file for documentation and full license information.
 # Website: https://code.depressioncenter.org/
 #
@@ -291,6 +290,68 @@ def test_template_safety():
         check("an unfilled token stops the build", True)
     check("a filled token is substituted", build.fill("<p>{{A}}</p>", {"A": "x"}) == "<p>x</p>")
 
+    header = "<header>{{ROOT_PREFIX}}</header>"
+    footer = "<footer>{{COPYRIGHT_YEAR}}</footer>"
+    composed = build.compose_page_template(
+        "{{SITE_HEADER}}<main></main>{{SITE_FOOTER}}", header, footer, "../../"
+    )
+    check("shared partials are inserted with page-specific values", "../../" in composed)
+    try:
+        build.compose_page_template("{{SITE_HEADER}}", header, footer, "")
+        check("a missing shared footer stops the build", False)
+    except build.BuildError:
+        check("a missing shared footer stops the build", True)
+
+
+def test_site_indexes():
+    """Human and agent indexes must cross-reference each other and escape API content."""
+    print("Site indexes")
+    root = Path(__file__).resolve().parent.parent
+    templates = root / "templates"
+    header = (templates / "header.html").read_text(encoding="utf-8")
+    footer = (templates / "footer.html").read_text(encoding="utf-8")
+    page = build.compose_page_template(
+        (templates / "llms.html").read_text(encoding="utf-8"), header, footer, ""
+    )
+    record = build.to_record(HOSTILE_API_REPO)
+    html_index = build.render_llms_html(page, [record])
+    text_index = build.render_llms_txt([record])
+
+    check("the human index links to llms.txt", 'href="llms.txt"' in html_index)
+    check("llms.txt links to the human index", f"/{build.LLMS_HTML_PATH}" in text_index)
+    check("the human index keeps hostile descriptions inert", "<script>" not in html_index)
+    check("the human index still shows escaped hostile text", "&lt;script&gt;" in html_index)
+    check("the human index contains exactly one h1", len(re.findall(r"<h1\b", html_index)) == 1)
+    check("the human index needs no JavaScript", "<script src=" not in html_index)
+    sitemap = build.render_sitemap([record])
+    check("the sitemap includes the human index", f"/{build.LLMS_HTML_PATH}" in sitemap)
+
+
+def test_shared_navigation():
+    """Every page must receive the same navigation labels and safe, sized icons."""
+    print("Shared header and footer")
+    root = Path(__file__).resolve().parent.parent
+    templates = root / "templates"
+    header = (templates / "header.html").read_text(encoding="utf-8")
+    footer = (templates / "footer.html").read_text(encoding="utf-8")
+    page = build.compose_page_template(
+        (templates / "index.html").read_text(encoding="utf-8"), header, footer, ""
+    )
+
+    check("header Home link targets this site", 'href="https://code.depressioncenter.org"' in page)
+    check("header Home link has an accessible name", 'title="Home" aria-label="Home"' in page)
+    check("resource library title names the destination", page.count('title="U-M Health Research Resource Library"') == 2)
+    check("footer uses the Resource Library label", ">Resource Library</a>" in page)
+    check("footer Site Index targets llms.html", 'href="https://code.depressioncenter.org/llms.html">Site Index</a>' in page)
+    anchors_with_alt = re.findall(r"<a\b[^>]*\balt=", page)
+    check("links do not use invalid alt attributes", not anchors_with_alt)
+    unsized = [
+        tag
+        for tag in re.findall(r"<svg\b[^>]*>", page)
+        if "width=" not in tag or "height=" not in tag
+    ]
+    check("every shared navigation icon has intrinsic size", not unsized)
+
 
 def test_cache_round_trip():
     """A cached rebuild must reproduce the previous output exactly.
@@ -311,14 +372,42 @@ def test_cache_round_trip():
     records = json.loads(catalog.read_text(encoding="utf-8"))
     index_template = (root / "templates" / "index.html").read_text(encoding="utf-8")
     repo_template = (root / "templates" / "repo.html").read_text(encoding="utf-8")
+    header_template = (root / "templates" / "header.html").read_text(encoding="utf-8")
+    footer_template = (root / "templates" / "footer.html").read_text(encoding="utf-8")
+    llms_template = (root / "templates" / "llms.html").read_text(encoding="utf-8")
+    index_template = build.compose_page_template(
+        index_template, header_template, footer_template, ""
+    )
+    repo_template = build.compose_page_template(
+        repo_template, header_template, footer_template, "../../"
+    )
+    llms_template = build.compose_page_template(
+        llms_template, header_template, footer_template, ""
+    )
 
     check(
-        "rendering the landing page twice gives identical bytes",
-        build.render_index(index_template, records) == build.render_index(index_template, records),
+        "current sources reproduce the generated landing page",
+        build.mark_generated(build.render_index(index_template, records))
+        == (root / "index.html").read_text(encoding="utf-8"),
+    )
+    check(
+        "current sources reproduce the generated human index",
+        build.mark_generated(build.render_llms_html(llms_template, records))
+        == (root / build.LLMS_HTML_PATH).read_text(encoding="utf-8"),
+    )
+    check(
+        "current records reproduce the generated agent index",
+        build.render_llms_txt(records)
+        == (root / build.LLMS_TXT_PATH).read_text(encoding="utf-8"),
+    )
+    check(
+        "current records reproduce the generated sitemap",
+        build.render_sitemap(records) == (root / "sitemap.xml").read_text(encoding="utf-8"),
     )
 
     unstable = []
     unrepeatable = []
+    stale_pages = []
     for record in records:
         fragment = root / "data" / "readme" / f"{record['slug']}.html"
         if not fragment.exists():
@@ -329,6 +418,9 @@ def test_cache_round_trip():
         first = build.render_detail_page(repo_template, record, recovered)
         if first != build.render_detail_page(repo_template, record, recovered):
             unrepeatable.append(record["slug"])
+        generated_page = root / build.DETAIL_PATH_PREFIX / record["slug"] / "index.html"
+        if build.mark_generated(first) != generated_page.read_text(encoding="utf-8"):
+            stale_pages.append(record["slug"])
 
     check(
         f"every panel fragment rebuilds identically from cache ({len(records)} repositories)",
@@ -339,6 +431,56 @@ def test_cache_round_trip():
         "rendering a repository page twice gives identical bytes",
         not unrepeatable,
         f"unrepeatable: {unrepeatable[:5]}",
+    )
+    check(
+        "current sources reproduce every generated repository page",
+        not stale_pages,
+        f"stale: {stale_pages[:5]}",
+    )
+
+
+def test_generated_no_script_navigation():
+    """Generated HTML must contain the full catalog and working detail-page links."""
+    print("Generated pages without script execution")
+    root = Path(__file__).resolve().parent.parent
+    catalog_path = root / "data" / "repos.json"
+    index_path = root / "index.html"
+    if not catalog_path.exists() or not index_path.exists():
+        print("  [skip] no generated output; run scripts/build_site.py first")
+        return
+
+    records = json.loads(catalog_path.read_text(encoding="utf-8"))
+    markup = index_path.read_text(encoding="utf-8")
+    grid_match = re.search(
+        r'<div id="repo-grid"[^>]*>(.*?)'
+        r'<p class="error-state" id="repo-empty"',
+        markup,
+        re.S,
+    )
+    grid = grid_match.group(1) if grid_match else ""
+    hrefs = re.findall(r'<a class="[^"]*\bcard-title-link\b[^"]*" href="([^"]+)"', grid)
+    expected_hrefs = [build.detail_url(record["slug"]) for record in records]
+
+    check("the delivered repository grid exists", bool(grid_match))
+    check(
+        f"the delivered grid contains all {len(records)} repository links",
+        hrefs == expected_hrefs,
+        f"found {len(hrefs)} links",
+    )
+    missing_pages = [
+        href for href in expected_hrefs if not (root / href / "index.html").exists()
+    ]
+    check("every repository link resolves to a generated page", not missing_pages, str(missing_pages))
+    missing_readmes = [
+        href
+        for href in expected_hrefs
+        if 'class="panel-readme detail-readme"'
+        not in (root / href / "index.html").read_text(encoding="utf-8")
+    ]
+    check(
+        "every linked page contains its README region without JavaScript",
+        not missing_readmes,
+        str(missing_readmes),
     )
 
 
@@ -356,7 +498,10 @@ def main():
         test_relative_readme_links,
         test_resource_section,
         test_template_safety,
+        test_site_indexes,
+        test_shared_navigation,
         test_cache_round_trip,
+        test_generated_no_script_navigation,
     ):
         test()
         print()

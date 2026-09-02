@@ -36,9 +36,12 @@ which is fine for a catalog of repositories.
 | --- | --- |
 | `scripts/build_site.py` | Reads GitHub and writes the whole site. The only program that produces pages. |
 | `scripts/imagelib.py` | Crops and resizes preview images. Shared with the two manual resize scripts. |
-| `scripts/resources.py` | The Center's public resources and their categories. Edit this to change the Related Resources section and the resource list in `llms.txt`. |
+| `scripts/resources.py` | The Center's public resources and their categories. Edit this to change the landing page, `llms.html`, and `llms.txt` resource lists. |
 | `templates/index.html` | The landing page shell, with placeholder tokens the build fills in. |
 | `templates/repo.html` | The shell for one repository's page. |
+| `templates/llms.html` | The shell for the human-readable site index. |
+| `templates/header.html` | The shared header inserted into every page shell at build time. |
+| `templates/footer.html` | The shared footer inserted into every page shell at build time. |
 | `styles/site.css` | All styling, shared by the landing page and every repository page. |
 | `scripts/site.js` | Search, tag filtering, and the slide-in panel. Every feature is optional. |
 | `.github/workflows/build-site.yml` | Runs the build nightly, on pushes to `main`, and on request. Uses no actions at all, so it runs whatever the enterprise's action policy happens to allow. |
@@ -51,12 +54,12 @@ the next build overwrites them. Edit the templates, the stylesheet, or the scrip
 ```mermaid
 flowchart TD
     A[GitHub API<br/>repositories, READMEs, file lists] --> B[build_site.py]
-    C[templates/*.html] --> B
+    C[page shells + shared header/footer] --> B
     D[images/repo-previews/<br/>hand-made thumbnails] --> B
     B --> E[index.html]
     B --> F[repos/SLUG/index.html]
     B --> G[data/readme/SLUG.html]
-    B --> H[sitemap.xml + llms.txt<br/>data/repos.json]
+    B --> H[sitemap.xml + llms.txt + llms.html<br/>data/repos.json]
     E --> I[GitHub Pages]
     F --> I
     G --> I
@@ -64,10 +67,10 @@ flowchart TD
 ```
 
 Described in words: the build script takes three inputs, which are the GitHub API, the page
-templates, and the hand-made thumbnails stored in this repository. It produces four kinds of
-output: the landing page, one page per repository, one panel fragment per repository, and the
-machine-readable files, which are the sitemap, a JSON catalog, and llms.txt. GitHub Pages
-serves all of it.
+templates, and the hand-made thumbnails stored in this repository. It inserts the shared
+header and footer into each page shell before it fills the page-specific values. It then
+produces the landing page, one page per repository, one panel fragment per repository, the
+human-readable site index, and the machine-readable files. GitHub Pages serves all of it.
 
 ## Two views of the same content
 
@@ -107,14 +110,17 @@ you to change `DETAIL_PATH_PREFIX` rather than publishing pages nobody could rea
   [llmstxt.org](https://llmstxt.org/) convention. It lists every repository with its source,
   documentation, and demo links, and tells an agent that this site is one part of a wider set
   of Eisenberg Family Depression Center resources rather than a standalone code index.
-  Because it is generated from the same records as the pages, it cannot drift.
+  The build also writes `llms.html` as an accessible site index for people. The two files link
+  to each other and come from the same records, so they cannot drift.
+- **Header and footer are build-time partials.** Each page shell contains one header token and
+  one footer token. The build inserts `templates/header.html` and `templates/footer.html`
+  before rendering the final page. Relative image and home paths come from the page depth.
 - **The Center's other resources are listed once, in code.** `scripts/resources.py` holds
-  them, and the build renders that one list into both `llms.txt` and the Related Resources
-  section of the landing page. Add an entry in any order; each category is sorted by name when
-  rendered, and a category name that does not exist stops the build rather than quietly
-  dropping the entry. Each resource carries two lengths of text: a one-line `summary` for the
-  page and a fuller `description` for `llms.txt`. Neither is hidden behind a hover, because
-  content revealed only on hover cannot be reached by touch or keyboard.
+  them, and the build renders that one list into the landing page, `llms.html`, and `llms.txt`.
+  Add an entry in any order; each category is sorted by name when rendered, and an unknown
+  category stops the build rather than quietly dropping the entry. Each resource carries a
+  short `summary` and a fuller `description`. Neither is hidden behind a hover, because touch
+  and keyboard users cannot reach content revealed only on hover.
 - **There is no fallback repository list.** The old page carried a hand-written copy of the
   repository data that slowly drifted out of date. The fallback now is simply the last
   successful build, which stays published if a build fails.

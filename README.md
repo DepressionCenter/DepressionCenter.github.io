@@ -8,7 +8,7 @@ This repository contains the code for the landing webpage for the Eisenberg Fami
 A nightly GitHub Action reads all our public repos through the GitHub API, including custom properties such as lab name and URL, documentation URL, and whether a repo is featured. It writes finished HTML into this repository, so search engines and visitors without JavaScript see every repository description and README. Each repo also gets its own page under `/repos/`. When users click a tile, a side panel opens with the same content, loaded from a file built ahead of time.
 
 ## Quick Start Guide
-+ **index.html is generated. Do not edit it.** Edit `templates/index.html`, `templates/repo.html`, `styles/site.css`, or `scripts/site.js` instead, then run the build.
++ **Generated HTML is overwritten. Do not edit it.** Edit the page shells and shared header and footer in `templates/`, or edit `styles/site.css` and `scripts/site.js`, then run the build.
 + To build the site yourself: `pip install -r requirements.txt`, then `python scripts/build_site.py`. No GitHub account or token is needed. See [how to run the build locally](docs/how-to/run-the-build-locally.md).
 + To re-use this for your own organization, [fork](https://github.com/DepressionCenter/DepressionCenter.github.io/fork) the repo and change `ORG` and `SITE_BASE_URL` at the top of `scripts/build_site.py`. Keep the ".nojekyll" file.
 + Preview images can live in the repo they describe, as `images/Repo-preview.png` (912x513) and `images/Repo-preview-thumb.png` (360x202). If a repo has none, add them here under `/images/repo-previews/`, named to match the repo exactly, including capital letters. Both must be 16:9. See [how to add a repository preview image](docs/how-to/add-a-repo-preview-image.md).

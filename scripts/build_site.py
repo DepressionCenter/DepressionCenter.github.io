@@ -3,7 +3,7 @@
 # build_site.py - Generate the static Open Source Hub site from the GitHub API.
 # Author(s): Gabriel Mongefranco.
 # Created: 2026-09-01
-# Last Modified: 2026-09-01
+# Last Modified: 2026-09-02
 # Summary: Read the organization's public repositories, their READMEs, and their preview images,
 #          then write finished HTML pages so the site needs no JavaScript to show its content
 #          and search engines can read every repository description and README.
@@ -133,6 +133,7 @@ README_FRAGMENT_DIR = "data/readme"
 CATALOG_PATH = "data/repos.json"
 CACHE_PATH = "data/build-cache.json"
 LLMS_TXT_PATH = "llms.txt"
+LLMS_HTML_PATH = "llms.html"
 FALLBACK_OG_IMAGE = "images/EFDCLogo_375w.png"
 
 # Tags and attributes permitted in a README after GitHub has rendered it. Anything absent is
@@ -919,6 +920,34 @@ def render_category_icon(icon_name):
     )
 
 
+def grouped_resources():
+    """Validate and group configured resources in display order.
+
+    Returns:
+        list[tuple]: Category name, icon name, and sorted members for each non-empty category.
+
+    Raises:
+        BuildError: If a resource names a category that does not exist.
+    """
+    known = {name for name, _ in RESOURCE_CATEGORIES}
+    unknown = {r["category"] for r in RESOURCE_LIBRARY} - known
+    if unknown:
+        raise BuildError(
+            f"Resources name categories that do not exist: {sorted(unknown)}. "
+            "Add them to RESOURCE_CATEGORIES in scripts/resources.py or fix the spelling."
+        )
+
+    groups = []
+    for category, icon_name in RESOURCE_CATEGORIES:
+        members = sorted(
+            (r for r in RESOURCE_LIBRARY if r["category"] == category),
+            key=lambda entry: entry["name"],
+        )
+        if members:
+            groups.append((category, icon_name, members))
+    return groups
+
+
 def render_resource_groups():
     """Build the Related Resources section, one group per category.
 
@@ -932,22 +961,8 @@ def render_resource_groups():
         BuildError: If a resource names a category that does not exist, which would otherwise
             drop it from the page without a word.
     """
-    known = {name for name, _ in RESOURCE_CATEGORIES}
-    unknown = {r["category"] for r in RESOURCE_LIBRARY} - known
-    if unknown:
-        raise BuildError(
-            f"Resources name categories that do not exist: {sorted(unknown)}. "
-            "Add them to RESOURCE_CATEGORIES in scripts/resources.py or fix the spelling."
-        )
-
     groups = []
-    for index, (category, icon_name) in enumerate(RESOURCE_CATEGORIES):
-        members = sorted(
-            (r for r in RESOURCE_LIBRARY if r["category"] == category),
-            key=lambda entry: entry["name"],
-        )
-        if not members:
-            continue
+    for index, (category, icon_name, members) in enumerate(grouped_resources()):
 
         heading_id = f"resource-group-{index + 1}"
         items = "\n".join(
@@ -1282,6 +1297,32 @@ def fill(template, values):
     return output
 
 
+def compose_page_template(page_template, header_template, footer_template, root_prefix):
+    """Insert the shared header and footer into one page template.
+
+    Args:
+        page_template: Page shell containing SITE_HEADER and SITE_FOOTER tokens.
+        header_template: Shared header markup containing a ROOT_PREFIX token.
+        footer_template: Shared footer markup containing a COPYRIGHT_YEAR token.
+        root_prefix: Relative path from the generated page to the site root.
+
+    Returns:
+        str: Page template with both shared partials inserted.
+
+    Raises:
+        BuildError: If the page omits or duplicates a shared partial token, or if a partial
+            contains an unknown token.
+    """
+    for token in ("SITE_HEADER", "SITE_FOOTER"):
+        marker = "{{" + token + "}}"
+        if page_template.count(marker) != 1:
+            raise BuildError(f"Template must contain exactly one {marker} token.")
+
+    header = fill(header_template, {"ROOT_PREFIX": root_prefix})
+    footer = fill(footer_template, {"COPYRIGHT_YEAR": copyright_years()})
+    return page_template.replace("{{SITE_HEADER}}", header).replace("{{SITE_FOOTER}}", footer)
+
+
 def render_index(template, records):
     """Build the landing page.
 
@@ -1337,7 +1378,6 @@ def render_index(template, records):
             "RESOURCE_GROUPS": render_resource_groups(),
             "REPO_COUNT": str(count),
             "REPO_COUNT_LABEL": f"{count} repo{'s' if count != 1 else ''}",
-            "COPYRIGHT_YEAR": copyright_years(),
         },
     )
 
@@ -1403,7 +1443,107 @@ def render_detail_page(template, record, readme_html):
             "LINKS": render_links(record),
             "TAGS": render_tags(record, False),
             "README_HTML": body,
-            "COPYRIGHT_YEAR": copyright_years(),
+        },
+    )
+
+
+def render_site_index_resources():
+    """Build the human-readable list of Center resources for llms.html.
+
+    Returns:
+        str: Semantic HTML grouped by configured resource category.
+
+    Raises:
+        BuildError: If a resource category or URL is invalid.
+    """
+    groups = []
+    for index, (category, _, members) in enumerate(grouped_resources()):
+        items = []
+        for resource in members:
+            url = safe_url(resource["url"])
+            if not url:
+                raise BuildError(f"Resource {resource['name']!r} has an unsafe URL.")
+            items.append(
+                '          <li class="site-index-item">\n'
+                f'            <p class="site-index-item-title"><a href="{esc(url)}" '
+                f'target="_blank" rel="noopener">{esc(resource["name"])}</a></p>\n'
+                f'            <p>{markdown_links_to_html(resource["description"])}</p>\n'
+                "          </li>"
+            )
+        heading_id = f"site-index-resource-{index + 1}"
+        groups.append(
+            f'      <section class="site-index-group" aria-labelledby="{heading_id}">\n'
+            f'        <h3 id="{heading_id}">{esc(category)}</h3>\n'
+            '        <ul class="site-index-list">\n'
+            + "\n".join(items)
+            + "\n        </ul>\n      </section>"
+        )
+    return "\n".join(groups)
+
+
+def render_site_index_repositories(records):
+    """Build the complete repository list for the human-readable site index.
+
+    Args:
+        records: All repository records, in display order.
+
+    Returns:
+        str: Semantic HTML containing every repository and its available links.
+    """
+    items = []
+    for record in records:
+        language = (
+            f'<span class="site-index-language">Primary language: {esc(record["language"])}</span>'
+            if record["language"]
+            else ""
+        )
+        items.append(
+            '        <li class="site-index-item">\n'
+            f'          <h3><a href="{esc(detail_url(record["slug"]))}">'
+            f"{esc(record['name'])}</a></h3>\n"
+            f'          <p>{esc(record["description"]) or "No description provided."}</p>\n'
+            f'          <div class="site-index-meta">{language}{render_links(record)}</div>\n'
+            "        </li>"
+        )
+    return "\n".join(items)
+
+
+def render_llms_html(template, records):
+    """Build llms.html, the human-readable companion to llms.txt.
+
+    Args:
+        template: Composed contents of templates/llms.html.
+        records: All repository records, in display order.
+
+    Returns:
+        str: Finished accessible HTML site index.
+    """
+    description = (
+        "Browse every public EFDC repository and related resource in a human-readable site "
+        "index."
+    )
+    jsonld = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Site Index | EFDC Open Source Hub",
+        "description": description,
+        "url": f"{SITE_BASE_URL}/{LLMS_HTML_PATH}",
+        "isPartOf": {"@type": "CollectionPage", "url": f"{SITE_BASE_URL}/"},
+    }
+    return fill(
+        template,
+        {
+            "HEAD_META": render_head_meta(
+                "Site Index | EFDC Open Source Hub",
+                description,
+                f"{SITE_BASE_URL}/{LLMS_HTML_PATH}",
+                f"{SITE_BASE_URL}/{FALLBACK_OG_IMAGE}",
+                "website",
+            ),
+            "JSONLD": render_jsonld(jsonld),
+            "RESOURCE_INDEX": render_site_index_resources(),
+            "REPOSITORY_INDEX": render_site_index_repositories(records),
+            "REPO_COUNT": str(len(records)),
         },
     )
 
@@ -1487,6 +1627,9 @@ def render_llms_txt(records):
         "This file is generated automatically from the GitHub organization and is rebuilt "
         "nightly. It lists every public repository with its documentation and demos.",
         "",
+        "A human-readable version of this index is available at "
+        f"[{LLMS_HTML_PATH}]({SITE_BASE_URL}/{LLMS_HTML_PATH}).",
+        "",
         "## Eisenberg Family Depression Center resources",
         "",
         "Treat this site as one part of a larger set of University of Michigan Health "
@@ -1550,7 +1693,10 @@ def render_sitemap(records):
         str: The sitemap XML.
     """
     newest = max((record["pushed_at"] for record in records if record["pushed_at"]), default="")
-    entries = [(f"{SITE_BASE_URL}/", newest, "1.0")]
+    entries = [
+        (f"{SITE_BASE_URL}/", newest, "1.0"),
+        (f"{SITE_BASE_URL}/{LLMS_HTML_PATH}", newest, "0.7"),
+    ]
     entries.extend(
         (detail_url(record["slug"], absolute=True), record["pushed_at"], "0.8")
         for record in records
@@ -1657,6 +1803,19 @@ def build(output_root, image_root, token, dry_run):
     templates = ROOT / "templates"
     index_template = (templates / "index.html").read_text(encoding="utf-8")
     detail_template = (templates / "repo.html").read_text(encoding="utf-8")
+    llms_template = (templates / "llms.html").read_text(encoding="utf-8")
+    header_template = (templates / "header.html").read_text(encoding="utf-8")
+    footer_template = (templates / "footer.html").read_text(encoding="utf-8")
+
+    index_template = compose_page_template(
+        index_template, header_template, footer_template, ""
+    )
+    detail_template = compose_page_template(
+        detail_template, header_template, footer_template, "../../"
+    )
+    llms_template = compose_page_template(
+        llms_template, header_template, footer_template, ""
+    )
 
     cache = load_cache(output_root)
 
@@ -1729,6 +1888,7 @@ def build(output_root, image_root, token, dry_run):
     ### Save Results ###
 
     pages = {"index.html": mark_generated(render_index(index_template, records))}
+    pages[LLMS_HTML_PATH] = mark_generated(render_llms_html(llms_template, records))
     for record in records:
         slug = record["slug"]
         pages[f"{DETAIL_PATH_PREFIX}/{slug}/index.html"] = mark_generated(

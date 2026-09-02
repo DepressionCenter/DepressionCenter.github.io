@@ -15,8 +15,7 @@ This page records the security and accessibility measures actually in place on t
 Hub, what has been tested, and what still needs a person to check. It states evidence, not
 intentions. Anything not yet verified is listed as outstanding rather than assumed to pass.
 
-**Last reviewed:** 2026-09-01, covering the change from a browser-built page to a
-pre-built static site.
+**Last reviewed:** 2026-09-02, covering shared page partials and the human-readable site index.
 
 ## Data handled
 
@@ -63,12 +62,16 @@ Node.js, no bundler, and no framework. Raise the pins deliberately rather than a
 
 ### Security testing performed
 
-`python scripts/test_build_site.py` runs 51 offline checks. Result on 2026-09-01:
-**51/51 passed.** They cover a hostile description, a hostile lab name, `javascript:` and
+`python scripts/test_build_site.py` runs 76 offline checks. Result on 2026-09-02:
+**76/76 passed.** They cover a hostile description, a hostile lab name, `javascript:` and
 `data:` URLs in every author-controlled field, a README containing a script tag, an iframe, an
 `onerror` handler and a `javascript:` link, and a request aimed at a host outside the
 allowlist. The suite also checks that a cached rebuild reproduces the previous output exactly,
-so a nightly run cannot quietly degrade a page it did not re-fetch.
+so a nightly run cannot quietly degrade a page it did not re-fetch. New checks confirm shared
+navigation appears once, all navigation icons have intrinsic sizes, both site indexes link to
+each other, and hostile repository text stays inert in `llms.html`. They also confirm the
+delivered HTML contains every repository link and each link resolves to a page with its README
+region before any script runs.
 
 Also confirmed by inspecting the generated output: none of the 26 rendered README blocks
 contains a `<script>`, `<svg>`, event handler, or `javascript:` URL.
@@ -98,6 +101,8 @@ became static.
 | Related Resources summaries are always visible, never revealed on hover | Hover content cannot be reached by touch or keyboard, and would fail WCAG 1.4.13 |
 | Category icons are decorative (`aria-hidden`, `focusable="false"`) | The category name printed beside each icon carries the meaning, so nothing depends on an icon or on colour alone |
 | Resource links are padded above the 24x24 px pointer target minimum | WCAG 2.2 target size |
+| `llms.html` uses semantic sections, headings, lists, and one `<h1>` | The site index remains structured without JavaScript or visual styling |
+| Shared navigation links have accessible names and all SVG icons have intrinsic sizes | Icons stay usable while CSS loads, and assistive technology receives useful link names |
 
 The existing `prefers-reduced-motion` and `prefers-contrast: high` rules are carried over
 unchanged in `styles/site.css`.

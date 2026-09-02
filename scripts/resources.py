@@ -3,10 +3,9 @@
 # resources.py - The Center's public resources, grouped into categories for display.
 # Author(s): Gabriel Mongefranco.
 # Created: 2026-09-01
-# Last Modified: 2026-09-01
+# Last Modified: 2026-09-02
 # Summary: One list of the Eisenberg Family Depression Center's public resources, rendered by
-#          build_site.py into both llms.txt and the Related Resources section of the landing
-#          page, so the two can never disagree.
+#          build_site.py into llms.txt, llms.html, and the landing page, so they cannot disagree.
 # Notes: See README file for documentation and full license information.
 # Website: https://code.depressioncenter.org/
 #
@@ -31,7 +30,7 @@ sorted by name when rendered. Its "category" must match one named in RESOURCE_CA
 Every entry carries two lengths of text on purpose:
 
 - "summary" is one line. It appears on the landing page, where brevity helps a reader scan.
-- "description" is fuller. It appears in llms.txt, where an agent benefits from the context.
+- "description" is fuller. It appears in llms.txt and its human-readable llms.html companion.
 
 Neither is hidden behind a hover. The page shows its summary at all times, because content
 revealed only on hover cannot be reached by touch or keyboard users and would fail the

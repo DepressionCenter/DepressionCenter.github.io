@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+This file is part of Eisenberg Family Depression Center Open Source Hub (DepressionCenter.github.io repository).
+llms.html - Human-readable site index template.
+Author(s): [Author Name].
+Created: 2026-09-02
+Last Modified: 2026-09-02
+Summary: Page shell for the generated human-readable companion to llms.txt.
+Notes: See README file for documentation and full license information.
+Website: https://code.depressioncenter.org/
+
+Copyright (c) 2026 The Regents of the University of Michigan
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{HEAD_META}}
+{{JSONLD}}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/site.css" />
+</head>
+<body>
+{{SITE_HEADER}}
+
+  <main id="main-content" class="detail-main site-index-main">
+    <nav class="detail-breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Open Source Hub</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Site Index</span>
+    </nav>
+
+    <article>
+      <p class="section-label" aria-hidden="true">// complete site map</p>
+      <h1 class="detail-title">Site Index</h1>
+      <p class="detail-description">
+        Browse the Center's public resources and all {{REPO_COUNT}} repositories in one
+        readable page. Each repository link opens its full description and README.
+      </p>
+      <p class="site-index-agent-link">
+        Using an artificial intelligence (AI) agent? Read the
+        <a href="llms.txt" rel="alternate" type="text/plain">plain-text index for AI agents</a>.
+      </p>
+
+      <section class="site-index-section" aria-labelledby="center-resources-heading">
+        <h2 id="center-resources-heading" class="site-index-section-title">Center resources</h2>
+{{RESOURCE_INDEX}}
+      </section>
+
+      <section class="site-index-section" aria-labelledby="repositories-heading">
+        <h2 id="repositories-heading" class="site-index-section-title">Repositories</h2>
+        <ul class="site-index-list site-index-repositories">
+{{REPOSITORY_INDEX}}
+        </ul>
+      </section>
+    </article>
+  </main>
+
+{{SITE_FOOTER}}
+</body>
+</html>

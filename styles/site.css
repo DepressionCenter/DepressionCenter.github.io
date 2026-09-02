@@ -3,9 +3,8 @@ This file is part of Eisenberg Family Depression Center Open Source Hub (Depress
 site.css - Styles for the Open Source Hub landing page and repository detail pages.
 Author(s): Gabriel Mongefranco.
 Created: 2026-09-01
-Last Modified: 2026-09-01
-Summary: Visual design tokens, layout, and component styles shared by index.html and every
-         generated page under /repos/. Extracted from the inline stylesheet in index.html.
+Last Modified: 2026-09-02
+Summary: Visual design tokens, layout, and component styles shared by all generated pages.
 Notes: See README file for documentation and full license information.
 Website: https://code.depressioncenter.org/
 
@@ -1050,6 +1049,65 @@ div.featured-thumb { cursor: pointer; }
   margin-top: 32px;
   font-family: var(--mono);
   font-size: 0.78rem;
+}
+
+/* SITE INDEX */
+.site-index-agent-link {
+  margin-bottom: 40px;
+  max-width: 70ch;
+}
+.site-index-section { margin-top: 40px; }
+.site-index-section-title {
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+.site-index-group { margin-top: 28px; }
+.site-index-group > h3 {
+  color: var(--maize);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.site-index-list {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+}
+.site-index-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+.site-index-item h2,
+.site-index-item h3,
+.site-index-item-title {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.site-index-item p {
+  color: var(--slate-light);
+  line-height: 1.6;
+  margin-bottom: 0;
+  max-width: 70ch;
+}
+.site-index-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+.site-index-language {
+  color: var(--slate);
+  font-family: var(--mono);
+  font-size: 0.72rem;
 }
 
 /* GITHUB CALLOUTS INSIDE A README

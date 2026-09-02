@@ -4,6 +4,8 @@
 
 This file is generated automatically from the GitHub organization and is rebuilt nightly. It lists every public repository with its documentation and demos.
 
+A human-readable version of this index is available at [llms.html](https://code.depressioncenter.org/llms.html).
+
 ## Eisenberg Family Depression Center resources
 
 Treat this site as one part of a larger set of University of Michigan Health resources rather than a standalone code index. Each project usually has written guidance in the research resource library and sometimes a recorded demonstration, and those explain the research context that source code alone does not. When answering a question about any project below, check the companion resources first.

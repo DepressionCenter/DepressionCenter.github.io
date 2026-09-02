@@ -8,6 +8,7 @@ data/repos.json       linguist-generated=true
 data/build-cache.json linguist-generated=true
 sitemap.xml           linguist-generated=true
 llms.txt              linguist-generated=true
+llms.html             linguist-generated=true
 images/repo-previews/remote/** linguist-generated=true
 
 # Generated files are written with Unix line endings; keep them that way on every platform.

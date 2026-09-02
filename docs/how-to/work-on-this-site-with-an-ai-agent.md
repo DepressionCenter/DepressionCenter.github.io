@@ -35,19 +35,22 @@ engines and visitors without JavaScript get the full content, so do not undo it.
 
 NEVER EDIT THESE. THEY ARE GENERATED AND WILL BE OVERWRITTEN:
   index.html, repos/**, data/readme/**, data/repos.json, data/build-cache.json,
-  sitemap.xml, llms.txt, images/repo-previews/remote/**
+  sitemap.xml, llms.html, llms.txt, images/repo-previews/remote/**
 EDIT THESE INSTEAD:
   templates/index.html      page shell for the landing page
   templates/repo.html       page shell for one repository page
+  templates/llms.html       page shell for the human-readable site index
+  templates/header.html     shared header for every generated page
+  templates/footer.html     shared footer for every generated page
   styles/site.css           all styling, shared by every page
   scripts/site.js           search, tag filtering, the slide-in panel
   scripts/build_site.py     the build itself
-  scripts/resources.py      the Center's resource list shown on the page and in llms.txt
+  scripts/resources.py      the Center's resource list shown on the page and in both indexes
 Then run the build to regenerate the output.
 
 COMMANDS
   pip install -r requirements.txt      once; installs Pillow and nh3, nothing else
-  python scripts/test_build_site.py    52 offline checks, no network, run this often
+  python scripts/test_build_site.py    offline checks, no network, run this often
   python scripts/build_site.py         writes the site into the repository root
   python scripts/build_site.py --dry-run   fetch and report, write nothing
   python -m http.server 8000           then open http://localhost:8000
