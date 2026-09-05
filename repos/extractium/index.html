@@ -43,7 +43,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
   <meta name="twitter:title" content="extractium | EFDC Open Source Hub" />
   <meta name="twitter:description" content="Extractium™ builds a compendium: a portable, static, multi-format knowledge index any LLM can consume." />
   <meta name="twitter:image" content="https://code.depressioncenter.org/images/EFDCLogo_375w.png" />
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "author": {"@type": "Organization", "name": "Eisenberg Family Depression Center", "url": "https://depressioncenter.org"}, "codeRepository": "https://github.com/DepressionCenter/extractium", "dateModified": "2026-09-02T23:15:45Z", "description": "Extractium™ builds a compendium: a portable, static, multi-format knowledge index any LLM can consume.", "image": "https://code.depressioncenter.org/images/EFDCLogo_375w.png", "isPartOf": {"@type": "CollectionPage", "url": "https://code.depressioncenter.org/"}, "keywords": "Python, bm25, embeddings, information-retrieval, knowledge-base, llm, llms-txt", "license": "GPL-3.0", "name": "extractium", "programmingLanguage": "Python", "url": "https://code.depressioncenter.org/repos/extractium/"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "author": {"@type": "Organization", "name": "Eisenberg Family Depression Center", "url": "https://depressioncenter.org"}, "codeRepository": "https://github.com/DepressionCenter/extractium", "dateModified": "2026-09-05T00:23:34Z", "description": "Extractium™ builds a compendium: a portable, static, multi-format knowledge index any LLM can consume.", "image": "https://code.depressioncenter.org/images/EFDCLogo_375w.png", "isPartOf": {"@type": "CollectionPage", "url": "https://code.depressioncenter.org/"}, "keywords": "Python, bm25, embeddings, information-retrieval, knowledge-base, llm, llms-txt", "license": "GPL-3.0", "name": "extractium", "programmingLanguage": "Python", "url": "https://code.depressioncenter.org/repos/extractium/"}</script>
 
   <!-- Google tag (gtag.js) — only loads on depressioncenter.org and umich.edu domains -->
   <script>
@@ -157,13 +157,21 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
 <p dir="auto">Extractium™ turns scattered public documentation into one searchable knowledge base. Point it at sources such as TeamDynamix, GitHub, YouTube, websites, and local files, and it gathers and organizes the content for use in a website, search tool, or AI assistant.</p>
 
 <p dir="auto">Behind the scenes, Extractium™ prepares the content for both keyword and semantic search and can publish multiple output formats for static hosting, including GitHub Pages. It grew out of the indexing engine in Field Station AI™ and uses configuration and plugins so research centers and other organizations can build their own knowledge collections.</p>
-<p dir="auto">Project status: this repository is currently at the package-skeleton stage, and the command-line interface is not yet functional. See the technical specification for the implementation roadmap.</p>
+<p dir="auto">Project status: this repository is currently at the package-skeleton stage, and the command-line interface is not yet functional. See the implementation plan in <code>docs/</code> for the order of work.</p>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>pip install -e <span class="pl-s"><span class="pl-pds">"</span>.[dev]<span class="pl-pds">"</span></span></pre></div>
-<p dir="auto">The <code>extractium</code> command is not yet functional (package-skeleton stage — see <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/extractium-spec.md" rel="nofollow noopener noreferrer">docs/extractium-spec.md</a> for the roadmap).</p>
+<p dir="auto">The <code>extractium</code> command is not yet functional (package-skeleton stage — see <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/implementation-plan.md" rel="nofollow noopener noreferrer">docs/implementation-plan.md</a> for the order of work).</p>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
 <ul dir="auto">
 <li>The full documentation is available at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">https://michmed.org/efdc-kb</a></li>
+<li>Technical pages live in <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/README.md" rel="nofollow noopener noreferrer">docs/</a>:
+<ul dir="auto">
+<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/configuration.md" rel="nofollow noopener noreferrer">Configuration reference</a> — every setting in <code>config.yaml</code>.</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/extractium-spec.md" rel="nofollow noopener noreferrer">Specification</a> — architecture, plugin kinds, outputs, and sources.</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/container-format.md" rel="nofollow noopener noreferrer">Container format</a> — the index file every client reads.</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/implementation-plan.md" rel="nofollow noopener noreferrer">Implementation plan</a> — the phased order of work.</li>
+</ul>
+</li>
 </ul>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
 <ul dir="auto">
