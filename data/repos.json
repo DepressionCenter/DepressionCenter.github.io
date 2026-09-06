@@ -228,7 +228,7 @@
     "license": "GPL-3.0",
     "monogram": "ER",
     "name": "EFDC-Repo-Template",
-    "pushed_at": "2026-08-18T18:13:46Z",
+    "pushed_at": "2026-09-05T15:42:56Z",
     "repo_url": "https://github.com/DepressionCenter/EFDC-Repo-Template",
     "slug": "EFDC-Repo-Template",
     "tags": [
@@ -236,24 +236,26 @@
       "agent-skills",
       "agents-md",
       "citation",
+      "code-templates",
       "coding-agents",
-      "github-template",
-      "gplv3"
+      "github-template"
     ],
     "thumb_image": "images/repo-previews/EFDC-Repo-Template-thumb.png",
     "topics": [
       "agent-skills",
       "agents-md",
       "citation",
+      "code-templates",
       "coding-agents",
       "github-template",
       "gplv3",
       "markdown",
       "open-source",
       "readme-template",
+      "repo-templates",
       "repository-template",
       "research-software",
-      "zenodo"
+      "zenodo-json"
     ],
     "website": "https://depressioncenter.org"
   },
