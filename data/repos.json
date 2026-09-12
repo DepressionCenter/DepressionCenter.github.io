@@ -359,7 +359,7 @@
     "license": "GPL-3.0",
     "monogram": "E",
     "name": "extractium",
-    "pushed_at": "2026-09-11T02:55:02Z",
+    "pushed_at": "2026-09-12T02:23:51Z",
     "repo_url": "https://github.com/DepressionCenter/extractium",
     "slug": "extractium",
     "tags": [
@@ -435,7 +435,7 @@
     "default_branch": "main",
     "demo": "",
     "description": "Scripts to capture GitHub repository and usage statistics daily. [DOI: 10.6084/m9.figshare.26090902].",
-    "docs": "https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=12311",
+    "docs": "https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/12311/Gathering-GitHub-Usage-and-Web-Traffic-Data",
     "featured": false,
     "full_image": "images/repo-previews/GitHub-Usage-Stats.png",
     "image_source": "local",
@@ -445,7 +445,7 @@
     "license": "GPL-3.0",
     "monogram": "GU",
     "name": "GitHub-Usage-Stats",
-    "pushed_at": "2026-09-02T23:15:59Z",
+    "pushed_at": "2026-09-11T14:30:52Z",
     "repo_url": "https://github.com/DepressionCenter/GitHub-Usage-Stats",
     "slug": "GitHub-Usage-Stats",
     "tags": [
@@ -472,7 +472,7 @@
       "sql",
       "web-analytics"
     ],
-    "website": "https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=12311"
+    "website": "https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/Article/12311/Gathering-GitHub-Usage-and-Web-Traffic-Data"
   },
   {
     "default_branch": "main",
@@ -484,21 +484,21 @@
     "image_source": "local",
     "lab_name": "Mobile Data Expert Network (MDEN)",
     "lab_url": "https://depressioncenter.org/mden",
-    "language": "",
+    "language": "HTML",
     "license": "GPL-3.0",
     "monogram": "M",
     "name": "MDEN",
-    "pushed_at": "2026-09-02T23:16:05Z",
+    "pushed_at": "2026-09-11T14:26:37Z",
     "repo_url": "https://github.com/DepressionCenter/MDEN",
     "slug": "MDEN",
     "tags": [
+      "HTML",
       "data-cleaning",
       "digital-health",
       "fitbit",
       "health-data",
       "mobile-data",
-      "mobile-health",
-      "redcap"
+      "mobile-health"
     ],
     "thumb_image": "images/repo-previews/MDEN-thumb.png",
     "topics": [
