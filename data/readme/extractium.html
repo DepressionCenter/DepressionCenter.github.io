@@ -1,29 +1,39 @@
 <div class="panel-thumb-lg" aria-hidden="true"><div class="thumb-placeholder"><span class="thumb-monogram">E</span></div></div>
-
-<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/extractium" target="_blank" rel="noopener" aria-label="View extractium on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="extractium documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="panel-lab"><span class="panel-lab-label">Lab/Team:</span> <a href="https://depressioncenter.org/mobiletech" target="_blank" rel="noopener">Mobile Technologies Core</a></div>
+<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/extractium" target="_blank" rel="noopener" aria-label="View extractium on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://github.com/DepressionCenter/extractium/blob/main/docs/README.md" target="_blank" rel="noopener" aria-label="extractium documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
 <div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">Extractium™</h2></div>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
-<p dir="auto">Extractium™ turns scattered public documentation into one searchable knowledge base. Point it at sources such as TeamDynamix, GitHub, YouTube, a DSpace repository, websites, and local files, and it gathers and organizes the content for use in a website, search tool, or AI assistant.</p>
-<p dir="auto">Behind the scenes, Extractium™ prepares the content for both keyword and semantic search and publishes several output formats for static hosting, including GitHub Pages. It grew out of the indexing engine in Field Station AI™ and uses configuration and plugins so research centers and other organizations can build their own knowledge collections.</p>
-<p dir="auto">Project status: every planned part is built. Six source types (websites, GitHub repositories with code analysis, DSpace repositories, YouTube captions, local folders, and knowledge bundles another build wrote) feed one build, which writes four outputs (the search index, the <code>llms.txt</code> pair, a SQLite database, and a folder of Markdown). Two clients search the index, two local servers offer that search to an AI assistant on your machine, two hosted examples offer it to an assistant anywhere, and two system prompts point a browsing assistant at the published files.</p>
+<p dir="auto">Extractium™ turns your organization's scattered public documentation into one searchable knowledge base. Point it at your website, knowledge base portal, GitHub repositories, YouTube channel, library repository, or a folder of files, and it gathers the content, prepares it for both keyword and meaning-based search, and writes it out in several formats. You can then use that knowledge base in a website search box, in your own scripts, or with the AI assistant of your choice, without depending on any one AI provider.</p>
+<p dir="auto">Unlike a vector database, Extractium™ needs no server, no database, and no API to run. Every output is a static file that you can host anywhere, including GitHub Pages, and the same build feeds all of them at once. Sources and outputs are plug-ins, so you can add your own if the built-in ones do not cover your needs.</p>
+<p dir="auto">Extractium™ grew out of the indexing engine in <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI" rel="nofollow noopener noreferrer">Field Station AI™</a>.</p>
 
   <div class="js-render-enrichment-target" dir="auto">
     <div class="render-plaintext-hidden" dir="auto">
       <pre lang="mermaid">flowchart LR
     subgraph Sources
-        W[Websites]
+        W[Websites and portals]
         G[GitHub repositories]
         D[DSpace repositories]
         Y[YouTube captions]
         L[Local folders]
         K[Knowledge bundles]
+        C[Custom source plug-ins]
     end
-    W &amp; G &amp; D &amp; Y &amp; L &amp; K --&gt; E[Extractium build: crawl once, chunk, embed once]
-    E --&gt; O[Outputs: search index, llms.txt, SQLite, Markdown folder]
-    O --&gt; B[Browser search page or script]
-    O --&gt; M[Local assistant through MCP]
-    O --&gt; H[Hosted search endpoint]
-    O --&gt; P[Hosted assistant reading llms.txt]
+    W &amp; G &amp; D &amp; Y &amp; L &amp; K &amp; C --&gt; E[Extractium build]
+    E --&gt; O1[Search index]
+    E --&gt; O2[llms.txt files]
+    E --&gt; O3[SQLite database]
+    E --&gt; O4[Markdown folder]
+    E --&gt; O5[Custom output plug-ins]
+    O1 --&gt; U1[Search box on a website]
+    O1 --&gt; U2[Scripts in Python or JavaScript]
+    O1 --&gt; U3[AI assistant on your computer]
+    O1 --&gt; U4[Hosted search endpoint on Val Town]
+    O2 --&gt; U5[AI assistant that browses the web]
+    O3 --&gt; U6[SQL queries and reports]
+    O3 --&gt; U7[Hosted search endpoint on Cloudflare]
+    O4 --&gt; U8[Reading and editing as plain files]
+    O4 --&gt; U9[Other tools that read Open Knowledge Format]
 </pre>
     </div>
   </div>
@@ -37,53 +47,69 @@
   </span>
 
 
-<p dir="auto">In words: six kinds of source feed one build, which crawls and embeds each piece of content once and then writes the same result in four formats. Those files are consumed in four ways. A browser page or a script searches the index directly. An assistant on your own machine searches it through a local Model Context Protocol (MCP) server. An assistant anywhere calls a hosted search endpoint on Val Town or Cloudflare. A platform that can browse but cannot call tools reads <code>llms.txt</code> from a system prompt.</p>
+<p dir="auto">The diagram shows the content sources on the left, the Extractium™ build in the middle, and the outputs on the right, with the uses each output is good for. Every source feeds one build, and that one build writes every output. Custom plug-ins can add sources and outputs of their own.</p>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Files</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search index</td>
+<td><code>compendium.json</code></td>
+<td>Fast keyword and meaning-based search with nothing to run: a search box on your website, a script, an AI assistant on your computer, or a hosted search endpoint.</td>
+</tr>
+<tr>
+<td>llms.txt files</td>
+<td><code>llms.txt</code>, <code>llms-full.txt</code></td>
+<td>AI assistants and platforms that can read web pages but cannot call tools. Also a readable list of everything that was indexed.</td>
+</tr>
+<tr>
+<td>SQLite database</td>
+<td><code>compendium.sqlite</code></td>
+<td>SQL queries and reports, or loading the content into a hosted database.</td>
+</tr>
+<tr>
+<td>Markdown folder</td>
+<td><code>okf/</code></td>
+<td>Reading and editing the content as ordinary files, sharing it with other tools that use the Open Knowledge Format, or feeding it into another Extractium™ build.</td>
+</tr>
+</tbody>
+</table>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
-<p dir="auto">There are two ways in. The one-command script installs and builds in one step:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>git clone https://github.com/DepressionCenter/extractium.git
-<span class="pl-c1">cd</span> extractium
-cp examples/config.example.yaml config.yaml   <span class="pl-c"><span class="pl-c">#</span> then change the seed URL to your own site</span>
-./run.sh --max-pages 25                        <span class="pl-c"><span class="pl-c">#</span> run.bat on Windows</span></pre></div>
-<p dir="auto">A developer installs it into a virtual environment instead, then builds:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>pip install -e <span class="pl-s"><span class="pl-pds">"</span>.[dev,code,youtube]<span class="pl-pds">"</span></span>
-python -m extractium.cli build --config config.yaml --max-pages 25</pre></div>
-<p dir="auto">Needs Python 3.10 or newer. The first build downloads the embedding model, about 130 MB; later builds reuse it. The three extras are optional: <code>dev</code> adds the test tools, <code>code</code> adds the parsers that read a repository's code, and <code>youtube</code> adds the caption library. Two environment variables are optional too and are never read from a settings file: <code>GITHUB_TOKEN</code> raises the GitHub request limit, and <code>YOUTUBE_API_KEY</code> lets a build list a whole channel.</p>
-<p dir="auto">That writes <code>dist/compendium.json</code>, <code>dist/llms.txt</code>, and <code>dist/llms-full.txt</code>. Drop the page cap once the page list in <code>dist/llms.txt</code> looks right. See <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/install.md" rel="nofollow noopener noreferrer">how to install</a> for the extras and the lock file, <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/crawl-a-site.md" rel="nofollow noopener noreferrer">how to crawl a site</a> for your first real build, and <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/troubleshooting.md" rel="nofollow noopener noreferrer">docs/troubleshooting.md</a> if a step above did not work.</p>
+<ul dir="auto">
+<li>
+<p dir="auto">Install Python 3.10 or newer.</p>
+</li>
+<li>
+<p dir="auto">Save the build script for your operating system into an empty folder: <a target="_blank" href="https://raw.githubusercontent.com/DepressionCenter/extractium/main/run.sh" rel="nofollow noopener noreferrer">run.sh</a> for macOS and Linux, or <a target="_blank" href="https://raw.githubusercontent.com/DepressionCenter/extractium/main/run.bat" rel="nofollow noopener noreferrer">run.bat</a> for Windows. If you have git, you can clone this repository instead and run the script from the clone.</p>
+</li>
+<li>
+<p dir="auto">Run the script. It downloads the latest release of Extractium™ (with git if you have it, otherwise as a plain download), installs everything it needs into a virtual environment, asks you for the name of your knowledge base, a short name for its files, and the website to crawl, then builds a first index limited to 25 pages:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>./run.sh       <span class="pl-c"><span class="pl-c">#</span> macOS and Linux</span>
+run.bat        <span class="pl-c"><span class="pl-c">#</span> Windows</span></pre></div>
+</li>
+<li>
+<p dir="auto">Open <code>dist/llms.txt</code> to see which pages were indexed. When the list looks right, run the script again to build the whole site. To change what is crawled, edit <code>config.yaml</code>. See <code>examples/config.efdc.yaml</code> for a complete example that uses every source type.</p>
+</li>
+<li>
+<p dir="auto">To use a Python development environment instead of the script, clone the repository, run <code>pip install -e ".[dev,code,youtube]"</code>, then <code>python -m extractium.cli init</code> to write <code>config.yaml</code> and <code>python -m extractium.cli build --config config.yaml</code> to build.</p>
+</li>
+</ul>
+<p dir="auto">The first build downloads the embedding model, about 130 MB. Later builds reuse it.</p>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
 <ul dir="auto">
-<li>The full documentation is available at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">https://michmed.org/efdc-kb</a></li>
-<li>Technical pages live in <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/README.md" rel="nofollow noopener noreferrer">docs/</a>:
-<ul dir="auto">
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/install.md" rel="nofollow noopener noreferrer">How to install</a> — the two ways in, the optional extras, and the lock file.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/crawl-a-site.md" rel="nofollow noopener noreferrer">How to crawl a site</a> — choosing source types, the trial run, tuning patterns, and reading what a build reports.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/usage.md" rel="nofollow noopener noreferrer">Running a build</a> — the command line, its options, and its exit codes.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/configuration.md" rel="nofollow noopener noreferrer">Configuration reference</a> — every setting in <code>config.yaml</code>.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/troubleshooting.md" rel="nofollow noopener noreferrer">Troubleshooting</a> — known failures, causes, and fixes.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/deploy.md" rel="nofollow noopener noreferrer">How to deploy</a> — the deployment choices side by side, and every way the outputs are consumed.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/run-a-weekly-build.md" rel="nofollow noopener noreferrer">How to run a weekly build</a> — the one-command local build and the scheduled one.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/publish-to-github-pages.md" rel="nofollow noopener noreferrer">How to publish to GitHub Pages</a> — turning Pages on and what publishing means.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/search-a-compendium.md" rel="nofollow noopener noreferrer">How to search a compendium</a> — searching a built index from Python or JavaScript.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/connect-an-mcp-client.md" rel="nofollow noopener noreferrer">How to connect an MCP client</a> — letting an AI assistant on your own machine search a published index.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/how-to/deploy-a-remote-mcp-server.md" rel="nofollow noopener noreferrer">How to deploy a remote MCP server</a> — hosting that search on Val Town or Cloudflare for an assistant anywhere.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/using-a-compendium.md" rel="nofollow noopener noreferrer">Using a published compendium</a> — how an AI agent should use the published files.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/architecture.md" rel="nofollow noopener noreferrer">Architecture and current state</a> — what each module does and the settled design decisions.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/plugin-architecture.md" rel="nofollow noopener noreferrer">Plugin architecture</a> — the three plugin kinds, the registry, and a working example of each.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/data-flow.md" rel="nofollow noopener noreferrer">Data flow</a> — what happens to content between the site and the output folder.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/container-format.md" rel="nofollow noopener noreferrer">Container format</a> — the index file every client reads.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/compliance.md" rel="nofollow noopener noreferrer">Compliance and posture</a> — the controls in place, the evidence, and the known gaps.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/extractium-spec.md" rel="nofollow noopener noreferrer">Specification</a> — the intended design: architecture, plugin kinds, outputs, and sources.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/github-repository-indexing.md" rel="nofollow noopener noreferrer">GitHub repository indexing</a> — the design of the GitHub source and the code analysis.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/dspace-repository-indexing.md" rel="nofollow noopener noreferrer">Indexing a DSpace repository</a> — the design of the repository source.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/bot-protection-transport.md" rel="nofollow noopener noreferrer">Reading a site behind bot protection</a> — what was measured and how the build reads such a site.</li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/implementation-plan.md" rel="nofollow noopener noreferrer">Implementation plan</a> — the phased order in which the tool was built.</li>
-</ul>
-</li>
+<li>An overview and user guide is available in the EFDC Knowledge Base at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">https://michmed.org/efdc-kb</a></li>
+<li>Detailed documentation, for users and developers, is available under <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/README.md" rel="nofollow noopener noreferrer">docs/</a>.</li>
 </ul>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
 <ul dir="auto">
 <li>FieldStationAI™: <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/FieldStationAI</a></li>
-<li><a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">Mobile Technologies Core</a> — the group that develops and maintains Field Station AI.</li>
-<li><a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">EFDC Knowledge Base</a> — documentation site referenced above and used as source content for the app's optional knowledge-base feature.</li>
+<li><a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">Mobile Technologies Core</a>, the group that develops and maintains Extractium™ and Field Station AI™.</li>
+<li><a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">EFDC Knowledge Base</a>, the documentation site referenced above.</li>
 </ul>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">About the Team</h3></div>
 <p dir="auto">The <a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">Mobile Technologies Core</a> provides investigators across the University of Michigan the support and guidance needed to utilize mobile technologies and digital mental health measures in their studies. Experienced faculty and staff offer hands-on consultative services to researchers throughout the University – regardless of specialty or research focus.</p>
@@ -102,37 +128,14 @@ python -m extractium.cli build --config config.yaml --max-pages 25</pre></div>
 </ul>
 <div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">This work is based in part on the following projects, libraries and/or studies:</h4></div>
 <ul dir="auto">
-<li>FieldStationAI™ : A research platform for mobile and digital mental health studies. Used as the original source of the crawling/indexing engine that was extracted into this project. <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/FieldStationAI</a></li>
-<li>BAAI/bge-small-en-v1.5 : The sentence-embedding model every build and every client use, so that a question and a passage land in the same vector space. MIT license. <a target="_blank" href="https://huggingface.co/BAAI/bge-small-en-v1.5" rel="nofollow noopener noreferrer">https://huggingface.co/BAAI/bge-small-en-v1.5</a></li>
-<li>llms.txt : The convention the <code>llms.txt</code> and <code>llms-full.txt</code> outputs follow, for language models that browse the web. <a target="_blank" href="https://llmstxt.org/" rel="nofollow noopener noreferrer">https://llmstxt.org/</a></li>
-<li>Open Knowledge Format : The Markdown-with-front-matter format the <code>okf</code> output writes, one file per page. <a target="_blank" href="https://github.com/GoogleCloudPlatform/open-knowledge-format" rel="nofollow noopener noreferrer">https://github.com/GoogleCloudPlatform/open-knowledge-format</a></li>
+<li>FieldStationAI™: A research platform for mobile and digital mental health studies. Its crawling and indexing engine was extracted into this project. <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/FieldStationAI</a></li>
+<li>BAAI/bge-small-en-v1.5: The sentence-embedding model used by every build and every client. MIT license. <a target="_blank" href="https://huggingface.co/BAAI/bge-small-en-v1.5" rel="nofollow noopener noreferrer">https://huggingface.co/BAAI/bge-small-en-v1.5</a></li>
+<li>llms.txt: The convention the <code>llms.txt</code> and <code>llms-full.txt</code> outputs follow. <a target="_blank" href="https://llmstxt.org/" rel="nofollow noopener noreferrer">https://llmstxt.org/</a></li>
+<li>Open Knowledge Format: The Markdown-with-front-matter format the <code>okf</code> output writes and the <code>okf</code> source reads. <a target="_blank" href="https://github.com/GoogleCloudPlatform/open-knowledge-format" rel="nofollow noopener noreferrer">https://github.com/GoogleCloudPlatform/open-knowledge-format</a></li>
+<li>Python libraries used: requests, curl_cffi, Beautiful Soup 4, Sentence Transformers, NumPy, Python-Markdown, PyYAML, and optionally Tree-sitter with its language grammars, Universal Ctags, youtube-transcript-api, pytest, and uv.</li>
+<li>JavaScript libraries used by the examples: @huggingface/transformers and the ONNX Runtime it brings.</li>
 </ul>
-<p dir="auto">Runtime dependencies, installed with the package:</p>
-<ul dir="auto">
-<li>requests : HTTP client. Fetches every page, repository file, and caption listing. Apache-2.0 license. <a target="_blank" href="https://requests.readthedocs.io/" rel="nofollow noopener noreferrer">https://requests.readthedocs.io/</a></li>
-<li>curl_cffi : HTTP client with a browser-shaped TLS handshake. Used only when a site answers a bot-protection challenge, with the crawler still naming itself. MIT license; bundles its own build of libcurl. <a target="_blank" href="https://github.com/lexiforest/curl_cffi" rel="nofollow noopener noreferrer">https://github.com/lexiforest/curl_cffi</a></li>
-<li>Beautiful Soup 4 : HTML parser. Reads each fetched page so the site handlers can find its title and content. MIT license. <a target="_blank" href="https://www.crummy.com/software/BeautifulSoup/" rel="nofollow noopener noreferrer">https://www.crummy.com/software/BeautifulSoup/</a></li>
-<li>Sentence Transformers : Runs the embedding model over every window once per build. Apache-2.0 license. <a target="_blank" href="https://sbert.net/" rel="nofollow noopener noreferrer">https://sbert.net/</a></li>
-<li>NumPy : Array arithmetic for the vectors, the near-duplicate collapse, and the calibration statistics. BSD-3-Clause license, with bundled components under 0BSD, MIT, Zlib, and CC0-1.0. <a target="_blank" href="https://numpy.org/" rel="nofollow noopener noreferrer">https://numpy.org/</a></li>
-<li>Python-Markdown : Renders Markdown files from a local folder or a repository into HTML before chunking. BSD-3-Clause license. <a target="_blank" href="https://python-markdown.github.io/" rel="nofollow noopener noreferrer">https://python-markdown.github.io/</a></li>
-<li>PyYAML : Reads the settings file and writes the front matter of the Open Knowledge Format output. MIT license. <a target="_blank" href="https://pyyaml.org/" rel="nofollow noopener noreferrer">https://pyyaml.org/</a></li>
-</ul>
-<p dir="auto">Optional dependencies, installed with an extra or by hand:</p>
-<ul dir="auto">
-<li>Tree-sitter and thirteen language grammars (<code>code</code> extra) : Parse a repository's source files so a search can find a definition and what calls it, never copying a source body. MIT license, each. <a target="_blank" href="https://tree-sitter.github.io/tree-sitter/" rel="nofollow noopener noreferrer">https://tree-sitter.github.io/tree-sitter/</a></li>
-<li>Universal Ctags (installed on the machine, not with pip) : Reads the languages no grammar covers, when present. Run with an argument array, no shell, and no configuration file. GPL-2.0-or-later license. <a target="_blank" href="https://ctags.io/" rel="nofollow noopener noreferrer">https://ctags.io/</a></li>
-<li>youtube-transcript-api (<code>youtube</code> extra) : Fetches a video's caption track. MIT license. <a target="_blank" href="https://github.com/jdepoix/youtube-transcript-api" rel="nofollow noopener noreferrer">https://github.com/jdepoix/youtube-transcript-api</a></li>
-</ul>
-<p dir="auto">Development dependencies (<code>dev</code> extra and the lock file):</p>
-<ul dir="auto">
-<li>pytest and pytest-cov : Run the test suite and measure its coverage. MIT license, each. <a target="_blank" href="https://docs.pytest.org/" rel="nofollow noopener noreferrer">https://docs.pytest.org/</a></li>
-<li>uv : Generates the hash-checked lock file the run scripts and the scheduled build install from. Apache-2.0 or MIT license. <a target="_blank" href="https://docs.astral.sh/uv/" rel="nofollow noopener noreferrer">https://docs.astral.sh/uv/</a></li>
-</ul>
-<p dir="auto">Used by the examples only:</p>
-<ul dir="auto">
-<li>@huggingface/transformers and the ONNX Runtime it brings : Run the same embedding model in the Node search server. Apache-2.0 and MIT licenses respectively. <a target="_blank" href="https://huggingface.co/docs/transformers.js" rel="nofollow noopener noreferrer">https://huggingface.co/docs/transformers.js</a></li>
-</ul>
-<p dir="auto">Every license above was read from the package's own metadata or license file, and each is compatible with the GNU General Public License v3.0 or later that this project carries.</p>
+<p dir="auto">Every dependency license was checked for compatibility with the GNU General Public License v3.0 or later. The list, with each license, is in <a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/docs/compliance.md" rel="nofollow noopener noreferrer">docs/compliance.md</a>.</p>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">License</h3></div>
 <div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Copyright Notice</h4></div>
 <p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p>
@@ -152,8 +155,8 @@ Free Documentation License". If not, see <a target="_blank" href="https://www.gn
 <div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Citation Example:</h5></div>
 <blockquote>
 <p dir="auto"><em>Mongefranco, Gabriel (2026). Extractium™. University of Michigan. Software. <a target="_blank" href="https://github.com/DepressionCenter/extractium" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/extractium</a></em><br>
-​​​​​​​     <em>DOI: <a target="_blank" href="https://doi.org/..." rel="nofollow noopener noreferrer">&lt; DOI # e.g. 10.6084/m9.figshare.xxxxxx.v1 &gt;</a></em></p>
+​​​​​​​     <em>DOI: <a target="_blank" href="https://doi.org/10.5281/zenodo.22754640" rel="nofollow noopener noreferrer">10.5281/zenodo.22754640</a></em></p>
 </blockquote>
 <hr>
 <p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p></div>
-<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/extractium" target="_blank" rel="noopener" aria-label="View extractium on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="extractium documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/extractium" target="_blank" rel="noopener" aria-label="View extractium on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://github.com/DepressionCenter/extractium/blob/main/docs/README.md" target="_blank" rel="noopener" aria-label="extractium documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
