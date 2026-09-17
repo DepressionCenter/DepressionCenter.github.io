@@ -4,8 +4,9 @@
 <div class="panel-readme"><p dir="auto"><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/images/extractium-banner.svg" rel="nofollow noopener noreferrer"><img src="https://raw.githubusercontent.com/DepressionCenter/extractium/main/images/extractium-banner.svg" alt="Extractium Banner"></a></p>
 <div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">Extractium™</h2></div>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
-<p dir="auto">Extractium™ turns your organization's scattered public documentation into one searchable knowledge base. Point it at your website, knowledge base portal, GitHub repositories, YouTube channel, library repository, or a folder of files, and it gathers the content, prepares it for both keyword and meaning-based search, and writes it out in several formats. You can then use that knowledge base in a website search box, in your own scripts, or with the AI assistant of your choice, without depending on any one AI provider.</p>
+<p dir="auto">Extractium™ gathers what your organization already publishes into one compendium: a searchable collection of your content, written as static files. Point it at your website, knowledge base portal, GitHub repositories, YouTube channel, library repository, or a folder of files. It gathers the content, prepares it for both keyword and meaning-based search, and writes it out in several formats. AI assistants can read the result, small language models can search it inside a web app or a script, and none of it depends on any one AI provider or on a server you have to run.</p>
 <p dir="auto"><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/images/extractium-from-scattered-content-to-shared-knowledge.png" rel="nofollow noopener noreferrer"><img src="https://raw.githubusercontent.com/DepressionCenter/extractium/main/images/extractium-from-scattered-content-to-shared-knowledge.png" alt="Extractium: from scatter content to shared knowledge for the AI era." title="Extractium: from scatter content to shared knowledge for the AI era."></a></p>
+<hr>
 <p dir="auto">Unlike a vector database, Extractium™ needs no server, no database, and no API to run. Every output is a static file that you can host anywhere, including GitHub Pages, and the same build feeds all of them at once. Sources and outputs are plug-ins, so you can add your own if the built-in ones do not cover your needs.</p>
 <p dir="auto"><a target="_blank" href="https://github.com/DepressionCenter/extractium/blob/main/images/extractium-diagram.png" rel="nofollow noopener noreferrer"><img src="https://raw.githubusercontent.com/DepressionCenter/extractium/main/images/extractium-diagram.png" alt="Extractium: inputs and outputs diagram" title="Extractium: inputs and outputs diagram"></a></p>
 <table>
@@ -49,7 +50,7 @@
 <p dir="auto">Save the build script for your operating system into an empty folder: <a target="_blank" href="https://raw.githubusercontent.com/DepressionCenter/extractium/main/run.sh" rel="nofollow noopener noreferrer">run.sh</a> for macOS and Linux, or <a target="_blank" href="https://raw.githubusercontent.com/DepressionCenter/extractium/main/run.bat" rel="nofollow noopener noreferrer">run.bat</a> for Windows. If you have git, you can clone this repository instead and run the script from the clone.</p>
 </li>
 <li>
-<p dir="auto">Run the script. It downloads the latest release of Extractium™ (with git if you have it, otherwise as a plain download), installs everything it needs into a virtual environment, asks you for the name of your knowledge base, a short name for its files, and the website to crawl, then builds a first index limited to 25 pages:</p>
+<p dir="auto">Run the script. It downloads the latest release of Extractium™ (with git if you have it, otherwise as a plain download), installs everything it needs into a virtual environment, asks you for the name of your compendium, a short name for its files, and the website to crawl, then builds a first index limited to 25 pages:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>./run.sh       <span class="pl-c"><span class="pl-c">#</span> macOS and Linux</span>
 run.bat        <span class="pl-c"><span class="pl-c">#</span> Windows</span></pre></div>
 </li>
@@ -57,7 +58,7 @@ run.bat        <span class="pl-c"><span class="pl-c">#</span> Windows</span></pr
 <p dir="auto">Open <code>dist/llms.txt</code> to see which pages were indexed. When the list looks right, run the script again to build the whole site. To change what is crawled, edit <code>config.yaml</code>. See <code>examples/config.efdc.yaml</code> for a complete example that uses every source type.</p>
 </li>
 <li>
-<p dir="auto">To use a Python development environment instead of the script, clone the repository, run <code>pip install -e ".[dev,code,youtube,pdf,keywords]"</code>, then <code>python -m extractium.cli init</code> to write <code>config.yaml</code> and <code>python -m extractium.cli build --config config.yaml</code> to build.</p>
+<p dir="auto">To use a Python development environment instead of the script, clone the repository, run <code>pip install -e ".[dev,code,youtube,whisper,pdf,keywords]"</code>, then <code>python -m extractium.cli init</code> to write <code>config.yaml</code> and <code>python -m extractium.cli build --config config.yaml</code> to build.</p>
 </li>
 </ul>
 <p dir="auto">The first build downloads the embedding model, about 130 MB. Later builds reuse it.</p>

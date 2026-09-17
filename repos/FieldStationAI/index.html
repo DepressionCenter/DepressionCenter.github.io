@@ -43,7 +43,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
   <meta name="twitter:title" content="FieldStationAI | EFDC Open Source Hub" />
   <meta name="twitter:description" content="Field Station AI is a private, in-browser AI workspace for health and behavioral researchers." />
   <meta name="twitter:image" content="https://code.depressioncenter.org/images/repo-previews/FieldStationAI.png" />
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "author": {"@type": "Organization", "name": "Eisenberg Family Depression Center", "url": "https://depressioncenter.org"}, "codeRepository": "https://github.com/DepressionCenter/FieldStationAI", "dateModified": "2026-09-02T23:15:52Z", "description": "Field Station AI is a private, in-browser AI workspace for health and behavioral researchers.", "image": "https://code.depressioncenter.org/images/repo-previews/FieldStationAI.png", "isPartOf": {"@type": "CollectionPage", "url": "https://code.depressioncenter.org/"}, "keywords": "HTML, browser-ai, healthcare, javascript, llm, local-ai, offline-ai", "license": "GPL-3.0", "name": "FieldStationAI", "programmingLanguage": "HTML", "url": "https://code.depressioncenter.org/repos/FieldStationAI/"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "author": {"@type": "Organization", "name": "Eisenberg Family Depression Center", "url": "https://depressioncenter.org"}, "codeRepository": "https://github.com/DepressionCenter/FieldStationAI", "dateModified": "2026-09-17T05:25:57Z", "description": "Field Station AI is a private, in-browser AI workspace for health and behavioral researchers.", "image": "https://code.depressioncenter.org/images/repo-previews/FieldStationAI.png", "isPartOf": {"@type": "CollectionPage", "url": "https://code.depressioncenter.org/"}, "keywords": "HTML, browser-ai, healthcare, javascript, llm, local-ai, offline-ai", "license": "GPL-3.0", "name": "FieldStationAI", "programmingLanguage": "HTML", "url": "https://code.depressioncenter.org/repos/FieldStationAI/"}</script>
 
   <!-- Google tag (gtag.js) — only loads on depressioncenter.org and umich.edu domains -->
   <script>
@@ -172,55 +172,13 @@ with this program. If not, see <https://www.gnu.org/licenses/>.
 <ol start="3" dir="auto">
 <li>Select a model from the dropdown and wait for it to download and compile. Once a model has been downloaded, you will not have to download it again, even if you close the application or refresh the page.</li>
 <li>Type a prompt, attach a file, or open <strong>Field Kit</strong> (in the top right) for task-specific tools.</li>
-<li>The knowledge-base (KB) badge next to the model dropdown has three states: <strong>Off</strong> (no knowledge base — answers come only from the model and any attachments), <strong>UMich Health Research Resource Library</strong> (answers take into account an index of our knowledge base, bundled in the included <code>efdc-kb.json</code> file), and <strong>External</strong> (answers prioritize an optional, custom knowledge base index loaded via the <code>?kb=</code> query parameter). Click the badge at any time to switch between whichever the different KB modes.</li>
+<li>Click the knowledge-base badge next to the model dropdown to choose whether answers use the bundled U-M Health Research Resource Library index, your own index, or no knowledge base at all. See <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/data-files-and-knowledge-bases.md" rel="nofollow noopener noreferrer">Data, Files, Attachments, and Knowledge Bases</a> for the details, and for how to build your own index with <code>build-kb-index.py</code>.</li>
 </ol>
-<p dir="auto">Optional: to point the app at your own knowledge base instead of (or in addition to) the bundled one, run <code>python build-kb-index.py &lt;url&gt;</code> to crawl a source site — it writes <code>index.json</code>. Pass it to the app via the <code>?kb=</code> query parameter, e.g. <code>/FieldStationAI/index.html?kb=index.json</code>; it shows up as "External" in the badge and, if it loads successfully, takes priority over the bundled KB and the models' own answers.</p>
-<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Documentation</h4></div>
-<p dir="auto">Start here:</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
 <ul dir="auto">
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/quick-start.md" rel="nofollow noopener noreferrer">Quick Start</a></li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/user-guide.md" rel="nofollow noopener noreferrer">User Guide</a></li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/field-kit.md" rel="nofollow noopener noreferrer">Field Kit Guide</a></li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/data-files-and-knowledge-bases.md" rel="nofollow noopener noreferrer">Data, Files, Attachments, and Knowledge Bases</a></li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/security-privacy-accessibility.md" rel="nofollow noopener noreferrer">Security, Privacy, PHI, and Accessibility</a></li>
-</ul>
-<p dir="auto">Deevloper docs:</p>
-<ul dir="auto">
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/architecture.md" rel="nofollow noopener noreferrer">Architecture Overview</a></li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/models-and-runtime.md" rel="nofollow noopener noreferrer">Models and Runtime</a></li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/developer-guide.md" rel="nofollow noopener noreferrer">Developer Guide</a></li>
-<li><a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/design-change-record.md" rel="nofollow noopener noreferrer">Design Change Record</a></li>
-</ul>
-<p dir="auto">Full EFDC documentation is available at: <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">EFDC Knowledge Base</a></p>
-<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Detailed Setup &amp; Usage</h4></div>
-<p dir="auto">For local use:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>git clone https://github.com/DepressionCenter/FieldStationAI.git
-<span class="pl-c1">cd</span> FieldStationAI
-run-linux.sh <span class="pl-c"><span class="pl-c">#</span> for Linux, or run-windows.ps1 for Windows, or run-mac.command for Mac</span>
-<span class="pl-c"><span class="pl-c">#</span> or alternatively, run with: python -m http.server 8010</span></pre></div>
-<p dir="auto">Then open the local server URL shown (the default is <a target="_blank" href="http://localhost:8010/" rel="nofollow noopener noreferrer">http://localhost:8010/</a>).</p>
-<p dir="auto">For a custom knowledge base:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>python build-kb-index.py --url <span class="pl-s"><span class="pl-pds">"</span>https://example.org/docs/<span class="pl-pds">"</span></span> --out index.json --max-pages 10000 --delay 0.5</pre></div>
-<p dir="auto">Then load:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre lang="text" class="notranslate"><code>http://localhost:8010/index.html?kb=index.json
-</code></pre></div>
-<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Security, Privacy &amp; Accessibility</h4></div>
-<p dir="auto">Field Station AI™ is local-first. Data entered into the browser-based app is intended to stay on the user's computer unless the user deliberately points the app to an external or network-accessible destination.</p>
-<p dir="auto">Security expectations for contributors:</p>
-<ul dir="auto">
-<li>Do not commit PHI, secrets, local data exports, model caches, generated indexes with sensitive content, or generated research outputs.</li>
-<li>Use synthetic examples in documentation and tests.</li>
-<li>Do not claim HIPAA compliance from code behavior alone.</li>
-<li>Review workflows with institutional privacy, IRB, and Information Assurance teams when required.</li>
-<li>If using AI coding agents, point them to <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/agents.md" rel="nofollow noopener noreferrer"><code>AGENTS.md</code></a>. Always verify the output and test it before sending a pull request.</li>
-</ul>
-<p dir="auto">Accessibility target for development:</p>
-<ul dir="auto">
-<li>WCAG 2.1 AA or WCAG 2.2 AA.</li>
-<li>Keyboard-operable controls.</li>
-<li>Visible focus states.</li>
-<li>Labels for form fields.</li>
-<li>Status updates that do not rely on color alone.</li>
+<li><strong>Complete documentation:</strong> See the <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/docs/README.md" rel="nofollow noopener noreferrer"><code>/docs</code></a> folder in this repository for the quick start, user guide, Field Kit guide, data and knowledge base reference, security and accessibility notes, and the developer and architecture guides.</li>
+<li><strong>Overview for researchers and developers:</strong> Visit the <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">Health Research Resource Library</a> for a high-level summary, key features, and important assumptions.</li>
+<li><strong>For AI coding agents:</strong> Start with <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/AGENTS.md" rel="nofollow noopener noreferrer">AGENTS.md</a> and the skills listed in <a target="_blank" href="https://github.com/DepressionCenter/FieldStationAI/blob/main/SKILLS.md" rel="nofollow noopener noreferrer">SKILLS.md</a>. Always review and test generated code before opening a pull request.</li>
 </ul>
 <div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
 <ul dir="auto">

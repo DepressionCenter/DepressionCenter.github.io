@@ -2,7 +2,7 @@
   "repo_count": 26,
   "repos": {
     "AI-prompt-database": {
-      "readme_etag": "\"b00db376594cf5b9b424051b518410dd3c210028\""
+      "readme_etag": "\"ef5c1497a6104bbfeb6aac3f9cf0e719cd05723c\""
     },
     "AutomatorsAnonymous": {
       "readme_etag": "\"ce67f8921f455f4b8f0b9901f453d47332df5e31\""
@@ -16,7 +16,7 @@
       "readme_etag": "\"658df6a8d95bd43e7001f0aced6840ca820696eb\""
     },
     "EFDC-Repo-Template": {
-      "readme_etag": "\"85f73aeb779ea834f342c6ee660038d0d1d0b833\""
+      "readme_etag": "\"13889fc7d8f65f670150d91df9a870e2bd853e03\""
     },
     "EFDC-TDX-KB": {
       "readme_etag": "\"e77e3e11af88b938bcde03ac81f86de6d16529f5\""
@@ -25,7 +25,7 @@
       "readme_etag": "\"67ddedbf1c472c5c4fba22bee7365f01484bded8\""
     },
     "FieldStationAI": {
-      "readme_etag": "\"75d17bb99fb426c4a245cc8406d1606657caf651\""
+      "readme_etag": "\"4ad2995214739f590f15b3d44f2f1ec97ca73557\""
     },
     "GitHub-Usage-Stats": {
       "readme_etag": "\"02f1658eb401598b607f4a4e309f8abf51aa216c\""
@@ -81,7 +81,7 @@
     },
     "extractium": {
       "image_sha": "36d0a86ae83b37c62ae08f6b163de8ccd2a20669",
-      "readme_etag": "\"afd30dea3ce856a1431b68168699638e009a0e14\"",
+      "readme_etag": "\"8512893d266542fb222b33851d02d666b8616998\"",
       "thumb_sha": "0da9c75bbae1108a529f5a3da893ea9d9624149a"
     },
     "mobile-tech-illustrations": {
