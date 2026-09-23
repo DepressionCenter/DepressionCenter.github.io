@@ -359,7 +359,7 @@
     "license": "GPL-3.0",
     "monogram": "E",
     "name": "extractium",
-    "pushed_at": "2026-09-18T13:17:11Z",
+    "pushed_at": "2026-09-23T03:54:24Z",
     "repo_url": "https://github.com/DepressionCenter/extractium",
     "slug": "extractium",
     "tags": [
@@ -402,7 +402,7 @@
     "license": "GPL-3.0",
     "monogram": "F",
     "name": "FieldStationAI",
-    "pushed_at": "2026-09-18T05:52:25Z",
+    "pushed_at": "2026-09-22T17:47:03Z",
     "repo_url": "https://github.com/DepressionCenter/FieldStationAI",
     "slug": "FieldStationAI",
     "tags": [
@@ -429,7 +429,7 @@
       "webgpu",
       "webllm"
     ],
-    "website": ""
+    "website": "http://code.depressioncenter.org/FieldStationAI/"
   },
   {
     "default_branch": "main",
