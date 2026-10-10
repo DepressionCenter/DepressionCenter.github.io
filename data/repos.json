@@ -2,6 +2,30 @@
   {
     "default_branch": "main",
     "demo": "",
+    "description": "Make AI agents portable across Copilot, Gemini, Claude, and ChatGPT.",
+    "docs": "https://michmed.org/efdc-kb",
+    "featured": false,
+    "full_image": "images/repo-previews/remote/agentprise.png",
+    "image_source": "remote",
+    "lab_name": "",
+    "lab_url": "",
+    "language": "HTML",
+    "license": "GPL-3.0",
+    "monogram": "A",
+    "name": "agentprise",
+    "pushed_at": "2026-10-10T02:06:44Z",
+    "repo_url": "https://github.com/DepressionCenter/agentprise",
+    "slug": "agentprise",
+    "tags": [
+      "HTML"
+    ],
+    "thumb_image": "images/repo-previews/remote/agentprise-thumb.png",
+    "topics": [],
+    "website": ""
+  },
+  {
+    "default_branch": "main",
+    "demo": "",
     "description": "Real-world examples of AI prompts from the University of Michigan. [DOI: 10.5281/zenodo.15242741]",
     "docs": "https://michmed.org/efdc-kb",
     "featured": false,

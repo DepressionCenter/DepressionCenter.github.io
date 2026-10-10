@@ -3,13 +3,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://code.depressioncenter.org/</loc>
-    <lastmod>2026-10-08T05:16:44Z</lastmod>
+    <lastmod>2026-10-10T02:06:44Z</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://code.depressioncenter.org/llms.html</loc>
-    <lastmod>2026-10-08T05:16:44Z</lastmod>
+    <lastmod>2026-10-10T02:06:44Z</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://code.depressioncenter.org/repos/agentprise/</loc>
+    <lastmod>2026-10-10T02:06:44Z</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://code.depressioncenter.org/repos/AI-prompt-database/</loc>

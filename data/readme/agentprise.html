@@ -1,0 +1,82 @@
+<div class="panel-thumb-lg" aria-hidden="true"><img src="images/repo-previews/remote/agentprise.png" alt="" loading="lazy" /></div>
+
+<div class="repo-links"><a class="repo-link" href="https://github.com/DepressionCenter/agentprise" target="_blank" rel="noopener" aria-label="View agentprise on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="agentprise documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>
+<div class="panel-readme"><div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">Agentprise™</h2></div>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Description</h3></div>
+<p dir="auto">Agentprise makes AI agents and skills portable across Copilot, Gemini, Claude, and ChatGPT.</p>
+<p dir="auto"><a target="_blank" href="https://code.depressioncenter.org/agentprise/" rel="nofollow noopener noreferrer"><img src="https://raw.githubusercontent.com/DepressionCenter/agentprise/main/images/Repo-preview.png" alt="Agentprise with the Caveman sample loaded: the questions about the assistant on the left, and the preview with the download list on the right. Opens the live app in a new tab." width="912"></a></p>
+<p dir="auto">Describe your assistant once: what it is called, what it does, how it should behave, and a few questions people might ask it first. Agentprise then gives you the file each product wants: an app package for the Microsoft 365 Copilot app and Teams, a <code>.agent</code> file for Teams chats, a skill for Gemini and Claude, or text to paste into ChatGPT. It works in your web browser, needs no account, and sends nothing you type anywhere. You can also open a file you already have and move it to another product, or start from a ready-made assistant in the library.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Quick Start Guide</h3></div>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Use it online.</strong> Open <a target="_blank" href="https://code.depressioncenter.org/agentprise/" rel="nofollow noopener noreferrer">code.depressioncenter.org/agentprise</a>, choose <strong>Create new</strong>, and answer the questions. There is nothing to install and no account to make.</p>
+</li>
+<li>
+<p dir="auto"><strong>Run it on your own computer.</strong> Download this repository (the green <strong>Code</strong> button, then <strong>Download ZIP</strong>) and unzip it. Then start the included ZippyServe web server:</p>
+<ul dir="auto">
+<li>Windows: right-click <code>run-windows.ps1</code> and choose <strong>Run with PowerShell</strong>.</li>
+<li>Mac: double-click <code>run-mac.command</code>.</li>
+<li>Linux: run <code>./run-linux.sh</code> in a terminal.</li>
+</ul>
+<p dir="auto">Your browser opens the app at <code>http://localhost:8010</code>. Close the server window when you are done.</p>
+</li>
+<li>
+<p dir="auto"><strong>Open the page directly.</strong> You can also open <code>index.html</code> from the unzipped folder, with no server at all. Everything works except the Library, which needs a web address to read its files.</p>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Documentation</h3></div>
+<ul dir="auto">
+<li><strong>Complete documentation:</strong> See the <a target="_blank" href="https://github.com/DepressionCenter/agentprise/tree/main/docs" rel="nofollow noopener noreferrer"><code>/docs</code></a> folder in this repository for a walkthrough of the app, step-by-step guides with screenshots, the questions people ask, which download goes where, how to add an assistant to the Library, how your work stays private, and the technical details.</li>
+<li><strong>Overview for researchers and developers:</strong> Visit the <a target="_blank" href="https://michmed.org/efdc-kb" rel="nofollow noopener noreferrer">Health Research Resource Library</a> for a high-level summary, key features, and important assumptions.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Additional Resources</h3></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://code.depressioncenter.org/agentprise/" rel="nofollow noopener noreferrer">Agentprise, the live app</a></li>
+<li><a target="_blank" href="https://agentskills.io/specification" rel="nofollow noopener noreferrer">Agent Skills standard</a>: the open <code>SKILL.md</code> format that Gemini and Claude read.</li>
+<li><a target="_blank" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview" rel="nofollow noopener noreferrer">Agents for Microsoft 365 Copilot</a>: Microsoft's guide to what agents are and where they run.</li>
+<li><a target="_blank" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-declarative-agent" rel="nofollow noopener noreferrer">Declarative agents for Microsoft 365 Copilot</a>: the kind of agent Agentprise makes.</li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/ZippyServe" rel="nofollow noopener noreferrer">ZippyServe</a>: the small web server included for running the app on your own computer.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">About the Team</h3></div>
+<p dir="auto">The <a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">Mobile Technologies Core</a> provides investigators across the University of Michigan the support and guidance needed to utilize mobile technologies and digital mental health measures in their studies. Experienced faculty and staff offer hands-on consultative services to researchers throughout the University – regardless of specialty or research focus.</p>
+<p dir="auto">Learn more at: <a target="_blank" href="https://depressioncenter.org/mobiletech" rel="nofollow noopener noreferrer">https://depressioncenter.org/mobiletech</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Contact</h3></div>
+<p dir="auto">To get in touch, contact the project maintainers or the individual developers in the check-in history.</p>
+<p dir="auto">If you need assistance identifying a contact person, email the Mobile Technologies Core at: <a href="mailto:efdc-mobiletech@umich.edu" rel="nofollow noopener noreferrer">efdc-mobiletech@umich.edu</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Credits</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Authors:</h4></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://gabriel.mongefranco.com" rel="nofollow noopener noreferrer">Gabriel Mongefranco</a> <a target="_blank" href="https://github.com/gabrielmongefranco" rel="nofollow noopener noreferrer">(@gabrielmongefranco)</a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Contributors:</h4></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://depressioncenter.org" rel="nofollow noopener noreferrer">Eisenberg Family Depression Center</a> <a target="_blank" href="https://github.com/DepressionCenter" rel="nofollow noopener noreferrer">(@DepressionCenter)</a></li>
+<li><a target="_blank" href="https://github.com/DepressionCenter/AutomatorsAnonymous" rel="nofollow noopener noreferrer">Automators Anonymous</a> community of practice</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">This work is based in part on the following projects, libraries and/or studies:</h5></div>
+<ul dir="auto">
+<li><a target="_blank" href="https://github.com/DepressionCenter/ZippyServe" rel="nofollow noopener noreferrer">ZippyServe</a>, the Eisenberg Family Depression Center's portable web server, included in <code>bin/</code> with its run scripts so the app can run locally.</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">License</h3></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Copyright Notice</h4></div>
+<p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Software and Library License Notice</h4></div>
+<p dir="auto">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p dir="auto">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p dir="auto">You should have received a copy of the GNU General Public License along with this program. If not, see <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/gpl-3.0-standalone.html</a>.</p>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Documentation License Notice</h4></div>
+<p dir="auto">Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+You should have received a copy of the license included in the section entitled "GNU
+Free Documentation License". If not, see <a target="_blank" href="https://www.gnu.org/licenses/fdl-1.3-standalone.html" rel="nofollow noopener noreferrer">https://www.gnu.org/licenses/fdl-1.3-standalone.html</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto">Citation</h3></div>
+<p dir="auto">If you find this repository, code or paper useful for your research, please cite it.</p>
+<div class="markdown-heading" dir="auto"><h5 class="heading-element" dir="auto">Citation Example:</h5></div>
+<blockquote>
+<p dir="auto"><em>Mongefranco, Gabriel (2026). Agentprise. Eisenberg Family Depression Center, University of Michigan. Software. <a target="_blank" href="https://github.com/DepressionCenter/agentprise" rel="nofollow noopener noreferrer">https://github.com/DepressionCenter/agentprise</a></em></p>
+</blockquote>
+<hr>
+<p dir="auto">Copyright © 2026 The Regents of the University of Michigan</p></div>
+<div class="repo-links panel-links-bottom"><a class="repo-link" href="https://github.com/DepressionCenter/agentprise" target="_blank" rel="noopener" aria-label="View agentprise on GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Code</a><a class="repo-link" href="https://michmed.org/efdc-kb" target="_blank" rel="noopener" aria-label="agentprise documentation"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Docs</a></div>

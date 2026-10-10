@@ -1,5 +1,5 @@
 {
-  "repo_count": 26,
+  "repo_count": 27,
   "repos": {
     "AI-prompt-database": {
       "readme_etag": "\"ef5c1497a6104bbfeb6aac3f9cf0e719cd05723c\""
@@ -75,6 +75,11 @@
       "image_sha": "5a3ae3bdb640b8c7735b218940ef85f6258b0132",
       "readme_etag": "\"c03eb49c43394b095f8b2258b5161dfd254e919f\"",
       "thumb_sha": "69190a7153ce0b131f9938927b3a8d4ecbe91137"
+    },
+    "agentprise": {
+      "image_sha": "ea6254b9cb52a3a55f92416f2664dcecd224ed93",
+      "readme_etag": "\"5efba9caebcbec23c591eaa13869e05487f3785c\"",
+      "thumb_sha": "0cda7e2ff9b810a6a585479d4fa74e7fdc36d58b"
     },
     "datalavista": {
       "readme_etag": "\"2c286738a649e1f2230d0880500730674c5b915e\""
