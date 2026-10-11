@@ -78,11 +78,11 @@
     },
     "agentprise": {
       "image_sha": "ea6254b9cb52a3a55f92416f2664dcecd224ed93",
-      "readme_etag": "\"5efba9caebcbec23c591eaa13869e05487f3785c\"",
+      "readme_etag": "\"83dbbef23592c96ecdb818983364ecd9a6ae04bd\"",
       "thumb_sha": "0cda7e2ff9b810a6a585479d4fa74e7fdc36d58b"
     },
     "datalavista": {
-      "readme_etag": "\"2c286738a649e1f2230d0880500730674c5b915e\""
+      "readme_etag": "\"00b36677787898f49c3ee3fe5f93602c15c583ae\""
     },
     "extractium": {
       "image_sha": "36d0a86ae83b37c62ae08f6b163de8ccd2a20669",
