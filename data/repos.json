@@ -895,21 +895,21 @@
     "image_source": "local",
     "lab_name": "Mobile Technologies Core",
     "lab_url": "https://depressioncenter.org/mobiletech",
-    "language": "HTML",
+    "language": "JavaScript",
     "license": "GPL-3.0",
     "monogram": "S",
     "name": "Sitenalyzer",
-    "pushed_at": "2026-09-02T23:17:17Z",
+    "pushed_at": "2026-10-14T05:17:23Z",
     "repo_url": "https://github.com/DepressionCenter/Sitenalyzer",
     "slug": "Sitenalyzer",
     "tags": [
-      "HTML",
+      "JavaScript",
       "access-control",
       "data-dictionary",
       "governance",
-      "javascript",
       "metadata",
-      "microsoft-365"
+      "microsoft-365",
+      "permissions"
     ],
     "thumb_image": "images/repo-previews/Sitenalyzer-thumb.png",
     "topics": [
