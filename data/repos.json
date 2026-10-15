@@ -899,7 +899,7 @@
     "license": "GPL-3.0",
     "monogram": "S",
     "name": "Sitenalyzer",
-    "pushed_at": "2026-10-14T05:17:23Z",
+    "pushed_at": "2026-10-15T03:17:12Z",
     "repo_url": "https://github.com/DepressionCenter/Sitenalyzer",
     "slug": "Sitenalyzer",
     "tags": [
@@ -926,7 +926,7 @@
       "sharepoint-online",
       "web-app"
     ],
-    "website": ""
+    "website": "https://code.depressioncenter.org/Sitenalyzer"
   },
   {
     "default_branch": "main",
