@@ -55,7 +55,9 @@
       "readme_etag": "\"578e505d197889db07c7a372f3d371546be14a32\""
     },
     "Sitenalyzer": {
-      "readme_etag": "\"cd2b5640c7053193c17cebc7a9c9fc64c9a0ce94\""
+      "image_sha": "a1f24a132d5522bfec3d5687ebe24c1f429af765",
+      "readme_etag": "\"52f045ecdc0297628247ab39d5630c9ffb61e741\"",
+      "thumb_sha": "bda622f4cb00f03c709fa7441ec742d3dbdd136b"
     },
     "SleepDataAutomation": {
       "readme_etag": "\"e47275323b0475b0f007c9fce46a9929490eb560\""

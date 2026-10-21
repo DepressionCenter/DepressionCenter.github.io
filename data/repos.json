@@ -252,7 +252,7 @@
     "license": "GPL-3.0",
     "monogram": "ER",
     "name": "EFDC-Repo-Template",
-    "pushed_at": "2026-10-11T20:30:41Z",
+    "pushed_at": "2026-10-21T04:46:13Z",
     "repo_url": "https://github.com/DepressionCenter/EFDC-Repo-Template",
     "slug": "EFDC-Repo-Template",
     "tags": [
@@ -888,18 +888,18 @@
   {
     "default_branch": "main",
     "demo": "https://umhealth.sharepoint.com/sites/AutomatorsAnonymousShowcase/SitePages/Sitenalyzer.aspx",
-    "description": "Data dictionary and security information extraction for SharePoint sites",
+    "description": "Data dictionary and security information extraction for SharePoint sites.",
     "docs": "https://michmed.org/efdc-kb",
     "featured": false,
-    "full_image": "images/repo-previews/Sitenalyzer.png",
-    "image_source": "local",
+    "full_image": "images/repo-previews/remote/Sitenalyzer.png",
+    "image_source": "remote",
     "lab_name": "Mobile Technologies Core",
     "lab_url": "https://depressioncenter.org/mobiletech",
     "language": "JavaScript",
     "license": "GPL-3.0",
     "monogram": "S",
     "name": "Sitenalyzer",
-    "pushed_at": "2026-10-20T03:14:08Z",
+    "pushed_at": "2026-10-21T05:15:04Z",
     "repo_url": "https://github.com/DepressionCenter/Sitenalyzer",
     "slug": "Sitenalyzer",
     "tags": [
@@ -911,7 +911,7 @@
       "microsoft-365",
       "permissions"
     ],
-    "thumb_image": "images/repo-previews/Sitenalyzer-thumb.png",
+    "thumb_image": "images/repo-previews/remote/Sitenalyzer-thumb.png",
     "topics": [
       "access-control",
       "data-dictionary",
@@ -926,7 +926,7 @@
       "sharepoint-online",
       "web-app"
     ],
-    "website": "https://code.depressioncenter.org/Sitenalyzer"
+    "website": "http://code.depressioncenter.org/Sitenalyzer/"
   },
   {
     "default_branch": "main",
