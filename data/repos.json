@@ -13,7 +13,7 @@
     "license": "GPL-3.0",
     "monogram": "A",
     "name": "agentprise",
-    "pushed_at": "2026-10-11T23:24:50Z",
+    "pushed_at": "2026-10-22T05:32:54Z",
     "repo_url": "https://github.com/DepressionCenter/agentprise",
     "slug": "agentprise",
     "tags": [
@@ -252,7 +252,7 @@
     "license": "GPL-3.0",
     "monogram": "ER",
     "name": "EFDC-Repo-Template",
-    "pushed_at": "2026-10-21T04:46:13Z",
+    "pushed_at": "2026-10-21T15:25:27Z",
     "repo_url": "https://github.com/DepressionCenter/EFDC-Repo-Template",
     "slug": "EFDC-Repo-Template",
     "tags": [
@@ -888,7 +888,7 @@
   {
     "default_branch": "main",
     "demo": "https://umhealth.sharepoint.com/sites/AutomatorsAnonymousShowcase/SitePages/Sitenalyzer.aspx",
-    "description": "Data dictionary and security information extraction for SharePoint sites.",
+    "description": "Data dictionary and security report for SharePoint sites: lists, libraries, columns, term sets, permissions, and sharing links.",
     "docs": "https://michmed.org/efdc-kb",
     "featured": false,
     "full_image": "images/repo-previews/remote/Sitenalyzer.png",
@@ -899,7 +899,7 @@
     "license": "GPL-3.0",
     "monogram": "S",
     "name": "Sitenalyzer",
-    "pushed_at": "2026-10-21T05:15:04Z",
+    "pushed_at": "2026-10-22T02:09:08Z",
     "repo_url": "https://github.com/DepressionCenter/Sitenalyzer",
     "slug": "Sitenalyzer",
     "tags": [
