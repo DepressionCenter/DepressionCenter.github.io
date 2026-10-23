@@ -13,15 +13,42 @@
     "license": "GPL-3.0",
     "monogram": "A",
     "name": "agentprise",
-    "pushed_at": "2026-10-22T05:32:54Z",
+    "pushed_at": "2026-10-23T04:27:20Z",
     "repo_url": "https://github.com/DepressionCenter/agentprise",
     "slug": "agentprise",
     "tags": [
-      "HTML"
+      "HTML",
+      "agent-builder",
+      "agent-skill-repository",
+      "agent-skills",
+      "agent-skills-manager",
+      "agent-skills-marketplace",
+      "agent-skills-standard"
     ],
     "thumb_image": "images/repo-previews/remote/agentprise-thumb.png",
-    "topics": [],
-    "website": ""
+    "topics": [
+      "agent-builder",
+      "agent-skill-repository",
+      "agent-skills",
+      "agent-skills-manager",
+      "agent-skills-marketplace",
+      "agent-skills-standard",
+      "ai-agents",
+      "chatgpt",
+      "chatgpt-skills",
+      "claude",
+      "claude-code",
+      "claude-code-plugins",
+      "claude-skills",
+      "codex-plugins",
+      "codex-skills",
+      "gemini",
+      "gemini-skills",
+      "kimi",
+      "microsoft-365-copilot",
+      "skill-md"
+    ],
+    "website": "http://code.depressioncenter.org/agentprise/"
   },
   {
     "default_branch": "main",
@@ -899,7 +926,7 @@
     "license": "GPL-3.0",
     "monogram": "S",
     "name": "Sitenalyzer",
-    "pushed_at": "2026-10-22T02:09:08Z",
+    "pushed_at": "2026-10-23T03:47:16Z",
     "repo_url": "https://github.com/DepressionCenter/Sitenalyzer",
     "slug": "Sitenalyzer",
     "tags": [
