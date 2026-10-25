@@ -52,7 +52,7 @@
       "readme_etag": "\"6cc5549bbf5acfd0f7fb100bfc92737c5447a7f3\""
     },
     "ShareR": {
-      "readme_etag": "\"578e505d197889db07c7a372f3d371546be14a32\""
+      "readme_etag": "\"d832eec07fb8fc8975a47d5d25725392e9711ab8\""
     },
     "Sitenalyzer": {
       "image_sha": "a1f24a132d5522bfec3d5687ebe24c1f429af765",
@@ -84,7 +84,9 @@
       "thumb_sha": "0cda7e2ff9b810a6a585479d4fa74e7fdc36d58b"
     },
     "datalavista": {
-      "readme_etag": "\"00b36677787898f49c3ee3fe5f93602c15c583ae\""
+      "image_sha": "a30fa87e4f7b65d6ee899bf437a3bc05eb87c737",
+      "readme_etag": "\"00b36677787898f49c3ee3fe5f93602c15c583ae\"",
+      "thumb_sha": "e28303573334b6a5ab7cd06f1326526438d5310c"
     },
     "extractium": {
       "image_sha": "36d0a86ae83b37c62ae08f6b163de8ccd2a20669",

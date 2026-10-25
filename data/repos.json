@@ -185,15 +185,15 @@
     "description": "Tell your expensive BI tools: \"Data la vista, baby!\"🕶️ DataLaVista™ is a lightweight, client-side reporting and dashboard toolkit.",
     "docs": "https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=15179",
     "featured": true,
-    "full_image": "images/repo-previews/datalavista.png",
-    "image_source": "local",
+    "full_image": "images/repo-previews/remote/datalavista.png",
+    "image_source": "remote",
     "lab_name": "Mobile Technologies Core",
     "lab_url": "https://depressioncenter.org/mobiletech",
     "language": "JavaScript",
     "license": "GPL-3.0",
     "monogram": "D",
     "name": "datalavista",
-    "pushed_at": "2026-10-23T21:11:33Z",
+    "pushed_at": "2026-10-25T05:07:22Z",
     "repo_url": "https://github.com/DepressionCenter/datalavista",
     "slug": "datalavista",
     "tags": [
@@ -205,7 +205,7 @@
       "dashboard",
       "data-analytics"
     ],
-    "thumb_image": "images/repo-previews/datalavista-thumb.png",
+    "thumb_image": "images/repo-previews/remote/datalavista-thumb.png",
     "topics": [
       "alasql",
       "business-intelligence",
@@ -883,7 +883,7 @@
     "license": "GPL-3.0",
     "monogram": "S",
     "name": "ShareR",
-    "pushed_at": "2026-09-05T00:31:39Z",
+    "pushed_at": "2026-10-25T07:27:45Z",
     "repo_url": "https://github.com/DepressionCenter/ShareR",
     "slug": "ShareR",
     "tags": [
