@@ -13,7 +13,7 @@
     "license": "GPL-3.0",
     "monogram": "A",
     "name": "agentprise",
-    "pushed_at": "2026-10-25T09:22:49Z",
+    "pushed_at": "2026-10-28T18:04:29Z",
     "repo_url": "https://github.com/DepressionCenter/agentprise",
     "slug": "agentprise",
     "tags": [
@@ -181,7 +181,7 @@
   },
   {
     "default_branch": "main",
-    "demo": "https://code.depressioncenter.org/datalavista/DataLaVista.html?reportMode=view&report=https://code.depressioncenter.org/datalavista/samples/reports/Project%20Health%20Dashboard.json",
+    "demo": "https://code.depressioncenter.org/datalavista/dist/DataLaVista.html?reportMode=view&report=https://code.depressioncenter.org/datalavista/samples/reports/Project%20Health%20Dashboard.json",
     "description": "Tell your expensive BI tools: \"Data la vista, baby!\"🕶️ DataLaVista™ is a lightweight, client-side reporting and dashboard toolkit.",
     "docs": "https://teamdynamix.umich.edu/TDClient/210/DepressionCenter/KB/ArticleDet?ID=15179",
     "featured": true,
@@ -193,7 +193,7 @@
     "license": "GPL-3.0",
     "monogram": "D",
     "name": "datalavista",
-    "pushed_at": "2026-10-28T02:27:32Z",
+    "pushed_at": "2026-10-28T16:56:15Z",
     "repo_url": "https://github.com/DepressionCenter/datalavista",
     "slug": "datalavista",
     "tags": [
@@ -926,7 +926,7 @@
     "license": "GPL-3.0",
     "monogram": "S",
     "name": "Sitenalyzer",
-    "pushed_at": "2026-10-23T21:35:42Z",
+    "pushed_at": "2026-10-28T18:14:42Z",
     "repo_url": "https://github.com/DepressionCenter/Sitenalyzer",
     "slug": "Sitenalyzer",
     "tags": [
