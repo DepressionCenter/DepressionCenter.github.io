@@ -49,10 +49,10 @@
       "readme_etag": "\"1ef98cdea3a1c37f8be6709792f07c21704ca86f\""
     },
     "OffgridDev": {
-      "readme_etag": "\"6cc5549bbf5acfd0f7fb100bfc92737c5447a7f3\""
+      "readme_etag": "\"3d1ba897e61e0e091b50fa222cf1a6df34486eab\""
     },
     "ShareR": {
-      "readme_etag": "\"d832eec07fb8fc8975a47d5d25725392e9711ab8\""
+      "readme_etag": "\"949221dd489bcf56fa01ea258d591f752f9b61b9\""
     },
     "Sitenalyzer": {
       "image_sha": "a1f24a132d5522bfec3d5687ebe24c1f429af765",
@@ -80,7 +80,7 @@
     },
     "agentprise": {
       "image_sha": "ea6254b9cb52a3a55f92416f2664dcecd224ed93",
-      "readme_etag": "\"6d93e2e99fd6ebdcd2e809cce9da2ae9682ccc74\"",
+      "readme_etag": "\"9edc6654c0a81e26f8161121cb14b3413c58b119\"",
       "thumb_sha": "0cda7e2ff9b810a6a585479d4fa74e7fdc36d58b"
     },
     "datalavista": {
